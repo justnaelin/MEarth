@@ -1,0 +1,161 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bytely.mearth.AboutActivity"
+    android:background="#FFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id = "@+id/linearlayout1"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:src="@drawable/splash_logo"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textStyle="bold"/>
+
+
+            <TextView android:text="@string/about_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_text"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Our Mission"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/mission_text"
+                android:text="@string/mission_text"/>
+
+           <LinearLayout
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:layout_alignParentBottom="true">
+
+
+
+               <ImageButton
+                    android:id="@+id/fbButton"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src= "@drawable/fc_icon"
+                    android:background="#FFFF"/>
+
+               <!--<ImageButton
+                   android:id="@+id/websiButton"
+                   android:layout_width="30dp"
+                   android:layout_height="40dp"
+                   android:layout_weight="1"
+                   android:src= "@drawable/mearth"
+                   android:background="#FFFF"/>-->
+
+               <ImageButton
+                    android:id="@+id/youtubeButton"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src= "@drawable/yt_icon"
+                   android:background="#FFFF"/>
+
+
+               <ImageButton
+                   android:id="@+id/instagramButton"
+                   android:layout_width="30dp"
+                   android:layout_height="40dp"
+                   android:layout_weight="1"
+                   android:src= "@drawable/ig_icon"
+                   android:background="#FFFF"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFF">
+
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/dashButton"
+            android:layout_weight = "1"
+            android:src="@drawable/dash"
+            android:background="#FFFF"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/levelButton"
+            android:layout_weight = "1"
+            android:src="@drawable/activities"
+            android:background="#FFFF"/>
+
+
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/profileButton"
+            android:layout_weight = "1"
+            android:src="@drawable/profile"
+            android:background="#FFFF"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/aboutButton"
+            android:layout_weight = "1"
+            android:src="@drawable/globe"
+            android:background="#FFFF"/>
+
+        <!--
+         <Button android:id="@+id/dashButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="dash" />
+
+        <Button android:id="@+id/activityButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="activity" />
+
+        <Button android:id="@+id/profileButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="profile" />
+
+        <Button android:id="@+id/aboutButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="about" />-->
+    </LinearLayout>
+
+
+</RelativeLayout>
