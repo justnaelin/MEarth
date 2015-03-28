@@ -1,0 +1,57 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bytely.mearth.HostActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:id="@+id/fragment_container">
+
+        </FrameLayout>
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#FFFF">
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/dash_button"
+            android:layout_weight = "1"
+            android:src="@drawable/dash"
+            android:background="#FFFF"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/levels_button"
+            android:layout_weight = "1"
+            android:src="@drawable/activities"
+            android:background="#FFFF"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/profile_button"
+            android:layout_weight = "1"
+            android:src="@drawable/profile"
+            android:background="#FFFF"/>
+
+        <ImageButton
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:id="@+id/about_button"
+            android:layout_weight = "1"
+            android:src="@drawable/globe"
+            android:background="#FFFF"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

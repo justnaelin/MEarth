@@ -70,7 +70,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         Fragment levelFragment = fragmentManager.findFragmentById(R.id.level_container);
 
         if(levelFragment == null) {
-            levelFragment = new ActivityLevelFragment();
+            levelFragment = new LevelsFragment();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             transaction.add(R.id.level_container, levelFragment);
             transaction.commit();
@@ -140,23 +140,6 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         fragmentTransaction.commit();
     }
 
-    @Override
-    public void runDashboard() {
-        Intent intent = new Intent(LevelScreen.this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void runProfile() {
-        Intent intent = new Intent(LevelScreen.this, ProfileActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void runAbout() {
-        Intent intent = new Intent(LevelScreen.this, AboutActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void updateActionBar() {
