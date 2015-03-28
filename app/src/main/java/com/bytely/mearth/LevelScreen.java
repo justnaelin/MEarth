@@ -144,6 +144,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         return null;
     }
 
+
     @Override
     public void updateActionBar() {
         mActionBar.setTitle("Levels");

@@ -59,6 +59,8 @@ public class LevelsFragment extends Fragment {
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
 
+        comm = (Communicator) getActivity();
+
         mLevelOneImage = (ImageView) view.findViewById(R.id.level_one_image);
         mLevelOneTitle = (TextView) view.findViewById(R.id.level_one_title);
         mLevelTwoImage = (ImageView) view.findViewById(R.id.level_two_image);

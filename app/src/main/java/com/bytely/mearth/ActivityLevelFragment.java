@@ -107,40 +107,6 @@ public class ActivityLevelFragment extends Fragment {
             }
         });
 
-        mAboutButton = (ImageButton) view.findViewById(R.id.aboutButton);
-        mAboutButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                comm.runAbout();
-            }
-        });
-
-        mProfileButton = (ImageButton) view.findViewById(R.id.profileButton);
-        mProfileButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                comm.runProfile();
-            }
-        });
-
-        mDashButton = (ImageButton) view.findViewById(R.id.dashButton);
-        mDashButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                comm.runDashboard();
-                /*
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-
-                if(fragment == null) {
-                    fragment = new BlankFragment();
-                    fragmentManager.beginTransaction().add(R.id.fragment_container,fragment).commit();
-
-                }
-                */
-            }
-        });
-
         return view;
     }
 

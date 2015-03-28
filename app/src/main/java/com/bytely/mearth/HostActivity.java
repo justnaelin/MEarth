@@ -1,5 +1,6 @@
 package com.bytely.mearth;
 
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -18,7 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class HostActivity extends ActionBarActivity implements Communicator {
+
+public class HostActivity extends ActionBarActivity implements Communicator{
+
     private ImageButton mAboutButton;//the about button
     private ImageButton mLevelsButton;
     private ImageButton mProfileButton;
@@ -54,13 +57,16 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 new ActivityModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
                 new ActivityModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
         };
-
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //startActivity(new Intent(MainActivity.this, AboutActivity.class));
-
+                Fragment aboutFragment = new AboutFragment();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
+                fragmentTransaction.addToBackStack("about_fragment");
+                fragmentTransaction.commit();
             }
         });
 
@@ -68,7 +74,11 @@ public class HostActivity extends ActionBarActivity implements Communicator {
         mProfileButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                Fragment profileFragment = new ProfileFragment();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, profileFragment);
+                fragmentTransaction.addToBackStack("profile_fragment");
+                fragmentTransaction.commit();
             }
         });
 
@@ -97,7 +107,6 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             }
         });
 
-
         Fragment dashFragment = fragmentManager.findFragmentById(R.id.fragment_container);
 
         if(dashFragment == null) {
@@ -105,6 +114,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, dashFragment);
             fragmentTransaction.commit();
+
         }
     }
 

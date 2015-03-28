@@ -1,6 +1,6 @@
 package com.bytely.mearth;
 
-
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,13 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class DashFragment extends Fragment {
-
-
     private Communicator comm;
 
     public DashFragment() {
@@ -46,9 +48,9 @@ public class DashFragment extends Fragment {
         Bitmap currentIm = getRoundedShape(R.drawable.pale);
 
         mCurrentImage.setImageBitmap(currentIm);
-        mCurrentText.setText("Plant Native Plants: ");
-        */
 
+        mCurrentText.setText("Grow Native Grows: ");
+        */
 
         return view;
     }
