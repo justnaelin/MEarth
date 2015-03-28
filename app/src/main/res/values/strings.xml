@@ -27,6 +27,9 @@
     <string name="mission_text">MEarth is building an interconnected community of engaged citizens and future leaders by promoting analytical
         thinking through experience-based learning at the Hilton Bialek Habitat.
 MEarth educates and inspires through environmental stewardship</string>
+    <string name="title_activity_host">HostActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 
 

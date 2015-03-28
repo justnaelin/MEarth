@@ -47,6 +47,14 @@ public class ActivityListFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        comm = (Communicator) getActivity();
+
+        mActivityList = comm.getActivityArray();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -72,6 +80,7 @@ public class ActivityListFragment extends Fragment {
         mActivityThreeTitle.setText(mActivityList[2].getActivityName());
         mActivityFourTitle.setText(mActivityList[3].getActivityName());
         */
+
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.activity_list);
         List<ActivityModel> activityModelList = new ArrayList<>(Arrays.asList(mActivityList));
