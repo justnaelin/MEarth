@@ -40,6 +40,53 @@
         android:layout_alignParentStart="true"
         android:padding="10dp"/>
 
+    <LinearLayout
+
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:id="@+id/footer1"
+    android:layout_width="fill_parent"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:layout_below="@+id/bio_text"
+    android:background="#FFFF">
+
+    <ImageButton
+        android:id="@+id/achieveButton"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:src="@drawable/done"
+        android:background="#FFFF"/>
+
+    <ImageButton
+        android:id="@+id/currentButton"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/currently"
+        android:layout_weight="1"
+        android:background="#FFFF"/>
+
+
+    <ImageButton
+        android:id="@+id/goalsButton"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/bullseye"
+        android:layout_weight="1"
+        android:background="#FFFF"/>
+
+    <ImageButton
+        android:id="@+id/picsButton"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:src="@drawable/camera"
+        android:layout_weight="1"
+        android:background="#FFFF"/>
+</LinearLayout>
+
     <ScrollView
 
         android:layout_width="match_parent"
@@ -52,11 +99,5 @@
 
     </ScrollView>
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_container">
-    </FrameLayout>
 
 </RelativeLayout>

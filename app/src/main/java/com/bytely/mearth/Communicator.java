@@ -7,5 +7,6 @@ public interface Communicator {
     public void runLevelOne();
     public void runLevelTwo();
     public void runLevelThree();
+    public ActivityModel[] getActivityArray();
     public void updateActionBar();
 }

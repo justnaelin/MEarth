@@ -1,11 +1,16 @@
 package com.bytely.mearth;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.FragmentManager;
+
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+
 public class HostActivity extends ActionBarActivity implements Communicator{
+
     private ImageButton mAboutButton;//the about button
     private ImageButton mLevelsButton;
     private ImageButton mProfileButton;
@@ -23,6 +30,12 @@ public class HostActivity extends ActionBarActivity implements Communicator{
     private ImageView mCurrentImage;
     private TextView mCurrentText;
     private TextView mCurrentPoints;
+    private Bitmap mRecyclingBitmap;
+    private Bitmap mLightBitmap;
+    private Bitmap mWaterBitmap;
+    private Bitmap mWaterBottleBitmap;
+    private Bitmap mWalkBitmap;
+    private ActivityModel[] mLevelOneArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +44,29 @@ public class HostActivity extends ActionBarActivity implements Communicator{
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
+        mRecyclingBitmap = getRoundedShape(R.drawable.recycle);
+        mLightBitmap = getRoundedShape(R.drawable.lightbulb);
+        mWaterBitmap = getRoundedShape(R.drawable.eco_cleaning);
+        mWaterBottleBitmap = getRoundedShape(R.drawable.water_drop);
+        mWalkBitmap = getRoundedShape(R.drawable.walk);
+
+        mLevelOneArray = new ActivityModel[]{
+                new ActivityModel("Recycle Items", 2, mRecyclingBitmap, 20),
+                new ActivityModel("Turn Off Room Lights", 2, mLightBitmap, 20),
+                new ActivityModel("Turn Off Running Water", 2, mWaterBitmap, 20),
+                new ActivityModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
+                new ActivityModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+        };
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                Fragment aboutFragment = new AboutFragment();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
+                fragmentTransaction.addToBackStack("about_fragment");
+                fragmentTransaction.commit();
             }
         });
 
@@ -85,7 +116,6 @@ public class HostActivity extends ActionBarActivity implements Communicator{
             fragmentTransaction.commit();
 
         }
-
     }
 
 
@@ -113,7 +143,12 @@ public class HostActivity extends ActionBarActivity implements Communicator{
 
     @Override
     public void runLevelOne() {
-
+        Fragment levelOneFragment = new ActivityListFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
+        fragmentTransaction.addToBackStack("level_one");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -127,7 +162,36 @@ public class HostActivity extends ActionBarActivity implements Communicator{
     }
 
     @Override
+    public ActivityModel[] getActivityArray() {
+        return mLevelOneArray;
+    }
+
+    @Override
     public void updateActionBar() {
 
+    }
+
+    public Bitmap getRoundedShape(int imageResource) {
+        Bitmap scaleBitmapImage = BitmapFactory.decodeResource(getResources(), imageResource);
+        int targetWidth = 200;
+        int targetHeight = 200;
+        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
+                targetHeight, Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(targetBitmap);
+        Path path = new Path();
+        path.addCircle(((float) targetWidth - 1) / 2,
+                ((float) targetHeight - 1) / 2,
+                (Math.min(((float) targetWidth),
+                        ((float) targetHeight)) / 2),
+                Path.Direction.CCW);
+
+        canvas.clipPath(path);
+        Bitmap sourceBitmap = scaleBitmapImage;
+        canvas.drawBitmap(sourceBitmap,
+                new Rect(0, 0, sourceBitmap.getWidth(),
+                        sourceBitmap.getHeight()),
+                new Rect(0, 0, targetWidth, targetHeight), null);
+        return targetBitmap;
     }
 }

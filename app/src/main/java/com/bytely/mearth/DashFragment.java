@@ -1,6 +1,5 @@
 package com.bytely.mearth;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +31,6 @@ public class DashFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
-
     }
 
 
@@ -40,6 +39,7 @@ public class DashFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dash, container, false);
+
         /*
         mCurrentImage = (ImageView) view.findViewById(R.id.current_image);
         mCurrentText = (TextView) view.findViewById(R.id.current_title);
@@ -48,11 +48,13 @@ public class DashFragment extends Fragment {
         Bitmap currentIm = getRoundedShape(R.drawable.pale);
 
         mCurrentImage.setImageBitmap(currentIm);
+
         mCurrentText.setText("Grow Native Grows: ");
         */
 
         return view;
     }
+
     public Bitmap getRoundedShape(int imageResource) {
         Bitmap scaleBitmapImage = BitmapFactory.decodeResource(getResources(), imageResource);
         int targetWidth = 200;

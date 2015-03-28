@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -138,6 +137,11 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         fragmentTransaction.replace(R.id.level_container, levelThreeFragment);
         fragmentTransaction.addToBackStack("level_three_fragment");
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public ActivityModel[] getActivityArray() {
+        return null;
     }
 
 

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bytely.mearth.HostActivity">
+    tools:context="com.bytely.mearth.HostActivity"
+    android:background="#ffff">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -12,6 +13,7 @@
         android:id="@+id/fragment_container">
 
         </FrameLayout>
+
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="fill_parent"

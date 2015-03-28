@@ -13,6 +13,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LevelsFragment extends Fragment {
+public class ActivityLevelFragment extends Fragment {
 
     private CardView mLevelOneCard;
     private CardView mLevelTwoCard;
@@ -36,17 +37,16 @@ public class LevelsFragment extends Fragment {
     private ImageView mLevelThreeImage;
     private TextView mLevelThreeTitle;
 
+    private ImageButton mAboutButton;//the about button
+    private ImageButton mActivityButton;
+    private ImageButton mProfileButton;
+    private ImageButton mDashButton;
+
     private Communicator comm;
 
 
-    public LevelsFragment() {
+    public ActivityLevelFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        comm = (Communicator) getActivity();
     }
 
 
@@ -54,7 +54,7 @@ public class LevelsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view =  inflater.inflate(R.layout.fragment_levels, container, false);
+        View view =  inflater.inflate(R.layout.fragment_activity_level, container, false);
         mLevelOneCard = (CardView) view.findViewById(R.id.level_one);
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
