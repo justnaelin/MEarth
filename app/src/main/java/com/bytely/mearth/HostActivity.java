@@ -11,38 +11,43 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
-
-public class HostActivity extends ActionBarActivity implements Communicator{
+public class HostActivity extends ActionBarActivity implements Communicator, TaskAdapterCommunicator{
 
     private ImageButton mAboutButton;//the about button
     private ImageButton mLevelsButton;
     private ImageButton mProfileButton;
     private ImageButton mDashButton;
-    private ImageButton button;
-    private ImageView mCurrentImage;
-    private TextView mCurrentText;
-    private TextView mCurrentPoints;
     private Bitmap mRecyclingBitmap;
     private Bitmap mLightBitmap;
     private Bitmap mWaterBitmap;
     private Bitmap mWaterBottleBitmap;
     private Bitmap mWalkBitmap;
-    private ActivityModel[] mLevelOneArray;
+    private TaskModel[] mLevelOneArray;
+    private ArrayList<TaskModel> mTaskList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
+        mTaskList = new ArrayList<>();
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
+
+        final Fragment dashFragment = new DashFragment();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, dashFragment);
+        fragmentTransaction.commit();
 
         mRecyclingBitmap = getRoundedShape(R.drawable.recycle);
         mLightBitmap = getRoundedShape(R.drawable.lightbulb);
@@ -50,12 +55,12 @@ public class HostActivity extends ActionBarActivity implements Communicator{
         mWaterBottleBitmap = getRoundedShape(R.drawable.water_drop);
         mWalkBitmap = getRoundedShape(R.drawable.walk);
 
-        mLevelOneArray = new ActivityModel[]{
-                new ActivityModel("Recycle Items", 2, mRecyclingBitmap, 20),
-                new ActivityModel("Turn Off Room Lights", 2, mLightBitmap, 20),
-                new ActivityModel("Turn Off Running Water", 2, mWaterBitmap, 20),
-                new ActivityModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
-                new ActivityModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+        mLevelOneArray = new TaskModel[]{
+                new TaskModel("Recycle Items", 2, mRecyclingBitmap, 20),
+                new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 20),
+                new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 20),
+                new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
+                new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
         };
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
@@ -99,7 +104,6 @@ public class HostActivity extends ActionBarActivity implements Communicator{
         mDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment dashFragment = new DashFragment();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, dashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
@@ -107,15 +111,7 @@ public class HostActivity extends ActionBarActivity implements Communicator{
             }
         });
 
-        Fragment dashFragment = fragmentManager.findFragmentById(R.id.fragment_container);
 
-        if(dashFragment == null) {
-            dashFragment = new DashFragment();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.fragment_container, dashFragment);
-            fragmentTransaction.commit();
-
-        }
     }
 
 
@@ -143,7 +139,7 @@ public class HostActivity extends ActionBarActivity implements Communicator{
 
     @Override
     public void runLevelOne() {
-        Fragment levelOneFragment = new ActivityListFragment();
+        Fragment levelOneFragment = new TaskListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
@@ -162,13 +158,28 @@ public class HostActivity extends ActionBarActivity implements Communicator{
     }
 
     @Override
-    public ActivityModel[] getActivityArray() {
+    public TaskModel[] getTaskArray() {
         return mLevelOneArray;
     }
 
     @Override
     public void updateActionBar() {
 
+    }
+
+    @Override
+    public void addTask(TaskModel task) {
+        for(TaskModel taskInList : mTaskList) {
+            if(!(taskInList.getTaskID().equals(task.getTaskID()))) {
+                mTaskList.add(task);
+                Log.d("Host Activity", task.getTaskName() + " was added");
+            }
+        }
+    }
+
+    @Override
+    public ArrayList<TaskModel> getTaskList() {
+        return mTaskList;
     }
 
     public Bitmap getRoundedShape(int imageResource) {
