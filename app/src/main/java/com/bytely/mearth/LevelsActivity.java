@@ -21,7 +21,7 @@ public class LevelsActivity extends ActionBarActivity {
     private ImageView circle;
 
     private ImageView image;
-    private ActivityModel activity;
+    private TaskModel activity;
     //private CardView cardView;
 
 
@@ -36,12 +36,12 @@ public class LevelsActivity extends ActionBarActivity {
         //pointsText = (TextView)findViewById(R.id.points_text);
         circle = (ImageView)findViewById(R.id.icon);
 
-        activity = new ActivityModel("This is an activity", R.string.description, 20);
+        //activity = new TaskModel("This is an activity", R.string.description, 20);
         Bitmap logo = BitmapFactory.decodeResource(getResources(), R.drawable.red_individual);
         Bitmap circleIcon = getRoundedShape(logo);
 
         circle.setImageBitmap(circleIcon);
-        nameText.setText(activity.getActivityName());
+        //nameText.setText(activity.getActivityName());
         //descriptionText.setText(activity.getActivityDescription());
         //pointsText.setText(Integer.toString(activity.getActivityPoints()));
     }

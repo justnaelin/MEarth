@@ -50,7 +50,6 @@
                 android:padding="8dp"/>
 
             <TextView
-                android:text="20 points"
                 android:id="@+id/current_points"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"

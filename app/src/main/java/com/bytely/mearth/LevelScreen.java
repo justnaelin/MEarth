@@ -18,18 +18,18 @@ import android.view.MenuItem;
 import java.util.List;
 
 
-public class LevelScreen extends ActionBarActivity implements Communicator{
+public class LevelScreen extends ActionBarActivity implements Communicator {
     private FragmentManager fragmentManager;
     private ActionBar mActionBar;
-    private List<ActivityModel> mActivityArray;
+    private List<TaskModel> mActivityArray;
     private Bitmap mRecyclingBitmap;
     private Bitmap mLightBitmap;
     private Bitmap mWaterBitmap;
     private Bitmap mWaterBottleBitmap;
     private Bitmap mWalkBitmap;
-    private ActivityModel[] mLevelOneArray;
-    private ActivityModel[] mLevelTwoArray;
-    private ActivityModel[] mLevelThreeArray;
+    private TaskModel[] mLevelOneArray;
+    private TaskModel[] mLevelTwoArray;
+    private TaskModel[] mLevelThreeArray;
 
 
 
@@ -56,12 +56,12 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         mWaterBottleBitmap = getRoundedShape(R.drawable.water_drop);
         mWalkBitmap = getRoundedShape(R.drawable.walk);
 
-        mLevelOneArray = new ActivityModel[]{
-                new ActivityModel("Recycle Items", 2, mRecyclingBitmap, 20),
-                new ActivityModel("Turn Off Room Lights", 2, mLightBitmap, 20),
-                new ActivityModel("Turn Off Running Water", 2, mWaterBitmap, 20),
-                new ActivityModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
-                new ActivityModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+        mLevelOneArray = new TaskModel[]{
+                new TaskModel("Recycle Items", 2, mRecyclingBitmap, 20),
+                new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 20),
+                new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 20),
+                new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
+                new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
         };
 
 
@@ -106,7 +106,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         actionBar.setTitle("Level 1");
         //mActivityArray = new ArrayList<ActivityModel>(Arrays.asList(mLevelOneArray));
 
-        Fragment levelOneFragment = new ActivityListFragment(mLevelOneArray);
+        Fragment levelOneFragment = new TaskListFragment(mLevelOneArray);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.level_container, levelOneFragment);
         fragmentTransaction.addToBackStack("level_one_fragment");
@@ -120,7 +120,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Level 2");
 
-        Fragment levelTwoFragment = new ActivityListFragment();
+        Fragment levelTwoFragment = new TaskListFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.level_container, levelTwoFragment);
         fragmentTransaction.addToBackStack("level_two_fragment");
@@ -132,7 +132,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Level 3");
 
-        Fragment levelThreeFragment = new ActivityListFragment();
+        Fragment levelThreeFragment = new TaskListFragment();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.level_container, levelThreeFragment);
         fragmentTransaction.addToBackStack("level_three_fragment");
@@ -140,7 +140,7 @@ public class LevelScreen extends ActionBarActivity implements Communicator{
     }
 
     @Override
-    public ActivityModel[] getActivityArray() {
+    public TaskModel[] getTaskArray() {
         return null;
     }
 
