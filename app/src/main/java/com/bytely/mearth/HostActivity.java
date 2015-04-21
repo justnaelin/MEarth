@@ -65,6 +65,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             @Override
             public void onClick(View v){
                 //startActivity(new Intent(MainActivity.this, AboutActivity.class));
+
                 Fragment aboutFragment = fragmentManager.findFragmentByTag("about_fragment");
 
                 if(aboutFragment == null) {
