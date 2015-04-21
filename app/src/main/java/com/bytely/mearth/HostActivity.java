@@ -19,7 +19,6 @@ import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-
 public class HostActivity extends ActionBarActivity implements Communicator, TaskAdapterCommunicator{
 
     private ImageButton mAboutButton;//the about button
@@ -72,6 +71,7 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
                 fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
                 fragmentTransaction.addToBackStack("about_fragment");
                 fragmentTransaction.commit();
+
             }
         });
 

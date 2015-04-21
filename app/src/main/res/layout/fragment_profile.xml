@@ -41,20 +41,19 @@
         android:padding="10dp"/>
 
     <LinearLayout
-
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:id="@+id/footer1"
-    android:layout_width="fill_parent"
-    android:layout_alignParentRight="true"
-    android:layout_alignParentEnd="true"
-    android:layout_below="@+id/bio_text"
-    android:background="#FFFF">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/footer1"
+        android:layout_width="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/bio_text"
+        android:background="#FFFF">
 
     <ImageButton
-        android:id="@+id/achieveButton"
+        android:id="@+id/achieve_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:layout_weight="1"
@@ -62,7 +61,7 @@
         android:background="#FFFF"/>
 
     <ImageButton
-        android:id="@+id/currentButton"
+        android:id="@+id/current_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:src="@drawable/currently"
@@ -71,7 +70,7 @@
 
 
     <ImageButton
-        android:id="@+id/goalsButton"
+        android:id="@+id/goals_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:src="@drawable/bullseye"
@@ -79,7 +78,7 @@
         android:background="#FFFF"/>
 
     <ImageButton
-        android:id="@+id/picsButton"
+        android:id="@+id/pics_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:src="@drawable/camera"
@@ -88,14 +87,22 @@
 </LinearLayout>
 
     <ScrollView
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scroll_view"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/footer1"
         android:fillViewport="false">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/profile_fragment_container">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TESTING"/>
+            </FrameLayout>
 
     </ScrollView>
 
