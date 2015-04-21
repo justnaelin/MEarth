@@ -12,7 +12,39 @@
         android:layout_above="@+id/footer"
         android:id="@+id/fragment_container">
 
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:id="@+id/dash_container">
+
         </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:id="@+id/levels_container">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:id="@+id/profile_container">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footer"
+        android:id="@+id/about_container">
+
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/footer"
