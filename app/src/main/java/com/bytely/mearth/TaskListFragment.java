@@ -82,20 +82,13 @@ public class TaskListFragment extends Fragment {
         */
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.task_list);
-        List<TaskModel> taskModelList = new ArrayList<TaskModel> (Arrays.asList(mTaskList));
+        List<TaskModel> taskModelList = new ArrayList<> (Arrays.asList(mTaskList));
 
         mTaskListAdapter = new TaskListAdapter(getActivity(), taskModelList);
         mRecyclerView.setAdapter(mTaskListAdapter);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mRecyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return view;
     }

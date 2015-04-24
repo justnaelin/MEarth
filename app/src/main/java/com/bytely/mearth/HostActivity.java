@@ -11,15 +11,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-import java.util.ArrayList;
 
-public class HostActivity extends ActionBarActivity implements Communicator, TaskAdapterCommunicator{
+public class HostActivity extends ActionBarActivity implements Communicator {
 
     private ImageButton mAboutButton;//the about button
     private ImageButton mLevelsButton;
@@ -31,22 +30,21 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
     private Bitmap mWaterBottleBitmap;
     private Bitmap mWalkBitmap;
     private TaskModel[] mLevelOneArray;
-    private ArrayList<TaskModel> mTaskList;
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
-        mTaskList = new ArrayList<>();
+        Fragment dashFragment = fragmentManager.findFragmentByTag("dashFragment");
 
-        final FragmentManager fragmentManager = getSupportFragmentManager();
-
-        final Fragment dashFragment = new DashFragment();
-
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, dashFragment);
-        fragmentTransaction.commit();
+        if(dashFragment == null) {
+            dashFragment = new DashFragment();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
+            fragmentTransaction.commit();
+        }
 
         mRecyclingBitmap = getRoundedShape(R.drawable.recycle);
         mLightBitmap = getRoundedShape(R.drawable.lightbulb);
@@ -61,17 +59,22 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
                 new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
                 new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
         };
+
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //startActivity(new Intent(MainActivity.this, AboutActivity.class));
-                Fragment aboutFragment = new AboutFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
-                fragmentTransaction.addToBackStack("about_fragment");
-                fragmentTransaction.commit();
 
+                Fragment aboutFragment = fragmentManager.findFragmentByTag("about_fragment");
+
+                if(aboutFragment == null) {
+                    aboutFragment = new AboutFragment();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
+                    fragmentTransaction.addToBackStack("about_fragment");
+                    fragmentTransaction.commit();
+                }
             }
         });
 
@@ -79,11 +82,15 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
         mProfileButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Fragment profileFragment = new ProfileFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, profileFragment);
-                fragmentTransaction.addToBackStack("profile_fragment");
-                fragmentTransaction.commit();
+                Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
+
+                if(profileFragment == null) {
+                    profileFragment = new ProfileFragment();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, profileFragment);
+                    fragmentTransaction.addToBackStack("profile_fragment");
+                    fragmentTransaction.commit();
+                }
             }
         });
 
@@ -92,22 +99,29 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
         mLevelsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment levelsFragment = new LevelsFragment();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
-                fragmentTransaction.addToBackStack("levels_fragment");
-                fragmentTransaction.commit();
+                Fragment levelsFragment = fragmentManager.findFragmentByTag("levels_fragment");
+
+                if(levelsFragment == null) {
+                    levelsFragment = new LevelsFragment();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
+                    fragmentTransaction.addToBackStack("levels_fragment");
+                    fragmentTransaction.commit();
+                }
             }
         });
 
         mDashButton = (ImageButton) findViewById(R.id.dash_button);
+        final Fragment finalDashFragment = dashFragment;
         mDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Dash Clicked", Toast.LENGTH_SHORT).show();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, dashFragment);
+                fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
                 fragmentTransaction.commit();
+
             }
         });
 
@@ -165,21 +179,6 @@ public class HostActivity extends ActionBarActivity implements Communicator, Tas
     @Override
     public void updateActionBar() {
 
-    }
-
-    @Override
-    public void addTask(TaskModel task) {
-        for(TaskModel taskInList : mTaskList) {
-            if(!(taskInList.getTaskID().equals(task.getTaskID()))) {
-                mTaskList.add(task);
-                Log.d("Host Activity", task.getTaskName() + " was added");
-            }
-        }
-    }
-
-    @Override
-    public ArrayList<TaskModel> getTaskList() {
-        return mTaskList;
     }
 
     public Bitmap getRoundedShape(int imageResource) {

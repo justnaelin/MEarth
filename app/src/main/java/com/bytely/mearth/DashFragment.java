@@ -1,5 +1,6 @@
 package com.bytely.mearth;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -25,22 +26,24 @@ public class DashFragment extends Fragment {
     private ImageView imageView;
     private TextView titleText;
     private TextView pointView;
-
     private ArrayList<TaskModel> mTaskList;
-    private TaskAdapterCommunicator mTaskComm;
 
     public DashFragment() {
         // Required empty public constructor
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        comm = (Communicator) activity;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("Dash", "onCreate");
-        comm = (Communicator) getActivity();
-        mTaskComm = (TaskAdapterCommunicator) getActivity();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,25 +52,25 @@ public class DashFragment extends Fragment {
         Log.d("Dash", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_dash, container, false);
 
-        mTaskList = mTaskComm.getTaskList();
+        mTaskList = DashboardTasks.getInstance(getActivity()).getTaskList();
 
         imageView = (ImageView) view.findViewById(R.id.current_image);
         titleText = (TextView) view.findViewById(R.id.current_title);
         pointView = (TextView) view.findViewById(R.id.current_points);
 
-        //mTaskList = DashboardTasks.getInstance(getActivity()).getTaskList();
-
-        if(mTaskList != null && mTaskList.size() != 0) {
+        if(mTaskList.size() != 0) {
             imageView.setImageBitmap(mTaskList.get(0).getTaskIcon());
             titleText.setText(mTaskList.get(0).getTaskName());
-            pointView.setText(mTaskList.get(0).getTaskPoints());
-        } else  {
-            titleText.setText("No tasks selected");
         }
 
 
-
-
+        /*
+        if(task != null) {
+            imageView.setImageBitmap(task.getTaskIcon());
+            titleText.setText(task.getTaskName());
+            //pointView.setText(task.getTaskPoints());
+        }
+        */
 
         /*
         mCurrentImage = (ImageView) view.findViewById(R.id.current_image);
@@ -88,20 +91,17 @@ public class DashFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("Dash", "onResume");
-        /*
-        mTaskList = DashboardTasks.getInstance(getActivity()).getTaskList();
-        if(mTaskList != null && mTaskList.size() != 0) {
-            imageView.setImageBitmap(mTaskList.get(0).getTaskIcon());
-            titleText.setText(mTaskList.get(0).getTaskName());
-            pointView.setText(mTaskList.get(0).getTaskPoints());
-        }
-        */
     }
 
     @Override
     public void onPause() {
         super.onPause();
         Log.d("Dash", "onPause");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -126,6 +126,12 @@ public class DashFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Log.d("Dash", "onStart");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d("Dash", "onDestroyView");
     }
 
     public Bitmap getRoundedShape(int imageResource) {
