@@ -64,7 +64,7 @@
         android:id="@+id/current_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
-        android:src="@drawable/currently"
+        android:src="@drawable/bullseye"
         android:layout_weight="1"
         android:background="#FFFF"/>
 
@@ -73,12 +73,12 @@
         android:id="@+id/goals_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
-        android:src="@drawable/bullseye"
+        android:src="@drawable/acti_icon"
         android:layout_weight="1"
         android:background="#FFFF"/>
 
     <ImageButton
-        android:id="@+id/pics_button"
+        android:id="@+id/camera_button"
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:src="@drawable/camera"
@@ -98,10 +98,6 @@
             android:layout_height="match_parent"
             android:id="@+id/profile_fragment_container">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TESTING"/>
             </FrameLayout>
 
     </ScrollView>

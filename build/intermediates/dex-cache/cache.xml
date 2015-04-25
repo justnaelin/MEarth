@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
-        jar="/Users/anitagarcia/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-7309d551e657f0171d6566cb3105187c73d7e405.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="11842de6a309c447b3a3d60d73ad637a87c58994">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/classes-5ffd2231a3020740afec33e522a9c52b7bb24b8d.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/classes-670faa773b28e99adca2089336f5fb25a7838588.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/classes-19b7db305f744e061a933f41bfffedd8c7b78a5a.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-200570c812e777172be2681ea6cd60f229941f6b.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/anitagarcia/MEarth/app/build/intermediates/pre-dexed/debug/classes-9ab96afaaf33118ea8ceb009b81ce979b47913ce.jar" />
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-835e602ea1a2c359a18c030a623e96e40518613d.jar" />
+    </item>
+    <item
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-fca82dab5cca5750e84d39466086d4d594714a67.jar" />
+    </item>
+    <item
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="11842de6a309c447b3a3d60d73ad637a87c58994">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-1a53b6bb41372fa52ab7b88832460714ee0dbce0.jar" />
+    </item>
+    <item
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-f323e31d3783d090698399f547a1b19e1d94449e.jar" />
+    </item>
+    <item
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c6d79137693d494dee16372d3921f919eb724ced">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-0ea797687773fb59c0a5ea2f71e4b8807e2ab064.jar" />
+    </item>
+    <item
+        jar="/home/yaya/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-443cdfbe891c39791039e9135a8f50abca3d69dd.jar" />
     </item>
 
 </items>

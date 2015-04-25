@@ -13,7 +13,7 @@
     <string name="title_activity_level_screen">LevelScreen</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Gallery Images</string>
 
     <string name="title_activity_about">About</string>
      <string name="front_text">MEarth app</string>
