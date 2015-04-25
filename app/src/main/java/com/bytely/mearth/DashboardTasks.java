@@ -1,6 +1,8 @@
 package com.bytely.mearth;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by juice on 4/7/15.
  */
-public class DashboardTasks {
+public class DashboardTasks implements Parcelable {
     private static DashboardTasks mDashboardTasks;
     private static Context mContext;
     private static ArrayList<TaskModel> mTaskList;
@@ -20,6 +22,7 @@ public class DashboardTasks {
 
     public static DashboardTasks getInstance(Context context) {
         if(mDashboardTasks == null) {
+            Log.d("Singleton", "New Singleton Instance");
             mDashboardTasks = new DashboardTasks(context.getApplicationContext());
         }
 
@@ -50,5 +53,19 @@ public class DashboardTasks {
                 mTaskList.remove(task);
             }
         }
+    }
+
+    public void setTaskList(ArrayList<TaskModel> taskList) {
+        this.mTaskList = taskList;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

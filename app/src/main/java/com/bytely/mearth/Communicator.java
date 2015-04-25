@@ -4,10 +4,9 @@ package com.bytely.mearth;
  * Created by juice on 3/14/15.
  */
 public interface Communicator {
-    public void runLevelOne();
-    public void runLevelTwo();
-    public void runLevelThree();
-    public TaskModel[] getTaskArray();
-    public void updateActionBar();
-
+    void runLevelOne();
+    void runLevelTwo();
+    void runLevelThree();
+    TaskModel[] getTaskArray(int fragmentId);
+    void updateActionBar();
 }

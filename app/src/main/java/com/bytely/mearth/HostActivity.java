@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +37,10 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
+
+        if(savedInstanceState == null) {
+            Log.d("onCreate", "New activity instance");
+        }
 
         Fragment dashFragment = fragmentManager.findFragmentByTag("dashFragment");
 
@@ -152,8 +157,13 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedState) {
+
+    }
+
+    @Override
     public void runLevelOne() {
-        Fragment levelOneFragment = new TaskListFragment();
+        Fragment levelOneFragment = TaskListFragment.getInstance(1);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
@@ -163,17 +173,37 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
     @Override
     public void runLevelTwo() {
-
+        Fragment levelTwoFragment = TaskListFragment.getInstance(2);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment);
+        fragmentTransaction.addToBackStack("level_two");
+        fragmentTransaction.commit();
     }
 
     @Override
     public void runLevelThree() {
-
+        Fragment levelThreeFragment = TaskListFragment.getInstance(3);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment);
+        fragmentTransaction.addToBackStack("level_three");
+        fragmentTransaction.commit();
     }
 
     @Override
-    public TaskModel[] getTaskArray() {
-        return mLevelOneArray;
+    public TaskModel[] getTaskArray(int fragmentId) {
+        switch (fragmentId) {
+            case 1:
+                return mLevelOneArray;
+            case 2:
+                return mLevelOneArray;
+
+            case 3:
+                return mLevelOneArray;
+        }
+
+        return null;
     }
 
     @Override

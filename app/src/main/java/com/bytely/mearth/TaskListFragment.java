@@ -35,6 +35,7 @@ public class TaskListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private Communicator comm;
+    private int fragmentId;
 
 
     public TaskListFragment() {
@@ -50,8 +51,6 @@ public class TaskListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
-
-        mTaskList = comm.getTaskArray();
     }
 
     @Override
@@ -81,6 +80,9 @@ public class TaskListFragment extends Fragment {
         mActivityFourTitle.setText(mActivityList[3].getActivityName());
         */
 
+        fragmentId = getArguments().getInt("fragment_id");
+        mTaskList = comm.getTaskArray(fragmentId);
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.task_list);
         List<TaskModel> taskModelList = new ArrayList<> (Arrays.asList(mTaskList));
 
@@ -99,5 +101,16 @@ public class TaskListFragment extends Fragment {
         comm = (Communicator) getActivity();
         comm.updateActionBar();
 
+    }
+
+    public static TaskListFragment getInstance(int fragmentId) {
+        TaskListFragment taskListFragment = new TaskListFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("fragment_id", fragmentId);
+
+        taskListFragment.setArguments(args);
+
+        return taskListFragment;
     }
 }
