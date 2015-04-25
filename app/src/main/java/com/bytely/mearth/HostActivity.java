@@ -30,7 +30,13 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     private Bitmap mWaterBitmap;
     private Bitmap mWaterBottleBitmap;
     private Bitmap mWalkBitmap;
+    private Bitmap mPaleBitmap;
+    private Bitmap mPreserveBitmap;
+    private Bitmap mSolarBitmap;
+    private Bitmap mWildernessBitmap;
     private TaskModel[] mLevelOneArray;
+    private TaskModel[] mLevelTwoArray;
+    private TaskModel[] mLevelThreeArray;
     private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
@@ -56,6 +62,10 @@ public class HostActivity extends ActionBarActivity implements Communicator {
         mWaterBitmap = getRoundedShape(R.drawable.eco_cleaning);
         mWaterBottleBitmap = getRoundedShape(R.drawable.water_drop);
         mWalkBitmap = getRoundedShape(R.drawable.walk);
+        mPaleBitmap = getRoundedShape(R.drawable.pale);
+        mPreserveBitmap = getRoundedShape(R.drawable.preserve);
+        mSolarBitmap = getRoundedShape(R.drawable.solar);
+        mWildernessBitmap = getRoundedShape(R.drawable.wilderness);
 
         mLevelOneArray = new TaskModel[]{
                 new TaskModel("Recycle Items", 2, mRecyclingBitmap, 20),
@@ -63,6 +73,23 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 20),
                 new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
                 new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+        };
+
+        mLevelTwoArray = new TaskModel[]{
+                new TaskModel("Start a Food Garden", 2, mPaleBitmap, 20),
+                new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 20),
+                new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 20),
+                new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 20),
+                new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 20),
+        };
+
+        mLevelThreeArray = new TaskModel[]{
+                new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 20),
+                new TaskModel("Ban Single-Use Plastic Bottles", 2, mRecyclingBitmap, 20),
+                new TaskModel("Plant Trees", 2, mWildernessBitmap, 20),
+                new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 20),
+                new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 20),
+
         };
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
@@ -163,32 +190,43 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
     @Override
     public void runLevelOne() {
-        Fragment levelOneFragment = TaskListFragment.getInstance(1);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
-        fragmentTransaction.addToBackStack("level_one");
-        fragmentTransaction.commit();
+        Fragment levelOneFragment = fragmentManager.findFragmentByTag("level_one");
+
+        if(levelOneFragment == null) {
+            levelOneFragment = TaskListFragment.getInstance(1);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
+            fragmentTransaction.addToBackStack("level_one");
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
     public void runLevelTwo() {
-        Fragment levelTwoFragment = TaskListFragment.getInstance(2);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment);
-        fragmentTransaction.addToBackStack("level_two");
-        fragmentTransaction.commit();
+        Fragment levelTwoFragment = fragmentManager.findFragmentByTag("level_two");
+
+        if(levelTwoFragment == null) {
+            levelTwoFragment = TaskListFragment.getInstance(2);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment);
+            fragmentTransaction.addToBackStack("level_two");
+            fragmentTransaction.commit();
+        }
+
     }
 
     @Override
     public void runLevelThree() {
-        Fragment levelThreeFragment = TaskListFragment.getInstance(3);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment);
-        fragmentTransaction.addToBackStack("level_three");
-        fragmentTransaction.commit();
+        Fragment levelThreeFragment = fragmentManager.findFragmentByTag("level_three");
+
+        if(levelThreeFragment == null) {
+            levelThreeFragment = TaskListFragment.getInstance(3);
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment);
+            fragmentTransaction.addToBackStack("level_three");
+            fragmentTransaction.commit();
+        }
+
     }
 
     @Override
@@ -197,10 +235,10 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             case 1:
                 return mLevelOneArray;
             case 2:
-                return mLevelOneArray;
+                return mLevelTwoArray;
 
             case 3:
-                return mLevelOneArray;
+                return mLevelThreeArray;
         }
 
         return null;

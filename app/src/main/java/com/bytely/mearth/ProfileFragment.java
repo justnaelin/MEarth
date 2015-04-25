@@ -1,7 +1,11 @@
 package com.bytely.mearth;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,16 +14,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import java.io.File;
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
     private Communicator comm;
+
+
     private ImageButton mAchieveButton;
     private ImageButton mCurrentButton;
     private ImageButton mGoalsButton;
     private ImageButton mPicsButton;
+
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -37,6 +48,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
+
 
         final FragmentManager fragmentManager = getChildFragmentManager();
         final Fragment achieveFragment = new AchieveFragment();
