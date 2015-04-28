@@ -43,6 +43,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         communicator.addCurrent(current);
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
+        holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
 
         /*
         holder.mTaskName.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +75,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, OnClickCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
+        private TextView mTaskPointValue;
         private TaskModel current;
 
 
@@ -81,6 +83,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             super(view);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
+            mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
+
             view.setOnClickListener(this);
         }
 
