@@ -1,11 +1,6 @@
 package com.bytely.mearth;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,6 +38,7 @@ public class DashFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("Dash", "onCreate");
+        setRetainInstance(true);
     }
 
     @Override
@@ -133,29 +129,4 @@ public class DashFragment extends Fragment {
         super.onDestroyView();
         Log.d("Dash", "onDestroyView");
     }
-
-    public Bitmap getRoundedShape(int imageResource) {
-        Bitmap scaleBitmapImage = BitmapFactory.decodeResource(getResources(), imageResource);
-        int targetWidth = 200;
-        int targetHeight = 200;
-        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
-                targetHeight, Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(targetBitmap);
-        Path path = new Path();
-        path.addCircle(((float) targetWidth - 1) / 2,
-                ((float) targetHeight - 1) / 2,
-                (Math.min(((float) targetWidth),
-                        ((float) targetHeight)) / 2),
-                Path.Direction.CCW);
-
-        canvas.clipPath(path);
-        Bitmap sourceBitmap = scaleBitmapImage;
-        canvas.drawBitmap(sourceBitmap,
-                new Rect(0, 0, sourceBitmap.getWidth(),
-                        sourceBitmap.getHeight()),
-                new Rect(0, 0, targetWidth, targetHeight), null);
-        return targetBitmap;
-    }
-
 }

@@ -20,10 +20,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     private LayoutInflater mLayoutInflater;
     private List<TaskModel> mActivityList = Collections.emptyList();
 
+    private Communicator communicator;
+
     public TaskListAdapter(Context context, List<TaskModel> mActivityList) {
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.mActivityList = mActivityList;
+        communicator  = (Communicator) context;
         //this.mBitmapData = mBitmapData;
     }
 
@@ -38,32 +41,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        final TaskModel current = mActivityList.get(position);
-        OnClickCommunicator communicator = holder;
-        communicator.addCurrent(current);
+        TaskModel current = mActivityList.get(position);
+        ViewHolderCommunicator holderCommunicator = holder;
+        holderCommunicator.addTaskToViewHolder(current);
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
-
-        /*
-        holder.mTaskName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("Click", "Clicked: " + current.getTaskName());
-                DashboardTasks.getInstance(context).addTask(current);
-                //mTaskComm.addDashTask(current);
-
-            }
-        });
-        holder.mTaskIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("CLick", "Clicked" + current.getTaskName());
-                DashboardTasks.getInstance(context).addTask(current);
-                //mTaskComm.addDashTask(current);
-
-            }
-        });
-        */
     }
 
     @Override
@@ -71,10 +53,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         return mActivityList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, OnClickCommunicator {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
-        private TaskModel current;
+        private TaskModel mTask;
 
 
         public MyViewHolder(View view) {
@@ -86,13 +68,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
         @Override
         public void onClick(View v) {
-            DashboardTasks.getInstance(context).addTask(current);
-            Log.d("MyViewHolder", current.getTaskName() + " added");
+            DashboardTasks.getInstance(context).addTask(mTask);
+            Log.d("MyViewHolder", mTask.getTaskName() + " added");
         }
 
         @Override
-        public void addCurrent(TaskModel taskModel) {
-            current = taskModel;
+        public void addTaskToViewHolder(TaskModel taskModel) {
+            mTask = taskModel;
         }
     }
 

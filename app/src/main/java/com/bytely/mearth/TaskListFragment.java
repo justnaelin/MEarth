@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,11 +39,6 @@ public class TaskListFragment extends Fragment {
 
     public TaskListFragment() {
         // Required empty public constructor
-    }
-
-    @SuppressLint("ValidFragment")
-    public TaskListFragment(TaskModel[] mTaskList) {
-        this.mTaskList = mTaskList;
     }
 
     @Override

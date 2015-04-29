@@ -17,14 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" >
-        </activity>
-        <activity
-            android:name=".LevelScreen"
-            android:label="@string/title_activity_level_screen" >
-        </activity>
-        <activity
             android:name=".HostActivity"
             android:label="@string/title_activity_host" >
         </activity>

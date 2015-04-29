@@ -1,8 +1,6 @@
 package com.bytely.mearth;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -10,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by juice on 4/7/15.
  */
-public class DashboardTasks implements Parcelable {
+public class DashboardTasks {
     private static DashboardTasks mDashboardTasks;
     private static Context mContext;
     private static ArrayList<TaskModel> mTaskList;
@@ -38,8 +36,8 @@ public class DashboardTasks implements Parcelable {
             mTaskList.add(task);
             Log.d("DashSingleton", task.getTaskName() + " added");
         } else {
-            for(TaskModel taskInList : mDashboardTasks.mTaskList) {
-                if(!(task.getTaskID().equals(taskInList.getTaskID()))) {
+            for(int i = 0; i < mTaskList.size(); i++) {
+                if(!(task.getTaskID().equals(mTaskList.get(i).getTaskID()))) {
                     mTaskList.add(task);
                     Log.d("addTask", task.getTaskName() + " added");
                 }
@@ -48,7 +46,7 @@ public class DashboardTasks implements Parcelable {
     }
 
     public void removeTask(TaskModel task) {
-        for(TaskModel taskInList : mDashboardTasks.mTaskList) {
+        for(TaskModel taskInList : mTaskList) {
             if(task.getTaskID() == taskInList.getTaskID()) {
                 mTaskList.remove(task);
             }
@@ -59,13 +57,4 @@ public class DashboardTasks implements Parcelable {
         this.mTaskList = taskList;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

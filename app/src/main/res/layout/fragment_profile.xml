@@ -86,25 +86,16 @@
         android:background="#FFFF"/>
 </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scroll_view"
-        android:layout_below="@+id/footer1"
-        android:fillViewport="false">
+
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/footer1"
             android:id="@+id/profile_fragment_container">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TESTING"/>
-            </FrameLayout>
 
-    </ScrollView>
+            </FrameLayout>
 
 
 </RelativeLayout>
