@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.FacebookSdk;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +20,14 @@ public class AboutFragment extends Fragment {
         // Required empty public constructor
     }
 
+    // Facebook Code to Log in (Temporarily Placed)
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
