@@ -30,6 +30,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     private Bitmap mPreserveBitmap;
     private Bitmap mSolarBitmap;
     private Bitmap mWildernessBitmap;
+    private Bitmap mGreenEnergyBitmap;
     private TaskModel[] mLevelOneArray;
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;

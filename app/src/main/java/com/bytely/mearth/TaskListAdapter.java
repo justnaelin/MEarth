@@ -46,6 +46,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         holderCommunicator.addTaskToViewHolder(current);
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
+        holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
     }
 
     @Override
@@ -57,12 +58,14 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private TextView mTaskName;
         private ImageView mTaskIcon;
         private TaskModel mTask;
-
+        private TextView mTaskPointValue;
 
         public MyViewHolder(View view) {
             super(view);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
+            mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
+
             view.setOnClickListener(this);
         }
 

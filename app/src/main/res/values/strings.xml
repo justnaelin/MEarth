@@ -13,7 +13,7 @@
     <string name="title_activity_level_screen">LevelScreen</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Gallery Images</string>
 
     <string name="title_activity_about">About</string>
      <string name="front_text">MEarth app</string>
@@ -28,6 +28,6 @@
         thinking through experience-based learning at the Hilton Bialek Habitat.
 MEarth educates and inspires through environmental stewardship</string>
     <string name="title_activity_host">HostActivity</string>
-
-
+    <!-- Facebook Related Below -->
+    <string name="app_id">422246821271981</string>
 </resources>
