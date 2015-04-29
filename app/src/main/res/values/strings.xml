@@ -30,4 +30,6 @@ MEarth educates and inspires through environmental stewardship</string>
     <string name="title_activity_host">HostActivity</string>
     <!-- Facebook Related Below -->
     <string name="app_id">422246821271981</string>
+
+    <string name="test">Test</string>
 </resources>
