@@ -41,6 +41,8 @@ public class HostActivity extends ActionBarActivity implements Communicator {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
+        getWindow().setBackgroundDrawable(null);
+
         if(savedInstanceState == null) {
             Log.d("onCreate", "New activity instance");
         }
