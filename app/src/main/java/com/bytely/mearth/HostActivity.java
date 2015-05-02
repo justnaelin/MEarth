@@ -2,10 +2,6 @@ package com.bytely.mearth;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -45,6 +41,8 @@ public class HostActivity extends ActionBarActivity implements Communicator {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
+        getWindow().setBackgroundDrawable(null);
+
         if(savedInstanceState == null) {
             Log.d("onCreate", "New activity instance");
         }
@@ -58,6 +56,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             fragmentTransaction.commit();
         }
 
+<<<<<<< HEAD
         mRecyclingBitmap = getRoundedShape(R.drawable.recycle);
         mLightBitmap = getRoundedShape(R.drawable.lightbulb);
         mWaterBitmap = getRoundedShape(R.drawable.eco_cleaning);
@@ -93,6 +92,55 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 new TaskModel("Organize a Beach Clean-up", 2, mWalkBitmap, 4000),
                 new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 2000),
         };
+=======
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                Log.d("Thread", "Background");
+
+                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
+                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
+                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
+                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
+                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
+                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
+                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
+                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
+                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
+
+                mLevelOneArray = new TaskModel[]{
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 20),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 20),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 20),
+                        new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+                };
+
+                mLevelTwoArray = new TaskModel[]{
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 20),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 20),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 20),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 20),
+                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 20),
+                };
+
+                mLevelThreeArray = new TaskModel[]{
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 20),
+                        new TaskModel("Ban Single-Use Plastic Bottles", 2, mRecyclingBitmap, 20),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 20),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 20),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 20),
+
+                };
+                Log.d("Thread", "Done");
+            }
+        });
+
+        thread.start();
+
+        Log.d("Activity", "After Thread");
+>>>>>>> 0f7874d93e7d12887de72ef22ad93356a18a3b54
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
@@ -214,7 +262,6 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             fragmentTransaction.addToBackStack("level_two");
             fragmentTransaction.commit();
         }
-
     }
 
     @Override
@@ -228,7 +275,6 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             fragmentTransaction.addToBackStack("level_three");
             fragmentTransaction.commit();
         }
-
     }
 
     @Override
@@ -238,7 +284,6 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 return mLevelOneArray;
             case 2:
                 return mLevelTwoArray;
-
             case 3:
                 return mLevelThreeArray;
         }
@@ -249,29 +294,5 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     @Override
     public void updateActionBar() {
 
-    }
-
-    public Bitmap getRoundedShape(int imageResource) {
-        Bitmap scaleBitmapImage = BitmapFactory.decodeResource(getResources(), imageResource);
-        int targetWidth = 200;
-        int targetHeight = 200;
-        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
-                targetHeight, Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(targetBitmap);
-        Path path = new Path();
-        path.addCircle(((float) targetWidth - 1) / 2,
-                ((float) targetHeight - 1) / 2,
-                (Math.min(((float) targetWidth),
-                        ((float) targetHeight)) / 2),
-                Path.Direction.CCW);
-
-        canvas.clipPath(path);
-        Bitmap sourceBitmap = scaleBitmapImage;
-        canvas.drawBitmap(sourceBitmap,
-                new Rect(0, 0, sourceBitmap.getWidth(),
-                        sourceBitmap.getHeight()),
-                new Rect(0, 0, targetWidth, targetHeight), null);
-        return targetBitmap;
     }
 }

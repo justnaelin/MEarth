@@ -25,7 +25,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -87,7 +86,7 @@ public class ProfileFragment extends Fragment {
         mCurrentButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Fragment currentFragment = new CurrentlyFragment();
+                Fragment currentFragment = new CurrentFragment();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.profile_fragment_container, currentFragment);
                 fragmentTransaction.addToBackStack("profile_current_fragment");

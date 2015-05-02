@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context="com.bytely.mearth.LevelScreen"
-    android:background="#ffff">
+    tools:context="com.bytely.mearth.LevelScreen" >
     <!--
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -18,8 +17,7 @@
         android:id="@+id/task_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:background="#ffffff">
+        android:layout_gravity="center_horizontal" >
 
 
         </android.support.v7.widget.RecyclerView>

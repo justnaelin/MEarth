@@ -4,8 +4,7 @@
     android:id="@+id/profile_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bytely.mearth.ProfileActivity"
-    android:background="#FFFF">
+    tools:context="com.bytely.mearth.ProfileActivity" >
 
 
     <TextView
@@ -97,20 +96,19 @@
         android:background="#FFFF"/>
 </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scroll_view"
-        android:layout_below="@+id/footer1"
-        android:fillViewport="false">
+
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/footer1"
             android:id="@+id/profile_fragment_container">
 
             </FrameLayout>
 
+<<<<<<< HEAD
     </ScrollView>
+=======
+>>>>>>> 0f7874d93e7d12887de72ef22ad93356a18a3b54
 
 </RelativeLayout>
