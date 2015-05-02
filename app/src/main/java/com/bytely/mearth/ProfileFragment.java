@@ -118,9 +118,7 @@ public class ProfileFragment extends Fragment {
 
         // Displays user's total points in profile fragment
         TextView userPoints = (TextView) view.findViewById(R.id.user_points);
-        //DashboardTasks.getInstance(getActivity()).getPoints();
         userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
-        //holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
 
         return view;
     }
