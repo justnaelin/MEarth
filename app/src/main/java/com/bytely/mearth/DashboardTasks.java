@@ -14,10 +14,12 @@ public class DashboardTasks implements Parcelable {
     private static DashboardTasks mDashboardTasks;
     private static Context mContext;
     private static ArrayList<TaskModel> mTaskList;
+    private static int mTotalPoints; // User's total points
 
     private DashboardTasks(Context context) {
         mContext = context;
         mTaskList = new ArrayList<>();
+        mTotalPoints = 0; // Initialize user's points to 0
     }
 
     public static DashboardTasks getInstance(Context context) {
@@ -25,7 +27,6 @@ public class DashboardTasks implements Parcelable {
             Log.d("Singleton", "New Singleton Instance");
             mDashboardTasks = new DashboardTasks(context.getApplicationContext());
         }
-
         return mDashboardTasks;
     }
 
@@ -54,6 +55,15 @@ public class DashboardTasks implements Parcelable {
             }
         }
     }
+
+    // Adds points to user's overall total points
+    public void addPoints(int pointsToBeAdded) {
+        mTotalPoints += pointsToBeAdded;
+        Log.d("DashboardTasks", "Added points to user-total");
+
+    }
+
+    public int getPoints() {return mTotalPoints;}
 
     public void setTaskList(ArrayList<TaskModel> taskList) {
         this.mTaskList = taskList;

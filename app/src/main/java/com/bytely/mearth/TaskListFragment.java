@@ -37,7 +37,6 @@ public class TaskListFragment extends Fragment {
     private Communicator comm;
     private int fragmentId;
 
-
     public TaskListFragment() {
         // Required empty public constructor
     }
@@ -91,6 +90,7 @@ public class TaskListFragment extends Fragment {
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
 
         return view;
     }

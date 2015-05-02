@@ -87,7 +87,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
         mLevelThreeArray = new TaskModel[]{
                 new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000),
-                new TaskModel("Invite Someone to Download MEarth App", 2, mRecyclingBitmap, 1000),
+                new TaskModel("Tell Someone to Download MEarth App", 2, mRecyclingBitmap, 1000),
                 new TaskModel("Invite Someone to a MEarth Event", 2, mWaterBitmap, 3000),
                 new TaskModel("Plant Trees in Your Community", 2, mWildernessBitmap, 5000),
                 new TaskModel("Organize a Beach Clean-up", 2, mWalkBitmap, 4000),

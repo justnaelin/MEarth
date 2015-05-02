@@ -4,7 +4,6 @@ package com.bytely.mearth;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,12 +11,12 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -53,6 +52,8 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
+
 
     }
 
@@ -114,6 +115,12 @@ public class ProfileFragment extends Fragment {
                 process();
             }
         });
+
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        //DashboardTasks.getInstance(getActivity()).getPoints();
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        //holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
 
         return view;
     }
