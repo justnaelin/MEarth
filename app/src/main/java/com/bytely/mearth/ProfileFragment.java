@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -116,6 +117,10 @@ public class ProfileFragment extends Fragment {
                 process();
             }
         });
+
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
 
         return view;
     }

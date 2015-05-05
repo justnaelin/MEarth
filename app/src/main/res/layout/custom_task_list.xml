@@ -37,6 +37,7 @@
             android:textStyle="bold"/>
 
         <Button
+            android:id="@+id/add_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:text="+"
@@ -44,7 +45,8 @@
             android:textColor="#ffffff"
             android:background="@color/primaryColor"
             android:layout_alignRight="@+id/task_point_value"
-            android:layout_alignEnd="@+id/task_point_value" />
+            android:layout_alignEnd="@+id/task_point_value"
+            android:layout_below="@+id/task_point_value"/>
 
     </RelativeLayout>
 

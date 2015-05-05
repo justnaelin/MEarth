@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +34,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mLayoutInflater.inflate(R.layout.custom_task_list, parent, false);
-
         MyViewHolder holder = new MyViewHolder(view);
 
         return holder;
@@ -57,14 +57,25 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
+        private TextView mTaskPointValue; // Point value associated with each activity
+        private TaskModel current;
+        private Button mAddButton;
         private TaskModel mTask;
-        private TextView mTaskPointValue;
+
 
         public MyViewHolder(View view) {
             super(view);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
             mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
+            mAddButton = (Button) view.findViewById(R.id.add_button);
+            mAddButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    DashboardTasks.getInstance(context).addPoints(current.getTaskPoints()); // Gets the point-value associated with
+                                                                                            // card that was clicked ("+")
+                }
+            });
 
             view.setOnClickListener(this);
         }

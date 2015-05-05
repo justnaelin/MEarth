@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.bytely.mearth.ProfileActivity" >
@@ -39,6 +40,16 @@
         android:layout_alignParentStart="true"
         android:padding="10dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_points"
+        android:textStyle="bold"
+        android:textSize="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
     <LinearLayout
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -51,39 +62,39 @@
         android:layout_below="@+id/bio_text"
         android:background="#FFFF">
 
-    <ImageButton
-        android:id="@+id/achieve_button"
-        android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:layout_weight="1"
-        android:src="@drawable/done"
-        android:background="#FFFF"/>
+        <ImageButton
+            android:id="@+id/achieve_button"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/done"
+            android:background="#FFFF"/>
 
-    <ImageButton
-        android:id="@+id/current_button"
-        android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:src="@drawable/bullseye"
-        android:layout_weight="1"
-        android:background="#FFFF"/>
+        <ImageButton
+            android:id="@+id/current_button"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/bullseye"
+            android:layout_weight="1"
+            android:background="#FFFF"/>
 
 
-    <ImageButton
-        android:id="@+id/goals_button"
-        android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:src="@drawable/acti_icon"
-        android:layout_weight="1"
-        android:background="#FFFF"/>
+        <ImageButton
+            android:id="@+id/goals_button"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/acti_icon"
+            android:layout_weight="1"
+            android:background="#FFFF"/>
 
-    <ImageButton
-        android:id="@+id/camera_button"
-        android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:src="@drawable/camera"
-        android:layout_weight="1"
-        android:background="#FFFF"/>
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/camera_button"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/camera"
+            android:layout_weight="1"
+            android:background="#FFFF"/>
+    </LinearLayout>
 
 
 
@@ -93,7 +104,7 @@
             android:layout_below="@+id/footer1"
             android:id="@+id/profile_fragment_container">
 
-            </FrameLayout>
+        </FrameLayout>
 
 
 </RelativeLayout>
