@@ -57,14 +57,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
-<<<<<<< HEAD
-        private TextView mTaskPointValue; // Point value associated with each activity
         private TaskModel current;
         private Button mAddButton;
-=======
         private TaskModel mTask;
         private TextView mTaskPointValue;
->>>>>>> 0f7874d93e7d12887de72ef22ad93356a18a3b54
 
         public MyViewHolder(View view) {
             super(view);

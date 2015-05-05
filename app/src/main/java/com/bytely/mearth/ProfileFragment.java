@@ -3,7 +3,6 @@ package com.bytely.mearth;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -41,7 +39,7 @@ public class ProfileFragment extends Fragment {
     ImageView mImageView;
     static final int REQUEST_TAKE_PHOTO = 0;
 
-    ArrayList<Bitmap> photoGallery = new ArrayList<>();
+    //ArrayList<Bitmap> photoGallery = new ArrayList<>();
 
 
     public ProfileFragment() {
