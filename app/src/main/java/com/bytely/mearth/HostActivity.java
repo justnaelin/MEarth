@@ -115,7 +115,6 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
         Log.d("Activity", "After Thread");
 
-
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
             @Override

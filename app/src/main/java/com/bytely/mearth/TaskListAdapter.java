@@ -62,7 +62,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private Button mAddButton;
         private TaskModel mTask;
 
-
         public MyViewHolder(View view) {
             super(view);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
