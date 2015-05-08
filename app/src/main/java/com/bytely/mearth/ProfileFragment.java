@@ -50,8 +50,6 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
 
-
-
     }
 
     @Override

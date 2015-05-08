@@ -57,7 +57,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
-        private TaskModel current;
         private Button mAddButton;
         private TaskModel mTask;
         private TextView mTaskPointValue;
@@ -71,7 +70,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mAddButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    DashboardTasks.getInstance(context).addPoints(current.getTaskPoints()); // Gets the point-value associated with
+                    DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints()); // Gets the point-value associated with
                                                                                             // card that was clicked ("+")
                 }
             });

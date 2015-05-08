@@ -26,12 +26,49 @@ public class AchieveFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_achieve, container, false);
-
         ImageView image_view = (ImageView) view.findViewById(R.id.image);
-        image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+
+        int userPoints;
+        userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
+        if(userPoints >= 2100)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 4200)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 2100)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 4200)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 2100)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 4200)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 2100)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 4200)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+        if(userPoints >= 2100)
+        {
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+        }
+
 
         return view;
     }
-
 
 }
