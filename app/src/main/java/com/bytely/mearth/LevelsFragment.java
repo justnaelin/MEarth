@@ -3,10 +3,6 @@ package com.bytely.mearth;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Path;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -67,14 +63,11 @@ public class LevelsFragment extends Fragment {
         mLevelThreeImage = (ImageView) view.findViewById(R.id.level_three_image);
         mLevelThreeTitle = (TextView) view.findViewById(R.id.level_three_title);
 
-        Bitmap levelOneLogo = BitmapFactory.decodeResource(getResources(), R.drawable.individual_logo);
-        Bitmap circleIconOne = getRoundedShape(levelOneLogo);
+        Bitmap circleIconOne = FormatIcon.getRoundedShape(getActivity(), R.drawable.individual_logo);
 
-        Bitmap levelTwoLogo = BitmapFactory.decodeResource(getResources(), R.drawable.family_logo);
-        Bitmap circleIconTwo = getRoundedShape(levelTwoLogo);
+        Bitmap circleIconTwo = FormatIcon.getRoundedShape(getActivity(), R.drawable.family_logo);
 
-        Bitmap levelThreeLogo = BitmapFactory.decodeResource(getResources(), R.drawable.community_logo);
-        Bitmap circleIconThree = getRoundedShape(levelThreeLogo);
+        Bitmap circleIconThree = FormatIcon.getRoundedShape(getActivity(), R.drawable.community_logo);
 
         mLevelOneImage.setImageBitmap(circleIconOne);
         mLevelOneTitle.setText(R.string.level_one);
@@ -107,28 +100,5 @@ public class LevelsFragment extends Fragment {
         });
 
         return view;
-    }
-
-    public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-        int targetWidth = 200;
-        int targetHeight = 200;
-        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
-                targetHeight, Bitmap.Config.ARGB_8888);
-
-        Canvas canvas = new Canvas(targetBitmap);
-        Path path = new Path();
-        path.addCircle(((float) targetWidth - 1) / 2,
-                ((float) targetHeight - 1) / 2,
-                (Math.min(((float) targetWidth),
-                        ((float) targetHeight)) / 2),
-                Path.Direction.CCW);
-
-        canvas.clipPath(path);
-        Bitmap sourceBitmap = scaleBitmapImage;
-        canvas.drawBitmap(sourceBitmap,
-                new Rect(0, 0, sourceBitmap.getWidth(),
-                        sourceBitmap.getHeight()),
-                new Rect(0, 0, targetWidth, targetHeight), null);
-        return targetBitmap;
     }
 }

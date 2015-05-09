@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/user_points"
         android:textStyle="bold"
-        android:textSize="45dp"
+        android:textSize="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

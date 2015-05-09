@@ -2,7 +2,6 @@ package com.bytely.mearth;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-/**
+/*
  * Created by juice on 3/14/15.
  */
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyViewHolder> {
@@ -27,7 +26,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.mActivityList = mActivityList;
-        communicator  = (Communicator) context;
+
+        communicator  = (Communicator)context;
         //this.mBitmapData = mBitmapData;
     }
 
@@ -71,7 +71,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mAddButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    DashboardTasks.getInstance(context).addPoints(current.getTaskPoints()); // Gets the point-value associated with
+                    DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints()); // Gets the point-value associated with
                                                                                             // card that was clicked ("+")
                 }
             });
@@ -82,7 +82,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         @Override
         public void onClick(View v) {
             DashboardTasks.getInstance(context).addTask(mTask);
-            Log.d("MyViewHolder", mTask.getTaskName() + " added");
         }
 
         @Override
@@ -90,5 +89,4 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mTask = taskModel;
         }
     }
-
 }

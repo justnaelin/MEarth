@@ -58,7 +58,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             Log.d("onCreate", "New activity instance");
         }
 
-        Fragment dashFragment = fragmentManager.findFragmentByTag("dashFragment");
+        Fragment dashFragment = fragmentManager.findFragmentByTag("dash_fragment");
 
         if(dashFragment == null) {
             dashFragment = new DashFragment();
@@ -84,27 +84,28 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 20),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 20),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 20),
-                        new TaskModel("Don't Use One-Use Bottles", 2, mWaterBottleBitmap, 20),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 20),
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400),
                 };
 
                 mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 20),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 20),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 20),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 20),
-                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 20),
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 400),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600),
+                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 700),
                 };
 
                 mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 20),
-                        new TaskModel("Ban Single-Use Plastic Bottles", 2, mRecyclingBitmap, 20),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 20),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 20),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 20),
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000),
+                        new TaskModel("Tell Someone to Download MEarth App", 2, mSolarBitmap, 2000),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000),
 
                 };
                 Log.d("Thread", "Done");
@@ -128,27 +129,30 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
                     fragmentTransaction.addToBackStack("about_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
             }
         });
 
         mProfileButton = (ImageButton) findViewById(R.id.profile_button);
-        mProfileButton.setOnClickListener(new View.OnClickListener(){
+        mProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
 
-                if(profileFragment == null) {
+                if (profileFragment == null) {
                     profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
                     fragmentTransaction.addToBackStack("profile_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
+
+
             }
         });
-
 
         mLevelsButton = (ImageButton) findViewById(R.id.levels_button);
         mLevelsButton.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +165,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
                     fragmentTransaction.addToBackStack("levels_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
             }
@@ -175,12 +180,11 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
+                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
         });
-
-
     }
 
 
@@ -260,12 +264,10 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             case 3:
                 return mLevelThreeArray;
         }
-
         return null;
     }
 
     @Override
     public void updateActionBar() {
-
     }
 }

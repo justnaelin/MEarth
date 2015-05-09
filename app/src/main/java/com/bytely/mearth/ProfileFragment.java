@@ -50,14 +50,12 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
-
         directory = new File(Environment.getExternalStorageDirectory()+"/mearth"); //the string to a path
         File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
 
         if(!(file.exists() && file.isDirectory())){
             directory.mkdirs();
         }
-
     }
 
     @Override
