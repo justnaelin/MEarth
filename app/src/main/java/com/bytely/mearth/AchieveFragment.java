@@ -26,47 +26,54 @@ public class AchieveFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_achieve, container, false);
-        ImageView image_view = (ImageView) view.findViewById(R.id.image);
 
         int userPoints;
         userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
         if(userPoints >= 2100)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.image1));
+            ImageView badge_one = (ImageView) view.findViewById(R.id.badge_one);
+            badge_one.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.image1));
         }
         if(userPoints >= 4200)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award2));
+            ImageView badge_two = (ImageView) view.findViewById(R.id.badge_two);
+            badge_two.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award2));
         }
         if(userPoints >= 6300)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award3));
+            ImageView badge_three = (ImageView) view.findViewById(R.id.badge_three);
+            badge_three.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award3));
         }
         if(userPoints >= 8400)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award4));
+            ImageView badge_four = (ImageView) view.findViewById(R.id.badge_four);
+            badge_four.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award4));
         }
         if(userPoints >= 10500)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award5));
+            ImageView badge_five = (ImageView) view.findViewById(R.id.badge_five);
+            badge_five.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award5));
         }
         if(userPoints >= 12600)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award6));
+            ImageView badge_six = (ImageView) view.findViewById(R.id.badge_six);
+            badge_six.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award6));
         }
         if(userPoints >= 14700)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award7));
+            ImageView badge_seven = (ImageView) view.findViewById(R.id.badge_seven);
+            badge_seven.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award7));
         }
         if(userPoints >= 16800)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award8));
+            ImageView badge_eight = (ImageView) view.findViewById(R.id.badge_eight);
+            badge_eight.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award8));
         }
         if(userPoints >= 31800)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award9));
+            ImageView badge_nine = (ImageView) view.findViewById(R.id.badge_nine);
+            badge_nine.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award9));
         }
-
 
         return view;
     }

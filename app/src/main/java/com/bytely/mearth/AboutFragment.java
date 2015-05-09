@@ -67,11 +67,11 @@ public class AboutFragment extends Fragment {
         mCallbackManager = CallbackManager.Factory.create();
 
         // Will handel user name change.
-        AccessTokenTracker tracker = new AccessTokenTracker()
+        /*AccessTokenTracker tracker = new AccessTokenTracker()
         {
             //@Override
 
-            protected void onCurrentAccesTokenChanged(AccessToken old, AccessToken newToken){
+            protected void onCurrentAccessTokenChanged(AccessToken old, AccessToken newToken){
 
             }
 
@@ -79,9 +79,9 @@ public class AboutFragment extends Fragment {
             protected void onCurrentAccessTokenChanged(AccessToken accessToken, AccessToken accessToken2) {
 
             }
-        };
+        };*/
         // Track user profile changes
-        ProfileTracker profileTracker = new ProfileTracker(){
+        /*ProfileTracker profileTracker = new ProfileTracker(){
 
 
             @Override
@@ -90,7 +90,7 @@ public class AboutFragment extends Fragment {
             }
         };
         tracker.startTracking();
-        profileTracker.startTracking();
+        profileTracker.startTracking();*/
 
 
     }
