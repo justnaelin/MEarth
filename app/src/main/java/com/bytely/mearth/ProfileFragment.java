@@ -3,7 +3,6 @@ package com.bytely.mearth;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,12 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -36,12 +35,10 @@ public class ProfileFragment extends Fragment {
     private ImageButton mGoalsButton;
     private ImageButton mCameraButton;
     String mCurrentPhotoPath;
+    private File directory = null;
 
     ImageView mImageView;
     static final int REQUEST_TAKE_PHOTO = 0;
-
-    ArrayList<Bitmap> photoGallery = new ArrayList<>();
-
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -50,6 +47,13 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
+        directory = new File(Environment.getExternalStorageDirectory()+"/mearth"); //the string to a path
+        File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
+
+        if(!(file.exists() && file.isDirectory())){
+            directory.mkdirs();
+        }
 
     }
 
@@ -112,17 +116,34 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+
         return view;
     }
 
     public void process(){
+        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+        //This creates the image file path and the name of each picture
+        String imageFilePath = Environment.getExternalStorageDirectory() + "/mearth/IMG" + System.currentTimeMillis() + ".png";
+
+        File imageFile = new File(imageFilePath);
+
+        Uri imageFileUri = Uri.fromFile(imageFile);
+
+
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
+
         startActivityForResult(intent, 0);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+    /*
         if(requestCode == 0)
         {
             switch(resultCode){
@@ -131,7 +152,7 @@ public class ProfileFragment extends Fragment {
                    // Bitmap imageBitmap = (Bitmap) extras.get("data");
                    // mImageView.setImageBitmap(imageBitmap);
 
-                    dispatchTakePictureIntent(data);
+                    //dispatchTakePictureIntent(data);
                     //Toast toast = Toast.makeText(getActivity().getApplicationContext(), mCurrentPhotoPath, Toast.LENGTH_LONG);
                     //toast.show();
                     //Bitmap image = (Bitmap) data.getExtras().get("data");
@@ -146,7 +167,7 @@ public class ProfileFragment extends Fragment {
                 default:
                     break;
             }
-        }
+        }*/
     }
 
     private void dispatchTakePictureIntent(Intent takePictureIntent) {
@@ -159,7 +180,7 @@ public class ProfileFragment extends Fragment {
             File photoFile = null;
             try {
 
-                photoFile = createImageFile();
+            photoFile = createImageFile();
                 Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Toast", Toast.LENGTH_LONG);
                 toast.show();
 
@@ -168,11 +189,11 @@ public class ProfileFragment extends Fragment {
 
             }
             // Continue only if the File was successfully created
-            if (photoFile != null) {
+           /* if (photoFile != null) {
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
                         Uri.fromFile(photoFile));
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }
+            }*/
         }
     }
 

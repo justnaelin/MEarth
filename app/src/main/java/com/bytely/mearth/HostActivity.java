@@ -1,10 +1,11 @@
+
+
 package com.bytely.mearth;
 
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -13,6 +14,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.bytely.mearth.AboutFragment;
+import com.bytely.mearth.Communicator;
+import com.bytely.mearth.DashFragment;
+import com.bytely.mearth.FormatIcon;
+import com.bytely.mearth.LevelsFragment;
+import com.bytely.mearth.ProfileFragment;
+import com.bytely.mearth.R;
+import com.bytely.mearth.TaskListFragment;
+import com.bytely.mearth.TaskModel;
 
 
 public class HostActivity extends ActionBarActivity implements Communicator {
@@ -34,7 +45,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     private TaskModel[] mLevelOneArray;
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;
-    private final FragmentManager fragmentManager = getSupportFragmentManager();
+    private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
