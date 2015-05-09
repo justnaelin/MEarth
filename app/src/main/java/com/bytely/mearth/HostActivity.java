@@ -15,16 +15,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.bytely.mearth.AboutFragment;
-import com.bytely.mearth.Communicator;
-import com.bytely.mearth.DashFragment;
-import com.bytely.mearth.FormatIcon;
-import com.bytely.mearth.LevelsFragment;
-import com.bytely.mearth.ProfileFragment;
-import com.bytely.mearth.R;
-import com.bytely.mearth.TaskListFragment;
-import com.bytely.mearth.TaskModel;
-
 
 public class HostActivity extends ActionBarActivity implements Communicator {
 
@@ -84,28 +74,28 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400),
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0),
                 };
 
                 mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 400),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600),
-                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 700),
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 400, 0),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),
+                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 700, 0),
                 };
 
                 mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000),
-                        new TaskModel("Tell Someone to Download MEarth App", 2, mSolarBitmap, 2000),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000),
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0),
+                        new TaskModel("Tell Someone to Download MEarth App", 2, mSolarBitmap, 2000, 0),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0),
 
                 };
                 Log.d("Thread", "Done");
@@ -185,6 +175,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
             }
         });
+
     }
 
 

@@ -11,13 +11,15 @@ public class TaskModel {
     private int mTaskPoints;
     private boolean mIsCompleted;
     private UUID mTaskID;
+    private int mTaskCounter;
 
-    public TaskModel(String s, int i, Bitmap icon, int i1) {
+    public TaskModel(String s, int i, Bitmap icon, int i1, int i2) {
         this.mTaskName = s;
         this.mTaskDescription = i;
         this.mTaskIcon = icon;
         this.mTaskPoints = i1;
         this.mIsCompleted = false;
+        this.mTaskCounter = i2;
         mTaskID = UUID.randomUUID();
     }
 
@@ -36,6 +38,10 @@ public class TaskModel {
     public int getTaskPoints() {
         return mTaskPoints;
     }
+
+    public int getTaskCounter() { return mTaskCounter; }
+
+    public void incrementTaskCounter() { mTaskCounter++; }
 
     public boolean isCompleted() {
         return mIsCompleted;

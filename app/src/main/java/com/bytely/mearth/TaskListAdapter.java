@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,6 +46,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
         holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
+        holder.mTaskCounter.setText(Integer.toString(current.getTaskCounter()));
+
     }
 
     @Override
@@ -59,29 +60,27 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private ImageView mTaskIcon;
         private TextView mTaskPointValue; // Point value associated with each activity
         private TaskModel current;
-        private Button mAddButton;
+        private TextView mAdd;
         private TaskModel mTask;
+        private TextView mTaskCounter; // Keeps track of how many times they've completed a task
 
         public MyViewHolder(View view) {
             super(view);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
             mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
-            mAddButton = (Button) view.findViewById(R.id.add_button);
-            mAddButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints()); // Gets the point-value associated with
-                                                                                            // card that was clicked ("+")
-                }
-            });
+            mAdd = (TextView) view.findViewById(R.id.add);
+            mTaskCounter = (TextView) view.findViewById(R.id.task_counter);
+            mTaskCounter.setVisibility(View.GONE);
 
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
+            DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints());
             DashboardTasks.getInstance(context).addTask(mTask);
+            mTask.incrementTaskCounter();
         }
 
         @Override

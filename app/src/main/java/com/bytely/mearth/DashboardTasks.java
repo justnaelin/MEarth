@@ -58,6 +58,7 @@ public class DashboardTasks {
 
     }
 
+
     public int getPoints() {return sTotalPoints;}
 
     public void setTaskList(ArrayList<TaskModel> taskList) {
