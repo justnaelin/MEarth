@@ -32,39 +32,39 @@ public class AchieveFragment extends Fragment {
         userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
         if(userPoints >= 2100)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.image1));
         }
         if(userPoints >= 4200)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award2));
         }
-        if(userPoints >= 2100)
+        if(userPoints >= 6300)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award3));
         }
-        if(userPoints >= 4200)
+        if(userPoints >= 8400)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award4));
         }
-        if(userPoints >= 2100)
+        if(userPoints >= 10500)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award5));
         }
-        if(userPoints >= 4200)
+        if(userPoints >= 12600)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award6));
         }
-        if(userPoints >= 2100)
+        if(userPoints >= 14700)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award7));
         }
-        if(userPoints >= 4200)
+        if(userPoints >= 16800)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award8));
         }
-        if(userPoints >= 2100)
+        if(userPoints >= 31800)
         {
-            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.youtube_icon));
+            image_view.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award9));
         }
 
 

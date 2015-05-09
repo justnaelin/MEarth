@@ -21,13 +21,14 @@ public class MyApplication extends Application {
     public void onCreate(){
         super.onCreate();
 
+        printHashKey();
     }
 
     public void printHashKey(){
 
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.bytely.mearth;",
+                    "com.bytely.mearth",
                     PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");

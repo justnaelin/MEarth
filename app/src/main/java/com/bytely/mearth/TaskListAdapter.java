@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.List;
 
-/**
+/*
  * Created by juice on 3/14/15.
  */
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyViewHolder> {
@@ -57,9 +57,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskName;
         private ImageView mTaskIcon;
+        private TextView mTaskPointValue; // Point value associated with each activity
+        private TaskModel current;
         private Button mAddButton;
         private TaskModel mTask;
-        private TextView mTaskPointValue;
 
         public MyViewHolder(View view) {
             super(view);
