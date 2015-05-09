@@ -6,6 +6,12 @@
     <!--Gives permission to for Facebook component-->
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!--Gives permission to for Parse Data Base component-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+
 
     <application
         android:name=".MyApplication"

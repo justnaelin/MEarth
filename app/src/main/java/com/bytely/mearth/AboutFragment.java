@@ -65,11 +65,10 @@ public class AboutFragment extends Fragment {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
-
         // Will handel user name change.
-        AccessTokenTracker tracker = new AccessTokenTracker()
+        mTokenTracker  = new AccessTokenTracker()
         {
-            @Override
+          //  @Override
 
             protected void onCurrentAccesTokenChanged(AccessToken old, AccessToken newToken){
 
@@ -81,16 +80,17 @@ public class AboutFragment extends Fragment {
             }
         };
         // Track user profile changes
-        ProfileTracker profileTracker = new ProfileTracker(){
+         mProfileTracker = new ProfileTracker(){
 
 
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile newProfile) {
-
+                displayWelcomeMessage(newProfile);
             }
         };
-        tracker.startTracking();
-        profileTracker.startTracking();
+        // Begins tracking
+        mTokenTracker.startTracking();
+        mProfileTracker.startTracking();
 
 
     }
@@ -121,6 +121,8 @@ public class AboutFragment extends Fragment {
         loginButton.setFragment(this);
         loginButton.registerCallback(mCallbackManager, mCallback);
 
+        mTextDetails = (TextView) view.findViewById(R.id.text_details);
+
     }
 
     @Override
@@ -129,10 +131,17 @@ public class AboutFragment extends Fragment {
         super.onResume();
         Profile profile=Profile.getCurrentProfile();
         displayWelcomeMessage(profile);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        mTokenTracker.stopTracking();
+        mProfileTracker.startTracking();
+
 
 
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
