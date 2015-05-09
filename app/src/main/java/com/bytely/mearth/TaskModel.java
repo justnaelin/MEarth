@@ -48,4 +48,8 @@ public class TaskModel {
     public void setIsCompleted(Boolean mIsCompleted) {
         this.mIsCompleted = mIsCompleted;
     }
+
+    public void setTaskName(String name) {
+        this.mTaskName = name;
+    }
 }

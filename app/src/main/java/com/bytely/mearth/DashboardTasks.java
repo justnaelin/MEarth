@@ -9,62 +9,59 @@ import java.util.ArrayList;
  * Created by juice on 4/7/15.
  */
 public class DashboardTasks {
-    private static DashboardTasks mDashboardTasks;
-    private static Context mContext;
-    private static ArrayList<TaskModel> mTaskList;
-    private static int mTotalPoints; // User's total points
+    private static DashboardTasks sDashboardTasks;
+    private static Context sContext;
+    private static ArrayList<TaskModel> sTaskList;
+    private static int sTotalPoints; // User's total points
 
     private DashboardTasks(Context context) {
-        mContext = context;
-        mTaskList = new ArrayList<>();
-        mTotalPoints = 0; // Initialize user's points to 0
+        sContext = context;
+        sTaskList = new ArrayList<>();
+        sTotalPoints = 0; // Initialize user's points to 0
     }
 
     public static DashboardTasks getInstance(Context context) {
-        if(mDashboardTasks == null) {
-            Log.d("Singleton", "New Singleton Instance");
-            mDashboardTasks = new DashboardTasks(context.getApplicationContext());
+        if(sDashboardTasks == null) {
+            sDashboardTasks = new DashboardTasks(context.getApplicationContext());
         }
-        return mDashboardTasks;
+        return sDashboardTasks;
     }
 
     public ArrayList<TaskModel> getTaskList() {
-        return mTaskList;
+        return sTaskList;
     }
 
     public void addTask(TaskModel task) {
-        if(mTaskList.size() == 0) {
-            mTaskList.add(task);
-            Log.d("DashSingleton", task.getTaskName() + " added");
+        if(sTaskList.size() == 0) {
+            sTaskList.add(task);
         } else {
-            for(int i = 0; i < mTaskList.size(); i++) {
-                if(!(task.getTaskID().equals(mTaskList.get(i).getTaskID()))) {
-                    mTaskList.add(task);
-                    Log.d("addTask", task.getTaskName() + " added");
-                }
+            if(sTaskList.contains(task)) {
+                return;
+            } else {
+                sTaskList.add(task);
             }
         }
     }
 
     public void removeTask(TaskModel task) {
-        for(TaskModel taskInList : mTaskList) {
+        for(TaskModel taskInList : sTaskList) {
             if(task.getTaskID() == taskInList.getTaskID()) {
-                mTaskList.remove(task);
+                sTaskList.remove(task);
             }
         }
     }
 
     // Adds points to user's overall total points
     public void addPoints(int pointsToBeAdded) {
-        mTotalPoints += pointsToBeAdded;
+        sTotalPoints += pointsToBeAdded;
         Log.d("DashboardTasks", "Added points to user-total");
 
     }
 
-    public int getPoints() {return mTotalPoints;}
+    public int getPoints() {return sTotalPoints;}
 
     public void setTaskList(ArrayList<TaskModel> taskList) {
-        this.mTaskList = taskList;
+        this.sTaskList = taskList;
     }
 
 }

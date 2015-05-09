@@ -58,7 +58,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             Log.d("onCreate", "New activity instance");
         }
 
-        Fragment dashFragment = fragmentManager.findFragmentByTag("dashFragment");
+        Fragment dashFragment = fragmentManager.findFragmentByTag("dash_fragment");
 
         if(dashFragment == null) {
             dashFragment = new DashFragment();
@@ -129,27 +129,30 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
                     fragmentTransaction.addToBackStack("about_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
             }
         });
 
         mProfileButton = (ImageButton) findViewById(R.id.profile_button);
-        mProfileButton.setOnClickListener(new View.OnClickListener(){
+        mProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
 
-                if(profileFragment == null) {
+                if (profileFragment == null) {
                     profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
                     fragmentTransaction.addToBackStack("profile_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
+
+
             }
         });
-
 
         mLevelsButton = (ImageButton) findViewById(R.id.levels_button);
         mLevelsButton.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +165,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
                     fragmentTransaction.addToBackStack("levels_fragment");
+                    Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
                 }
             }
@@ -176,12 +180,11 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
+                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
         });
-
-
     }
 
 
@@ -261,12 +264,10 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             case 3:
                 return mLevelThreeArray;
         }
-
         return null;
     }
 
     @Override
     public void updateActionBar() {
-
     }
 }

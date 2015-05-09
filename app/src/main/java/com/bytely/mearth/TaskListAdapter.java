@@ -2,7 +2,6 @@ package com.bytely.mearth;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.mActivityList = mActivityList;
-        communicator  = (Communicator) context;
+
+        communicator  = (Communicator)context;
         //this.mBitmapData = mBitmapData;
     }
 
@@ -82,7 +82,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         @Override
         public void onClick(View v) {
             DashboardTasks.getInstance(context).addTask(mTask);
-            Log.d("MyViewHolder", mTask.getTaskName() + " added");
         }
 
         @Override
@@ -90,5 +89,4 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mTask = taskModel;
         }
     }
-
 }
