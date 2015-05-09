@@ -86,14 +86,14 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                         new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
                         new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
                         new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),
-                        new TaskModel("Go Shopping at Local Farmers Market", 2, mSolarBitmap, 700, 0),
+                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0),
                 };
 
                 mLevelThreeArray = new TaskModel[]{
                         new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0),
                         new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0),
                         new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0),
-                        new TaskModel("Tell Someone to Download MEarth App", 2, mSolarBitmap, 2000, 0),
+                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0),
                         new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0),
                         new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0),
 
