@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 
-
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -117,54 +116,6 @@ public class LevelsFragment extends Fragment {
                 comm.runLevelThree();
             }
         });
-
-
-        /* NOTIFY WHEN BADGE IS EARNED
-
-        CharSequence text = "You have earned a badge!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(getActivity(), text, duration);
-
-        int userPoints;
-        userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
-        if(userPoints >= 2100)
-        {
-            toast.show();
-        }
-        if(userPoints >= 4200)
-        {
-            toast.show();
-        }
-        if(userPoints >= 6300)
-        {
-            toast.show();
-        }
-        if(userPoints >= 8400)
-        {
-            toast.show();
-        }
-        if(userPoints >= 10500)
-        {
-            toast.show();
-        }
-        if(userPoints >= 12600)
-        {
-            toast.show();
-        }
-        if(userPoints >= 14700)
-        {
-            toast.show();
-        }
-        if(userPoints >= 16800)
-        {
-            toast.show();
-        }
-        if(userPoints >= 31800)
-        {
-            toast.show();
-        }
-        */
 
         return view;
     }

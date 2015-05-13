@@ -82,7 +82,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
                 };
 
                 mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 400, 0),
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0),
                         new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
                         new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
                         new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),

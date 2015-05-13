@@ -81,6 +81,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints());
             DashboardTasks.getInstance(context).addTask(mTask);
             mTask.incrementTaskCounter();
+            DashboardTasks.getInstance(context).badgeNotification();
+            DashboardTasks.getInstance(context).levelNotification();
         }
 
         @Override
