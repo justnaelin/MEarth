@@ -2,60 +2,60 @@
 <items version="2" >
 
     <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jar="/home/juice/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/classes-dc5b14ca7e443022e6cae0dcbed91c194d3a91aa.jar" />
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-819ea0c893de94eac6da00db8c849e6842a65a23.jar" />
     </item>
     <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/classes-c2029f89efcb65be58d53f996366b92ebb06cd68.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/classes-cc43f5acbc022b8ca97edc68d876cb45c5ed5c4c.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="11842de6a309c447b3a3d60d73ad637a87c58994">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/classes-81c84e5e2939c317284be96d3b5d63a054378c46.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c6d79137693d494dee16372d3921f919eb724ced">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/classes-153afb32d1b53c2351005164d7c261890a4b57e6.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/android-sdks/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-97cd984ad4d8f893439e3f56dd74cba28c4e4a19.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-26ecd4e691d5bb3bcc860a4b572e517c87042d55.jar" />
-    </item>
-    <item
-        jar="/Users/naelinaquino/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
+        jar="/home/juice/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/Users/naelinaquino/Documents/Projects/Android/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-d05528fb9a20654c11c6235aa00b3ba891a17404.jar" />
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-ae75e8db17f5d3ba2251d7729eabf8ea79c59854.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-8a2ee5d1c06a784ae58bf36e77964cf67f0eedac.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="22886d910315028a2b34b1ba068c265534ade87a">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-b3371b8ef8c1430399c911c35ceee715e4e6316c.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-19f721c068562fcd15409635324ad80d7ef81a00.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-e499f55d3bfc01bd03bef1208835e4ea47f20611.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-d6888e2523d85d76a6643c8ba1bc5abb7310b7ab.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-d035b8b94dbac8a406ec9339666fe35358f172b2.jar" />
     </item>
 
 </items>
