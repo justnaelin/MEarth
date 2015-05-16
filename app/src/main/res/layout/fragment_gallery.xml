@@ -2,11 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.bytely.mearth.GalleryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent"
-        android:id="@+id/gallery_name"
-        android:layout_height="match_parent"
-        android:text="Gallery Fragment" />
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="11dp"
+        android:horizontalSpacing="11dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/galleryImageView"
+        android:layout_below="@id/gridview"/>
 
 
 </FrameLayout>

@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 
-
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 
 /**
@@ -31,6 +29,8 @@ public class LevelsFragment extends Fragment {
 
     private ImageView mLevelThreeImage;
     private TextView mLevelThreeTitle;
+
+    private int mUserPoints;
 
     private Communicator comm;
 
@@ -53,6 +53,24 @@ public class LevelsFragment extends Fragment {
         mLevelOneCard = (CardView) view.findViewById(R.id.level_one);
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
+
+
+
+
+        // Get user's total points
+        mUserPoints = DashboardTasks.getInstance(getActivity()).getPoints();
+
+        // Set mLevelTwoCard & mLevelThreeCard default visibility to INVISIBLE
+        mLevelTwoCard.setVisibility(View.INVISIBLE);
+        mLevelThreeCard.setVisibility(View.INVISIBLE);
+
+        // Unlock other levels
+        if(mUserPoints >= 1100) {
+            mLevelTwoCard.setVisibility(View.VISIBLE);
+        }
+        if(mUserPoints >= 4100) {
+            mLevelThreeCard.setVisibility(View.VISIBLE);
+        }
 
         comm = (Communicator) getActivity();
 

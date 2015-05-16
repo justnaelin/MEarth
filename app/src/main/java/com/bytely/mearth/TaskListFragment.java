@@ -44,6 +44,7 @@ public class TaskListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
     }
 
     @Override
@@ -51,27 +52,6 @@ public class TaskListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
-
-        /*
-        mActivityOneImage = (ImageView) view.findViewById(R.id.activity_one_image);
-        mActivityOneTitle = (TextView) view.findViewById(R.id.activity_one_title);
-        mActivityTwoImage = (ImageView) view.findViewById(R.id.activity_two_image);
-        mActivityTwoTitle =(TextView) view.findViewById(R.id.activity_two_title);
-        mActivityThreeImage = (ImageView) view.findViewById(R.id.activity_three_image);
-        mActivityThreeTitle = (TextView) view.findViewById(R.id.activity_three_title);
-        mActivityFourImage = (ImageView) view.findViewById(R.id.activity_four_image);
-        mActivityFourTitle = (TextView) view.findViewById(R.id.activity_four_title);
-
-        mActivityOneImage.setImageBitmap(mActivityList[0].getActivityIcon());
-        mActivityTwoImage.setImageBitmap(mActivityList[1].getActivityIcon());
-        mActivityThreeImage.setImageBitmap(mActivityList[2].getActivityIcon());
-        mActivityFourImage.setImageBitmap(mActivityList[3].getActivityIcon());
-
-        mActivityOneTitle.setText(mActivityList[0].getActivityName());
-        mActivityTwoTitle.setText(mActivityList[1].getActivityName());
-        mActivityThreeTitle.setText(mActivityList[2].getActivityName());
-        mActivityFourTitle.setText(mActivityList[3].getActivityName());
-        */
 
         fragmentId = getArguments().getInt("fragment_id");
         mTaskList = comm.getTaskArray(fragmentId);
@@ -84,7 +64,6 @@ public class TaskListFragment extends Fragment {
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-
 
         return view;
     }
