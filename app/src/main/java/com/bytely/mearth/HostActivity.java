@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 
-public class HostActivity extends ActionBarActivity implements Communicator {
+public class HostActivity extends AppCompatActivity implements Communicator {
 
     private ImageButton mAboutButton;//the about button
     private ImageButton mLevelsButton;
@@ -37,7 +37,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
@@ -113,7 +113,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
 
                 Fragment aboutFragment = fragmentManager.findFragmentByTag("about_fragment");
 
-                if(aboutFragment == null) {
+                if(aboutFragment == null && savedInstanceState == null) {
                     aboutFragment = new AboutFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
@@ -130,7 +130,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             public void onClick(View v) {
                 Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
 
-                if (profileFragment == null) {
+                if (profileFragment == null && savedInstanceState == null) {
                     profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
@@ -149,7 +149,7 @@ public class HostActivity extends ActionBarActivity implements Communicator {
             public void onClick(View v) {
                 Fragment levelsFragment = fragmentManager.findFragmentByTag("levels_fragment");
 
-                if(levelsFragment == null) {
+                if(levelsFragment == null && savedInstanceState == null) {
                     levelsFragment = new LevelsFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, levelsFragment);

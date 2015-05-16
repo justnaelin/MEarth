@@ -1,11 +1,13 @@
 package com.bytely.mearth;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -59,13 +61,14 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private TextView mTaskName;
         private ImageView mTaskIcon;
         private TextView mTaskPointValue; // Point value associated with each activity
-        private TaskModel current;
         private TextView mAdd;
         private TaskModel mTask;
+        private RelativeLayout mRelativeLayout;
         private TextView mTaskCounter; // Keeps track of how many times they've completed a task
 
         public MyViewHolder(View view) {
             super(view);
+            mRelativeLayout = (RelativeLayout) view.findViewById(R.id.card_view_relative_layout);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
             mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
@@ -73,14 +76,13 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mTaskCounter = (TextView) view.findViewById(R.id.task_counter);
             mTaskCounter.setVisibility(View.GONE);
 
-            view.setOnClickListener(this);
+            mRelativeLayout.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            DashboardTasks.getInstance(context).addPoints(mTask.getTaskPoints());
-            DashboardTasks.getInstance(context).addTask(mTask);
-            mTask.incrementTaskCounter();
+            ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+            confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
             DashboardTasks.getInstance(context).badgeNotification();
             DashboardTasks.getInstance(context).levelNotification();
         }
