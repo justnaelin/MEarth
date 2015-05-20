@@ -16,6 +16,13 @@
         <dex dex="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-7309d551e657f0171d6566cb3105187c73d7e405.jar" />
     </item>
     <item
+        jar="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
+        <dex dex="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-41a3e9da19e97ab6e32e779fe8d76026cddc3dd9.jar" />
+    </item>
+    <item
         jar="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -35,13 +42,6 @@
         revision="21.1.2"
         sha1="c6d79137693d494dee16372d3921f919eb724ced">
         <dex dex="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-c4b40e241554af5be2807a30d842d91e3ea624f2.jar" />
-    </item>
-    <item
-        jar="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
-        <dex dex="/Users/anitagarcia/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-5f343635c5ca658edc97abfc1bc422ffd6998031.jar" />
     </item>
     <item
         jar="/Users/anitagarcia/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"

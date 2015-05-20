@@ -5,13 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.bytely.mearth.AboutActivity" >
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+
 
 
     <ScrollView
@@ -23,6 +17,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp" />
+
+            <com.facebook.share.widget.ShareButton
+                android:id="@+id/share_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp" />
+
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -61,7 +72,14 @@
                 android:orientation="horizontal"
                 android:layout_alignParentBottom="true">
 
+               <!-- <ImageButton
+                    android:id="@+id/share_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/star"
 
+                    />-->
 
                 <ImageButton
                     android:id="@+id/fbButton"
