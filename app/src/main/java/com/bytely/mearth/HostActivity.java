@@ -175,6 +175,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             }
         });
 
+
     }
 
 

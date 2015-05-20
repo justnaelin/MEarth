@@ -47,7 +47,7 @@ public class DashFragment extends Fragment {
         // Inflate the layout for this fragment
         Log.d("Dash", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_dash, container, false);
-
+        /*
         mTaskList = DashboardTasks.getInstance(getActivity()).getTaskList();
 
         imageView = (ImageView) view.findViewById(R.id.current_image);
@@ -58,6 +58,7 @@ public class DashFragment extends Fragment {
             imageView.setImageBitmap(mTaskList.get(0).getTaskIcon());
             titleText.setText(mTaskList.get(0).getTaskName());
         }
+        */
 
 
         /*
