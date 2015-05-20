@@ -13,6 +13,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import com.bytely.mearth.AboutFragment;
+import com.bytely.mearth.Communicator;
+import com.bytely.mearth.DashFragment;
+import com.bytely.mearth.FormatIcon;
+import com.bytely.mearth.LevelsFragment;
+import com.bytely.mearth.ProfileFragment;
+import com.bytely.mearth.R;
+import com.bytely.mearth.TaskListFragment;
+import com.bytely.mearth.TaskModel;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class HostActivity extends AppCompatActivity implements Communicator {
@@ -175,6 +186,14 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             }
         });
 
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "4Y23J3va4EQH7LsYM4dPxuv4cXgCrFL2REIQQseE", "R4Bv1mOQhTb94vgUYoYPpUh0XzoW7X58j8D4MIwP");
+        // Test Database
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
 
     }
 

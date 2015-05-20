@@ -139,22 +139,7 @@
             android:src="@drawable/globe"
             android:background="#FFFF"/>
 
-        <!--
-         <Button android:id="@+id/dashButton" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="1"
-            android:text="dash" />
 
-        <Button android:id="@+id/activityButton" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="1"
-            android:text="activity" />
-
-        <Button android:id="@+id/profileButton" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="1"
-            android:text="profile" />
-
-        <Button android:id="@+id/aboutButton" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_weight="1"
-            android:text="about" />-->
     </LinearLayout>
 
 
