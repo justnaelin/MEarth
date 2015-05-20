@@ -25,6 +25,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+<<<<<<< HEAD
     compile 'com.facebook.android:facebook-android-sdk:4.1.1'
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.android.support:cardview-v7:22.0.0'
@@ -34,4 +35,11 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-1.9.1.jar')
 
+=======
+    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    compile 'com.android.support:appcompat-v7:22.1.1'
+    compile 'com.android.support:cardview-v7:22.1.1'
+    compile 'com.android.support:support-v4:22.1.1'
+    compile 'com.android.support:recyclerview-v7:22.1.1'
+>>>>>>> 85b16fb0b3a0d677c9a5a0902bcd1b089cec92ac
 }

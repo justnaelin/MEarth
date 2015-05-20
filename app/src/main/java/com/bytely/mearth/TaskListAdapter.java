@@ -1,19 +1,19 @@
 package com.bytely.mearth;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
 
-/**
+/*
  * Created by juice on 3/14/15.
  */
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyViewHolder> {
@@ -27,7 +27,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         mLayoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.mActivityList = mActivityList;
-        communicator  = (Communicator) context;
+
+        communicator  = (Communicator)context;
         //this.mBitmapData = mBitmapData;
     }
 
@@ -47,6 +48,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
         holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
+        holder.mTaskCounter.setText(Integer.toString(current.getTaskCounter()));
+
     }
 
     @Override
@@ -58,31 +61,30 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private TextView mTaskName;
         private ImageView mTaskIcon;
         private TextView mTaskPointValue; // Point value associated with each activity
-        private TaskModel current;
-        private Button mAddButton;
+        private TextView mAdd;
         private TaskModel mTask;
+        private RelativeLayout mRelativeLayout;
+        private TextView mTaskCounter; // Keeps track of how many times they've completed a task
 
         public MyViewHolder(View view) {
             super(view);
+            mRelativeLayout = (RelativeLayout) view.findViewById(R.id.card_view_relative_layout);
             mTaskName = (TextView) view.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) view.findViewById(R.id.task_icon);
             mTaskPointValue = (TextView) view.findViewById(R.id.task_point_value);
-            mAddButton = (Button) view.findViewById(R.id.add_button);
-            mAddButton.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    DashboardTasks.getInstance(context).addPoints(current.getTaskPoints()); // Gets the point-value associated with
-                                                                                            // card that was clicked ("+")
-                }
-            });
+            mAdd = (TextView) view.findViewById(R.id.add);
+            mTaskCounter = (TextView) view.findViewById(R.id.task_counter);
+            mTaskCounter.setVisibility(View.GONE);
 
-            view.setOnClickListener(this);
+            mRelativeLayout.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            DashboardTasks.getInstance(context).addTask(mTask);
-            Log.d("MyViewHolder", mTask.getTaskName() + " added");
+            ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+            confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
+            DashboardTasks.getInstance(context).badgeNotification();
+            DashboardTasks.getInstance(context).levelNotification();
         }
 
         @Override
@@ -90,5 +92,4 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             mTask = taskModel;
         }
     }
-
 }

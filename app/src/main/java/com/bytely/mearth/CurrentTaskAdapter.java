@@ -39,6 +39,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
         TaskModel current = mTaskList.get(position);
         holder.mTaskName.setText(current.getTaskName());
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
+        holder.mTaskCounter.setText(Integer.toString(current.getTaskCounter()));
     }
 
 
@@ -50,11 +51,17 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
     public class CurrentTaskViewHolder extends RecyclerView.ViewHolder {
         private TextView mTaskName;
         private ImageView mTaskIcon;
+        private TextView mAdd;
+        private TextView mTaskCounter;
 
         public CurrentTaskViewHolder(View itemView) {
             super(itemView);
             mTaskName = (TextView) itemView.findViewById(R.id.task_name);
             mTaskIcon = (ImageView) itemView.findViewById(R.id.task_icon);
+            mAdd = (TextView) itemView.findViewById(R.id.add);
+            mTaskCounter = (TextView) itemView.findViewById(R.id.task_counter);
+            mAdd.setVisibility(View.GONE);
+            mTaskCounter.setVisibility(View.VISIBLE);
         }
 
     }

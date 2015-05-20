@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context="com.bytely.mearth.AchieveFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,14 +14,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/image1"
             android:layout_alignParentLeft="true"
             android:id="@+id/badge_one"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award2"
             android:gravity="center"
             android:id="@+id/badge_two"
             android:layout_alignParentTop="true"
@@ -31,14 +28,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award3"
             android:layout_alignParentRight="true"
             android:id="@+id/badge_three"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award4"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:id="@+id/badge_four"/>
@@ -46,14 +41,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award5"
             android:layout_centerInParent="true"
             android:id="@+id/badge_five"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award6"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:id="@+id/badge_six"/>
@@ -61,7 +54,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award7"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:id="@+id/badge_seven"/>
@@ -69,7 +61,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award8"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/badge_eight"/>
@@ -77,7 +68,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/new_award9"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:id="@+id/badge_nine"/>

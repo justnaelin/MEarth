@@ -1,8 +1,13 @@
 <component name="libraryTable">
   <library name="facebook-android-sdk-4.1.1">
     <CLASSES>
+<<<<<<< HEAD:.idea/libraries/facebook_android_sdk_4_1_1.xml
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/res" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/classes.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res" />
+>>>>>>> 85b16fb0b3a0d677c9a5a0902bcd1b089cec92ac:.idea/libraries/facebook_android_sdk_4_0_0.xml
     </CLASSES>
     <JAVADOC />
     <SOURCES />

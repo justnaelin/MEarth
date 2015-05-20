@@ -45,6 +45,7 @@
             android:name=".HostActivity"
             android:label="@string/title_activity_host" >
         </activity>
+<<<<<<< HEAD
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges=
@@ -53,6 +54,20 @@
             android:label="@string/app_name" />
     </application>
 <!--Facebook login-->
+=======
+
+        <!-- FullImageActivity -->
+        <activity android:name=".FullImageGalleryActivity"></activity>
+
+    </application>
+<!--Facebook login-->
+    <activity android:name="com.facebook.FacebookActivity"
+        android:configChanges=
+            "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
+        android:label="@string/app_name" ></activity>
+
+>>>>>>> 85b16fb0b3a0d677c9a5a0902bcd1b089cec92ac
 
 
 

@@ -7,11 +7,16 @@
     android:layout_height="wrap_content"
     card_view:cardBackgroundColor="#ffffff"
     android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true">
+    android:layout_centerHorizontal="true"
+    card_view:cardCornerRadius="0dp"
+    card_view:contentPaddingBottom="8dp">
 
     <RelativeLayout
+        android:id="@+id/card_view_relative_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_bg"
+        android:clickable="true"
         android:orientation="horizontal">
 
         <ImageView
@@ -36,17 +41,23 @@
             android:layout_alignParentRight="true"
             android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/add_button"
+        <TextView
+            android:id="@+id/add"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:text="+"
+            android:gravity="center"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:background="@color/primaryColor"
             android:layout_alignRight="@+id/task_point_value"
             android:layout_alignEnd="@+id/task_point_value"
             android:layout_below="@+id/task_point_value"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/task_counter"/>
 
     </RelativeLayout>
 

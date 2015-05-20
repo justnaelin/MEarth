@@ -94,7 +94,7 @@ public class AboutFragment extends Fragment {
         mTokenTracker = new AccessTokenTracker()
 
         {
-            @Override
+            //@Override
 
             protected void onCurrentAccessTokenChanged(AccessToken old, AccessToken newToken) {
 

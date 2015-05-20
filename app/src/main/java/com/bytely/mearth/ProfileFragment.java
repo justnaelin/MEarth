@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,12 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +32,9 @@ public class ProfileFragment extends Fragment {
     String mCurrentPhotoPath;
     private File directory = null;
 
+    public String imageFilePath;
+    public File imageFile;
+
     ImageView mImageView;
     static final int REQUEST_TAKE_PHOTO = 0;
 
@@ -47,14 +45,12 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
-
         directory = new File(Environment.getExternalStorageDirectory()+"/mearth"); //the string to a path
         File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
 
         if(!(file.exists() && file.isDirectory())){
             directory.mkdirs();
         }
-
     }
 
     @Override
@@ -111,7 +107,7 @@ public class ProfileFragment extends Fragment {
         mCameraButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //dispatchTakePictureIntent();
+
                 process();
             }
         });
@@ -127,9 +123,9 @@ public class ProfileFragment extends Fragment {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
         //This creates the image file path and the name of each picture
-        String imageFilePath = Environment.getExternalStorageDirectory() + "/mearth/IMG" + System.currentTimeMillis() + ".png";
+        imageFilePath = Environment.getExternalStorageDirectory() + "/mearth/IMG" + System.currentTimeMillis() + ".png";
 
-        File imageFile = new File(imageFilePath);
+        imageFile = new File(imageFilePath);
 
         Uri imageFileUri = Uri.fromFile(imageFile);
 
@@ -142,81 +138,6 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 
-
-    /*
-        if(requestCode == 0)
-        {
-            switch(resultCode){
-                case Activity.RESULT_OK: {
-                   // Bundle extras = data.getExtras();
-                   // Bitmap imageBitmap = (Bitmap) extras.get("data");
-                   // mImageView.setImageBitmap(imageBitmap);
-
-                    //dispatchTakePictureIntent(data);
-                    //Toast toast = Toast.makeText(getActivity().getApplicationContext(), mCurrentPhotoPath, Toast.LENGTH_LONG);
-                    //toast.show();
-                    //Bitmap image = (Bitmap) data.getExtras().get("data");
-                   // photoGallery.add(image);
-                   // for(int i = 0; i < photoGallery.size(); i++){
-                    //    Log.d(("Tag"), photoGallery.get(i).toString() + " was added! ");}
-
-                }
-                break;
-                case Activity.RESULT_CANCELED:
-                    break;
-                default:
-                    break;
-            }
-        }*/
-    }
-
-    private void dispatchTakePictureIntent(Intent takePictureIntent) {
-      //  Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Ensure that there's a camera activity to handle the intent
-
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) == null) {
-            // Create the File where the photo should go
-
-            File photoFile = null;
-            try {
-
-            photoFile = createImageFile();
-                Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Toast", Toast.LENGTH_LONG);
-                toast.show();
-
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-
-            }
-            // Continue only if the File was successfully created
-           /* if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-            }*/
-        }
-    }
-
-    //Save the picture
-    private File createImageFile() throws IOException {
-        // Create an image file name
-
-
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-
-        return image;
     }
 
 
