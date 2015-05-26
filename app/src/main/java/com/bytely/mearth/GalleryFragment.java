@@ -6,13 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -25,6 +24,8 @@ import java.util.ArrayList;
 public class GalleryFragment extends Fragment {
 
     ArrayList<String> images_file_path = new ArrayList<String>();
+    public static ArrayList<Bitmap> bitmap_images;
+
     File[] listFile;
 
     public GalleryFragment() {
@@ -38,40 +39,50 @@ public class GalleryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
+        bitmap_images = new ArrayList<Bitmap>();
+
+        //Toast toast = Toast.makeText(getActivity(), "image", Toast.LENGTH_SHORT);
+        //toast.show();
+
         //Grid view images
         int iconSize=getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
+        setGalleryImages();
+        setBitmap_images();
+        Log.d("Gallery", "Array size: " + bitmap_images.size());
 
-            /*setGalleryImages();
 
-            Bitmap myBitmap = BitmapFactory.decodeFile(images_file_path.get(0));
 
-            ImageView myImage = (ImageView) view.findViewById(R.id.galleryImageView);
+     /*  Bitmap myBitmap = BitmapFactory.decodeFile(images_file_path.get(0));
 
-            myImage.setImageBitmap(myBitmap);
+        ImageView myImage = (ImageView) view.findViewById(R.id.imageView_gallery);
 
-            Toast toast = Toast.makeText(getActivity(), images_file_path.get(0), Toast.LENGTH_LONG);
-            toast.show();
-            */
+        ImageAdapter imageAdapter = new ImageAdapter(getActivity());
+
+        ArrayList<Bitmap> bitmap_images = new ArrayList<Bitmap>(imageAdapter.getItems());
+
+          myImage.setImageBitmap(imageAdapter.getItem(0)); */
+
+
 
         //find the gridview by id
-            GridView gridview = (GridView) view.findViewById(R.id.gridview);
-            //setAdaptersets method sets a custom adapter of images
-            // calling the ImageAdapter class
-            gridview.setAdapter(new ImageAdapter(getActivity()));
+        GridView gridview = (GridView) view.findViewById(R.id.gridview);
+        //setAdaptersets method sets a custom adapter of images
 
-            //if one image is clicked the setOnItemClickListener is called
-            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View v,
-                                        int position, long id) {
+        gridview.setAdapter(new ImageAdapter(getActivity(), bitmap_images));
 
-                    // Sending image id to FullScreenActivity
-                   Intent intent = new Intent(getActivity(), FullImageGalleryActivity.class);
-                    // passing array index to display that image
-                   intent.putExtra("id", position);
-                    getActivity().startActivity(intent);
+        //if one image is clicked the setOnItemClickListener is called
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {            // calling the ImageAdapter class
 
-                }
-            });
+                // Sending image id to FullScreenActivity
+                Intent intent = new Intent(getActivity(), FullImageGalleryActivity.class);
+                // passing array index to display that image
+                intent.putExtra("id", position);
+                getActivity().startActivity(intent);
+
+            }
+        });
         return view;
     }
 
@@ -88,6 +99,16 @@ public class GalleryFragment extends Fragment {
 
                 images_file_path.add(listFile[i].getAbsolutePath());
             }
+        }
+
+    }
+
+    public void setBitmap_images(){
+
+        for (int i = 0; i < images_file_path.size(); i++)
+        {
+            bitmap_images.add(BitmapFactory.decodeFile(images_file_path.get(i)));
+
         }
 
     }

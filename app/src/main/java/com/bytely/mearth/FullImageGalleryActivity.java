@@ -24,9 +24,11 @@ public class FullImageGalleryActivity extends Activity{
 
         // Selected image id passed by Extras
         int position = i.getExtras().getInt("id");
-        ImageAdapter imageAdapter = new ImageAdapter(this);
+       // ImageAdapter imageAdapter = new ImageAdapter(this);
 
        ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
-       imageView.setImageResource(imageAdapter.mThumbIds[position]);
+      // imageView.setImageResource(GalleryFragment.bitmap_images.get(position));
+        imageView.setImageBitmap(GalleryFragment.bitmap_images.get(position));
     }
+
 }

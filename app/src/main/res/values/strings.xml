@@ -32,4 +32,6 @@ MEarth educates and inspires through environmental stewardship</string>
     <string name="app_id">422246821271981</string>
 
     <string name="test">Test</string>
+
+    <string name="current_fragment_no_tasks">You have not completed any tasks</string>
 </resources>
