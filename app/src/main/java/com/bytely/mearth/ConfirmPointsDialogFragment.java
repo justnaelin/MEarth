@@ -11,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -83,7 +82,4 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         return pointsDialogFragment;
     }
 
-    public interface OnConfirmDialogClick {
-        void onYesClick();
-    }
 }
