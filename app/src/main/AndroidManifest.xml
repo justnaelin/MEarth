@@ -17,6 +17,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <activity
+            android:name=".FullImageGalleryActivity"
+            android:label="@string/image_activity_label" >
+
+        </activity>
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" >

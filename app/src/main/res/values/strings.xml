@@ -34,4 +34,5 @@ MEarth educates and inspires through environmental stewardship</string>
     <string name="test">Test</string>
 
     <string name="current_fragment_no_tasks">You have not completed any tasks</string>
+    <string name="image_activity_label">Full Image View</string>
 </resources>
