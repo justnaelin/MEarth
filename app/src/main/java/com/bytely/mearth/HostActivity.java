@@ -9,11 +9,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class HostActivity extends AppCompatActivity implements Communicator {
@@ -166,7 +166,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         mDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Dash Clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Dash Clicked", Toast.LENGTH_SHORT).show();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
@@ -176,29 +176,15 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             }
         });
 
-    }
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
 
+        Parse.initialize(this, "4Y23J3va4EQH7LsYM4dPxuv4cXgCrFL2REIQQseE", "R4Bv1mOQhTb94vgUYoYPpUh0XzoW7X58j8D4MIwP");
+        // Test Database
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_host, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override

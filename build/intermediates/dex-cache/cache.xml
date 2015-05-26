@@ -9,18 +9,18 @@
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-819ea0c893de94eac6da00db8c849e6842a65a23.jar" />
     </item>
     <item
-        jar="/home/juice/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4-ae75e8db17f5d3ba2251d7729eabf8ea79c59854.jar" />
-    </item>
-    <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-8a2ee5d1c06a784ae58bf36e77964cf67f0eedac.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/libs/Parse-1.9.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1b065010f3c9d441ede9078aca8eabcd1c81e647">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/Parse-1.9.1-60ea368050927aa8fa129478d28e1817a390e0c3.jar" />
     </item>
     <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
@@ -30,11 +30,18 @@
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-b3371b8ef8c1430399c911c35ceee715e4e6316c.jar" />
     </item>
     <item
-        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/classes.jar"
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="0f254ec13d6671680482d2218f01ecf14dfa93e6">
-        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-19f721c068562fcd15409635324ad80d7ef81a00.jar" />
+        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-d4be7d42f3ddb661c3ee0fc38df508602dc7340e.jar" />
+    </item>
+    <item
+        jar="/home/juice/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-3fd7fe2f856e1fb035642b6c9a67b2cde78a5ef8.jar" />
     </item>
     <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"

@@ -6,6 +6,9 @@
     <!--Gives permission to for Facebook component-->
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <!--Gives permission to for Parse Data Base component-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:name=".MyApplication"
@@ -18,7 +21,16 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" >
 
+
             </meta-data>
+
+        <!-- Facebook sharing options(May have to be in meta-data -->
+
+        <provider android:authorities="com.facebook.app.FacebookContentProvider422246821271981"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
+
 
         <activity
             android:name=".SplashActivity"
@@ -30,19 +42,21 @@
         </activity>
         <activity
             android:name=".HostActivity"
-            android:label="@string/title_activity_host" >
+            android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
+    </application>
+<!--Facebook login-->
 
         <!-- FullImageActivity -->
         <activity android:name=".FullImageGalleryActivity"></activity>
 
-    </application>
-<!--Facebook login-->
-    <activity android:name="com.facebook.FacebookActivity"
-        android:configChanges=
-            "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar"
-        android:label="@string/app_name" ></activity>
+
 
 
 
