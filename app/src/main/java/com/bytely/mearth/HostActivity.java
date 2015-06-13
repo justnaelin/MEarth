@@ -177,7 +177,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         });
 
         // Enable Local Datastore.
-        Parse.enableLocalDatastore(this);
+        // Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "4Y23J3va4EQH7LsYM4dPxuv4cXgCrFL2REIQQseE", "R4Bv1mOQhTb94vgUYoYPpUh0XzoW7X58j8D4MIwP");
         // Test Database

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -16,10 +17,13 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class LevelsFragment extends Fragment {
-
     private CardView mLevelOneCard;
     private CardView mLevelTwoCard;
     private CardView mLevelThreeCard;
+
+    private LinearLayout mLevelOneLinearLayout;
+    private LinearLayout mLevelTwoLinearLayout;
+    private LinearLayout mLevelThreeLinearLayout;
 
     private ImageView mLevelOneImage;
     private TextView mLevelOneTitle;
@@ -53,6 +57,10 @@ public class LevelsFragment extends Fragment {
         mLevelOneCard = (CardView) view.findViewById(R.id.level_one);
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
+
+        mLevelOneLinearLayout = (LinearLayout) view.findViewById(R.id.level_one_linear_layout);
+        mLevelTwoLinearLayout = (LinearLayout) view.findViewById(R.id.level_two_linear_layout);
+        mLevelThreeLinearLayout = (LinearLayout) view.findViewById(R.id.level_three_linear_layout);
 
 
 
@@ -96,21 +104,22 @@ public class LevelsFragment extends Fragment {
         mLevelThreeImage.setImageBitmap(circleIconThree);
         mLevelThreeTitle.setText(R.string.level_three);
 
-        mLevelOneCard.setOnClickListener(new View.OnClickListener() {
+        mLevelOneLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                comm.runLevelOne();
             }
         });
 
-        mLevelTwoCard.setOnClickListener(new View.OnClickListener() {
+
+        mLevelTwoLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comm.runLevelTwo();
             }
         });
 
-        mLevelThreeCard.setOnClickListener(new View.OnClickListener() {
+        mLevelThreeLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comm.runLevelThree();

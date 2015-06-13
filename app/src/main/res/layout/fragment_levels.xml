@@ -32,8 +32,11 @@
             android:layout_alignParentStart="true">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/level_one_linear_layout"
+                android:background="@drawable/custom_bg"
+                android:clickable="true"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -87,7 +90,10 @@
             android:layout_marginTop="79dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/level_two_linear_layout"
+                android:background="@drawable/custom_bg"
+                android:clickable="true"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -144,7 +150,10 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/level_three_linear_layout"
+                android:background="@drawable/custom_bg"
+                android:clickable="true"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 

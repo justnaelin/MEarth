@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public class TaskListFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private Communicator comm;
     private int fragmentId;
+    private TextView textView;
 
     public TaskListFragment() {
         // Required empty public constructor
@@ -52,6 +54,9 @@ public class TaskListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
+
+        textView = (TextView) view.findViewById(R.id.text);
+        textView.setText(Integer.toString(DashboardTasks.getInstance(getActivity()).getPoints()));
 
         fragmentId = getArguments().getInt("fragment_id");
         mTaskList = comm.getTaskArray(fragmentId);
