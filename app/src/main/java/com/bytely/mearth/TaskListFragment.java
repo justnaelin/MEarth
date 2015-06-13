@@ -40,6 +40,7 @@ public class TaskListFragment extends Fragment {
     public static final int REQUEST_POINTS = 0;
     private TextView mUserPoints;
 
+
     public TaskListFragment() {
         // Required empty public constructor
     }

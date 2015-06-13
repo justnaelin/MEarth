@@ -91,8 +91,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
             confirmPointsDialogFragment.setTargetFragment(targetFragment,
                             TaskListFragment.REQUEST_POINTS);
             confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
-            DashboardTasks.getInstance(context).badgeNotification();
-            DashboardTasks.getInstance(context).levelNotification();
+            //DashboardTasks.getInstance(context).badgeNotification();
+            //DashboardTasks.getInstance(context).levelNotification();
         }
 
         @Override
