@@ -45,6 +45,7 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
         directory = new File(Environment.getExternalStorageDirectory()+"/mearth"); //the string to a path
         File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
 
@@ -58,7 +59,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
-
+        comm.hideUnderlineViews();
+        comm.showUnderlineView(2);
 
         final FragmentManager fragmentManager = getChildFragmentManager();
         final Fragment achieveFragment = new AchieveFragment();

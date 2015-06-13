@@ -47,6 +47,7 @@ public class LevelsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
     }
 
     @Override
@@ -54,6 +55,9 @@ public class LevelsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_levels, container, false);
+        comm.hideUnderlineViews();
+        comm.showUnderlineView(1);
+
         mLevelOneCard = (CardView) view.findViewById(R.id.level_one);
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);

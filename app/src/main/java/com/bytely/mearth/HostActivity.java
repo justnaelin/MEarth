@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.parse.Parse;
@@ -42,15 +43,18 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
+        hideUnderlineViews();
+
         getWindow().setBackgroundDrawable(null);
 
         if(savedInstanceState == null) {
             Log.d("onCreate", "New activity instance");
         }
 
-        Fragment dashFragment = fragmentManager.findFragmentByTag("dash_fragment");
+        DashFragment dashFragment = null;
 
-        if(dashFragment == null) {
+        if(savedInstanceState == null) {
+            showUnderlineView(0);
             dashFragment = new DashFragment();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
@@ -115,6 +119,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment aboutFragment = fragmentManager.findFragmentByTag("about_fragment");
 
                 if(aboutFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(3);
                     aboutFragment = new AboutFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
@@ -132,6 +138,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
 
                 if (profileFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(2);
                     profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
@@ -151,6 +159,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment levelsFragment = fragmentManager.findFragmentByTag("levels_fragment");
 
                 if(levelsFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(1);
                     levelsFragment = new LevelsFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
@@ -166,6 +176,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         mDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideUnderlineViews();
+                showUnderlineView(0);
                 //Toast.makeText(getApplicationContext(), "Dash Clicked", Toast.LENGTH_SHORT).show();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
@@ -246,5 +258,28 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
     @Override
     public void updateActionBar() {
+    }
+
+    @Override
+    public void hideUnderlineViews() {
+        View linView = this.findViewById(R.id.linear_layout_underline);
+
+        for(int i = 0; i < ((ViewGroup)linView).getChildCount(); i++) {
+            View childView = ((ViewGroup)linView).getChildAt(i);
+            childView.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void showUnderlineView(int position) {
+        View linView = this.findViewById(R.id.linear_layout_underline);
+
+        for(int i = 0; i < ((ViewGroup)linView).getChildCount(); i++) {
+            if(i == position) {
+                View childView = ((ViewGroup)linView).getChildAt(i);
+                childView.setVisibility(View.VISIBLE);
+            }
+
+        }
     }
 }

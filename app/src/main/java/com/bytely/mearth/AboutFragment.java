@@ -76,6 +76,8 @@ public class AboutFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        comm = (Communicator) getActivity();
+
         /*
         //  -- FACEBOOK LOGIN  --
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
@@ -115,9 +117,11 @@ public class AboutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
        //Share Dialog
        // ShareDialog dialog = new ShareDialog(getActivity());
-        comm = (Communicator) getActivity();
+
         // -- Social Media Buttons --
         // Facebook Button
+        comm.hideUnderlineViews();
+        comm.showUnderlineView(3);
         mFbButton = (ImageButton) view.findViewById(R.id.fbButton);
         mFbButton.setOnClickListener(new View.OnClickListener() {
             @Override
