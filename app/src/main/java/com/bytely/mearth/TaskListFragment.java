@@ -1,6 +1,7 @@
 package com.bytely.mearth;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,7 +37,9 @@ public class TaskListFragment extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private Communicator comm;
     private int fragmentId;
-    private TextView textView;
+    public static final int REQUEST_POINTS = 0;
+    private TextView mUserPoints;
+
 
     public TaskListFragment() {
         // Required empty public constructor
@@ -55,9 +58,6 @@ public class TaskListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
 
-        textView = (TextView) view.findViewById(R.id.text);
-        textView.setText(Integer.toString(DashboardTasks.getInstance(getActivity()).getPoints()));
-
         fragmentId = getArguments().getInt("fragment_id");
         mTaskList = comm.getTaskArray(fragmentId);
 
@@ -69,6 +69,10 @@ public class TaskListFragment extends Fragment {
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // Displays user's total points in profile fragment
+        mUserPoints = (TextView) view.findViewById(R.id.user_points);
+        mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
 
         return view;
     }
@@ -90,5 +94,14 @@ public class TaskListFragment extends Fragment {
         taskListFragment.setArguments(args);
 
         return taskListFragment;
+    }
+
+    public void displayUsersPoints() {
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
     }
 }

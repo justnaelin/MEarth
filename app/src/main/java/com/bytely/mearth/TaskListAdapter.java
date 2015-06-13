@@ -81,10 +81,18 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
         @Override
         public void onClick(View v) {
-            ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+            android.support.v4.app.FragmentManager fragmentManager =
+                    ((AppCompatActivity) context).getSupportFragmentManager();
+            TaskListFragment targetFragment =
+                    (TaskListFragment) fragmentManager.findFragmentById(R.id.fragment_container);
+
+            ConfirmPointsDialogFragment confirmPointsDialogFragment =
+                    ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+            confirmPointsDialogFragment.setTargetFragment(targetFragment,
+                            TaskListFragment.REQUEST_POINTS);
             confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
-            DashboardTasks.getInstance(context).badgeNotification();
-            DashboardTasks.getInstance(context).levelNotification();
+            //DashboardTasks.getInstance(context).badgeNotification();
+            //DashboardTasks.getInstance(context).levelNotification();
         }
 
         @Override

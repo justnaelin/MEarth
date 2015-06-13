@@ -66,9 +66,6 @@ public class LevelsFragment extends Fragment {
         mLevelTwoLinearLayout = (LinearLayout) view.findViewById(R.id.level_two_linear_layout);
         mLevelThreeLinearLayout = (LinearLayout) view.findViewById(R.id.level_three_linear_layout);
 
-
-
-
         // Get user's total points
         mUserPoints = DashboardTasks.getInstance(getActivity()).getPoints();
 
@@ -129,6 +126,10 @@ public class LevelsFragment extends Fragment {
                 comm.runLevelThree();
             }
         });
+
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
 
         return view;
     }
