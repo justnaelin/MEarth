@@ -107,7 +107,6 @@ public class ProfileFragment extends Fragment {
         mCameraButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
                 process();
             }
         });

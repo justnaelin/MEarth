@@ -54,9 +54,6 @@ public class LevelsFragment extends Fragment {
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
 
-
-
-
         // Get user's total points
         mUserPoints = DashboardTasks.getInstance(getActivity()).getPoints();
 
@@ -116,6 +113,10 @@ public class LevelsFragment extends Fragment {
                 comm.runLevelThree();
             }
         });
+
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
 
         return view;
     }
