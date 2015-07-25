@@ -61,52 +61,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             fragmentTransaction.commit();
         }
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
-                Log.d("Thread", "Background");
-
-                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
-                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
-                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
-                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
-                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
-                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
-                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
-                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
-                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
-
-                mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0),
-                };
-
-                mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),
-                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0),
-                };
-
-                mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0),
-                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0),
-
-                };
-                Log.d("Thread", "Done");
-            }
-        });
-
-        thread.start();
+        loadTaskObjects();
 
         Log.d("Activity", "After Thread");
 
@@ -197,6 +152,55 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         testObject.put("foo", "bar");
         testObject.saveInBackground();
 
+    }
+
+    private void loadTaskObjects() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                Log.d("Thread", "Background");
+
+                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
+                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
+                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
+                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
+                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
+                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
+                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
+                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
+                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
+
+                mLevelOneArray = new TaskModel[]{
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0),
+                };
+
+                mLevelTwoArray = new TaskModel[]{
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),
+                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0),
+                };
+
+                mLevelThreeArray = new TaskModel[]{
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0),
+                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0),
+
+                };
+                Log.d("Thread", "Done");
+            }
+        });
+
+        thread.start();
     }
 
     @Override

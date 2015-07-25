@@ -97,7 +97,11 @@ public class ProfileFragment extends Fragment {
         mGoalsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Fragment goalsFragment = new GalleryFragment();
+                GalleryFragment goalsFragment;
+                goalsFragment = (GalleryFragment) fragmentManager.findFragmentByTag("profile_goals_fragment");
+                if(goalsFragment == null) {
+                    goalsFragment = new GalleryFragment();
+                }
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.profile_fragment_container, goalsFragment);
                 fragmentTransaction.addToBackStack("profile_goals_fragment");
