@@ -1,14 +1,17 @@
 package com.bytely.mearth;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -16,10 +19,13 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class LevelsFragment extends Fragment {
-
     private CardView mLevelOneCard;
     private CardView mLevelTwoCard;
     private CardView mLevelThreeCard;
+
+    private LinearLayout mLevelOneLinearLayout;
+    private LinearLayout mLevelTwoLinearLayout;
+    private LinearLayout mLevelThreeLinearLayout;
 
     private ImageView mLevelOneImage;
     private TextView mLevelOneTitle;
@@ -54,8 +60,9 @@ public class LevelsFragment extends Fragment {
         mLevelTwoCard = (CardView) view.findViewById(R.id.level_two);
         mLevelThreeCard = (CardView) view.findViewById(R.id.level_three);
 
-
-
+        mLevelOneLinearLayout = (LinearLayout) view.findViewById(R.id.level_one_linear_layout);
+        mLevelTwoLinearLayout = (LinearLayout) view.findViewById(R.id.level_two_linear_layout);
+        mLevelThreeLinearLayout = (LinearLayout) view.findViewById(R.id.level_three_linear_layout);
 
         // Get user's total points
         mUserPoints = DashboardTasks.getInstance(getActivity()).getPoints();
@@ -96,27 +103,55 @@ public class LevelsFragment extends Fragment {
         mLevelThreeImage.setImageBitmap(circleIconThree);
         mLevelThreeTitle.setText(R.string.level_three);
 
-        mLevelOneCard.setOnClickListener(new View.OnClickListener() {
+        mLevelOneLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                comm.runLevelOne();
             }
         });
 
-        mLevelTwoCard.setOnClickListener(new View.OnClickListener() {
+
+        mLevelTwoLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comm.runLevelTwo();
             }
         });
 
-        mLevelThreeCard.setOnClickListener(new View.OnClickListener() {
+        mLevelThreeLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 comm.runLevelThree();
             }
         });
 
+        // Displays user's total points in profile fragment
+        TextView userPoints = (TextView) view.findViewById(R.id.user_points);
+        userPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+
         return view;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //  super.onActivityResult(requestCode, resultCode, data);
+       /* Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        fragment.onActivityResult(requestCode, resultCode, data);*/
+        ;
+        //result code -1 = image taken send from the Confirm Dialog Fragment
+        if (resultCode ==  -1){
+            Log.d("Level Fragment", "Image was taken =  " + Integer.toString(resultCode));
+
+        }
+
+        //result code 0 = image not taken  send from the Confirm Dialog Fragment
+        else{
+            Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
+
+        }
+        Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
+
+
+    }
+
 }

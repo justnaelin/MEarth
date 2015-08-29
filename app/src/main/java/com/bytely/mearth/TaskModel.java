@@ -10,16 +10,18 @@ public class TaskModel {
     private Bitmap mTaskIcon;
     private int mTaskPoints;
     private boolean mIsCompleted;
+    private  int mTaskLevelNum;
     private UUID mTaskID;
     private int mTaskCounter;
 
-    public TaskModel(String s, int i, Bitmap icon, int i1, int i2) {
-        this.mTaskName = s;
-        this.mTaskDescription = i;
-        this.mTaskIcon = icon;
-        this.mTaskPoints = i1;
+    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum) {
+        this.mTaskName = taskName;
+        this.mTaskDescription = taskDescription;
+        this.mTaskIcon = taskIcon;
+        this.mTaskPoints = taskPoints;
         this.mIsCompleted = false;
-        this.mTaskCounter = i2;
+        this.mTaskCounter = taskCounter;
+        this.mTaskLevelNum = levelNum;
         mTaskID = UUID.randomUUID();
     }
 
@@ -41,6 +43,8 @@ public class TaskModel {
 
     public int getTaskCounter() { return mTaskCounter; }
 
+    public int getTaskLevelNum() {return  mTaskLevelNum; }
+
     public void incrementTaskCounter() { mTaskCounter++; }
 
     public boolean isCompleted() {
@@ -58,4 +62,6 @@ public class TaskModel {
     public void setTaskName(String name) {
         this.mTaskName = name;
     }
+
+
 }

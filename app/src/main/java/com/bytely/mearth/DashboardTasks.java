@@ -16,8 +16,6 @@ public class DashboardTasks {
     private static int sTotalPoints; // User's total points
     private int mBadgeFlag = 0; // Controls badge toasts
     private int mLevelFlag = 0; // Controls level toasts
-
-
     private DashboardTasks(Context context) {
         sContext = context;
         sTaskList = new ArrayList<>();
@@ -62,84 +60,6 @@ public class DashboardTasks {
 
     }
 
-    public void badgeNotification() {
-        // NOTIFY WHEN BADGE IS EARNED
-        CharSequence text = "You have earned a badge!";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(sContext.getApplicationContext(), text, duration);
-
-        if(sTotalPoints >= 2100 && mBadgeFlag == 0)
-        {
-            toast.show();
-            mBadgeFlag++;
-        }
-        if(sTotalPoints >= 4200)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 3) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 6300)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 5) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 8400 && mBadgeFlag == 3)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 7) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 10500 && mBadgeFlag == 4)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 9) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 12600 && mBadgeFlag == 5)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 11) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 14700 && mBadgeFlag == 6)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 13) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 16800 && mBadgeFlag == 7)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 15) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-        if(sTotalPoints >= 31800 && mBadgeFlag == 8)
-        {
-            mBadgeFlag++;
-            if(mBadgeFlag == 17) {
-                toast.show();
-                mBadgeFlag++;
-            }
-        }
-    }
-
     public void levelNotification() {
         int duration = Toast.LENGTH_SHORT;
         CharSequence text = "";
@@ -160,7 +80,6 @@ public class DashboardTasks {
                 toast.show();
         }
     }
-
 
     public int getPoints() {return sTotalPoints;}
 

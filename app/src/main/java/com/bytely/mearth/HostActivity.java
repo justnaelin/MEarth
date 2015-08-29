@@ -3,6 +3,7 @@
 package com.bytely.mearth;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -74,28 +75,29 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0),
+                        // [Nameidk ask Hugo and Naein,,button, points, number of times completed, level]
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1),
                 };
 
                 mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0),
-                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0),
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 2),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 2),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 2),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2),
+                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 2),
                 };
 
                 mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0),
-                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0),
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 3),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 3),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 3),
+                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 3),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 3),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3),
 
                 };
                 Log.d("Thread", "Done");
@@ -177,7 +179,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         });
 
         // Enable Local Datastore.
-        Parse.enableLocalDatastore(this);
+        // Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "4Y23J3va4EQH7LsYM4dPxuv4cXgCrFL2REIQQseE", "R4Bv1mOQhTb94vgUYoYPpUh0XzoW7X58j8D4MIwP");
         // Test Database
@@ -199,7 +201,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelOneFragment == null) {
             levelOneFragment = TaskListFragment.getInstance(1);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
             fragmentTransaction.addToBackStack("level_one");
             fragmentTransaction.commit();
         }
@@ -247,4 +249,46 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     @Override
     public void updateActionBar() {
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        //super.onActivityResult(requestCode, resultCode, data);
+
+
+        //result code -1 = image was taken
+        if (resultCode ==  -1){
+
+            Log.d("Host", "Image was taken =  " + Integer.toString(resultCode));
+
+            //requestCode 2 = intent send from profile camera fragment
+            if (requestCode == 2 ) {
+
+                Log.d("Host", "Image was from profile camera =  " + Integer.toString(requestCode));
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
+
+
+            //requestCode 3 = intent send from level confirm Dialog fragment
+            else if(requestCode == 3){
+                Log.d("Host", "Image was from level Dialog =  " + Integer.toString(requestCode));
+                TaskListFragment level = (TaskListFragment) fragmentManager
+                        .findFragmentByTag("level_one");
+                Log.d("Current Fragment", level.getClass().getSimpleName());
+                level.printMessage();
+                level.addPoints();
+
+            }
+
+        }
+
+        //result code 0 = image was not taken
+        else{
+            Log.d("Host", "No Image  Taken =  " + Integer.toString(resultCode));
+
+        }
+
+    }
+
 }
