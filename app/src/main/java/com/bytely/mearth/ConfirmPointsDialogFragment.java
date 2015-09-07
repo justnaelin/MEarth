@@ -49,11 +49,9 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
                 DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
+
                 sTaskClicked.incrementTaskCounter();
                 sendResult(Activity.RESULT_OK);
-
-                // Check if badge is earned
-
 
             }
         });
