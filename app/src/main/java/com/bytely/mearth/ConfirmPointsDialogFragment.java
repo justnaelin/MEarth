@@ -10,6 +10,7 @@ import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by yaya on 6/14/15.
@@ -22,6 +23,9 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
     private static TaskModel sTaskClicked;
 
+    int userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
+
+    Toast mBadgeToast;
 
     public ConfirmPointsDialogFragment() {
         // Required empty public constructor
@@ -54,11 +58,26 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
                 sTaskClicked.incrementTaskCounter();
                 sendResult(Activity.RESULT_OK);
 
-<<<<<<< HEAD
+                if(userPoints >= 25000)
+                    mBadgeToast.makeText(getActivity(),"25000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 18000)
+                    mBadgeToast.makeText(getActivity(),"18000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 15000)
+                    mBadgeToast.makeText(getActivity(),"15000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 12000)
+                    mBadgeToast.makeText(getActivity(),"12000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 8000)
+                    mBadgeToast.makeText(getActivity(),"8000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 6000)
+                    mBadgeToast.makeText(getActivity(),"6000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 4000)
+                    mBadgeToast.makeText(getActivity(),"4000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 2000)
+                    mBadgeToast.makeText(getActivity(),"2000", Toast.LENGTH_SHORT).show();
+                else if(userPoints >= 1000)
+                    mBadgeToast.makeText(getActivity(),"1000", Toast.LENGTH_SHORT).show();
 
 
-=======
->>>>>>> 02889c89017868a4f47b0b8e3f337d489981db33
             }
         });
 
