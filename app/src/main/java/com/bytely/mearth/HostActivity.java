@@ -81,7 +81,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        // [Nameidk ask Hugo and Naein,,button, points, number of times completed, level]
+
                         new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
                         new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
                         new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
@@ -214,11 +214,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelOneFragment == null) {
             levelOneFragment = TaskListFragment.getInstance(1);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
-            fragmentTransaction.addToBackStack("level_one");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
+        fragmentTransaction.addToBackStack("level_one");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -227,11 +228,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelTwoFragment == null) {
             levelTwoFragment = TaskListFragment.getInstance(2);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
-            fragmentTransaction.addToBackStack("level_two");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
+        fragmentTransaction.addToBackStack("level_two");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -240,11 +242,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelThreeFragment == null) {
             levelThreeFragment = TaskListFragment.getInstance(3);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
-            fragmentTransaction.addToBackStack("level_three");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
+        fragmentTransaction.addToBackStack("level_three");
+        fragmentTransaction.commit();
     }
 
     @Override

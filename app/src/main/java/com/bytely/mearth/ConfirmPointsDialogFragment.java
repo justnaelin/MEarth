@@ -49,10 +49,8 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
                 DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
-
                 sTaskClicked.incrementTaskCounter();
                 sendResult(Activity.RESULT_OK);
-
 
             }
         });

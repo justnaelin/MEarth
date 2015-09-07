@@ -9,6 +9,13 @@
         <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/classes-697dd2076efcecda5638beff1ac5692bb7236e4a.jar" />
     </item>
     <item
+        jar="/Users/naelinaquino/Projects/MEarth/app/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="78b8f6e37921559ed21c1fae1f30f9f713494db8">
+        <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-1cfec96a4b7c8b5847c387c3995d8c6c0c51ac2d.jar" />
+    </item>
+    <item
         jar="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.1.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -37,18 +44,18 @@
         <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/classes-40dc979ac248aedc5038bf0ed2455c2a75d7d21b.jar" />
     </item>
     <item
-        jar="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="22886d910315028a2b34b1ba068c265534ade87a">
-        <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/classes-0d0cfd55707a5db40d2d139759b9cb4768199fe0.jar" />
-    </item>
-    <item
         jar="/Users/naelinaquino/Development/android-sdks/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
         <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-c9487ae8694b910a14a918b63167dad8b2dc45a9.jar" />
+    </item>
+    <item
+        jar="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="22886d910315028a2b34b1ba068c265534ade87a">
+        <dex dex="/Users/naelinaquino/Projects/MEarth/app/build/intermediates/pre-dexed/debug/classes-0d0cfd55707a5db40d2d139759b9cb4768199fe0.jar" />
     </item>
     <item
         jar="/Users/naelinaquino/Projects/MEarth/app/libs/Parse-1.9.1.jar"
