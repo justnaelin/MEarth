@@ -3,6 +3,7 @@
 package com.bytely.mearth;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -61,8 +62,55 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             fragmentTransaction.commit();
         }
 
-        loadTaskObjects();
 
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                Log.d("Thread", "Background");
+
+                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
+                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
+                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
+                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
+                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
+                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
+                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
+                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
+                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
+
+                mLevelOneArray = new TaskModel[]{
+                        // [Nameidk ask Hugo and Naein,,button, points, number of times completed, level]
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1, 4),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1, 5),
+                };
+
+                mLevelTwoArray = new TaskModel[]{
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 2, 6),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 2, 7),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 2, 8),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2, 9),
+                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 2, 10),
+                };
+
+                mLevelThreeArray = new TaskModel[]{
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 3, 11),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 3, 12),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 3, 13),
+                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 3, 14),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 3, 15),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3, 16),
+
+                };
+                Log.d("Thread", "Done");
+            }
+        });
+
+        thread.start();
         Log.d("Activity", "After Thread");
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
@@ -118,7 +166,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                     showUnderlineView(1);
                     levelsFragment = new LevelsFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, levelsFragment, "levels");
                     fragmentTransaction.addToBackStack("levels_fragment");
                     Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
@@ -154,55 +202,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
     }
 
-    private void loadTaskObjects() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
-                Log.d("Thread", "Background");
-
-                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
-                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
-                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
-                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
-                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
-                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
-                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
-                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
-                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
-
-                mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 2),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 3),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 4),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 5),
-                };
-
-                mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 6),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 7),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 8),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 9),
-                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 10),
-                };
-
-                mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 11),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 12),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 13),
-                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 14),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 15),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 16),
-
-                };
-
-                Log.d("Thread", "Done");
-            }
-        });
-
-        thread.start();
-    }
 
     @Override
     public void onSaveInstanceState(Bundle savedState) {
@@ -216,7 +215,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelOneFragment == null) {
             levelOneFragment = TaskListFragment.getInstance(1);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
             fragmentTransaction.addToBackStack("level_one");
             fragmentTransaction.commit();
         }
@@ -229,7 +228,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelTwoFragment == null) {
             levelTwoFragment = TaskListFragment.getInstance(2);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
             fragmentTransaction.addToBackStack("level_two");
             fragmentTransaction.commit();
         }
@@ -242,7 +241,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelThreeFragment == null) {
             levelThreeFragment = TaskListFragment.getInstance(3);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
             fragmentTransaction.addToBackStack("level_three");
             fragmentTransaction.commit();
         }
@@ -266,6 +265,46 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        //super.onActivityResult(requestCode, resultCode, data);
+
+
+        //result code -1 = image was taken
+        if (resultCode ==  -1){
+
+            Log.d("Host", "Image was taken =  " + Integer.toString(resultCode));
+
+            //requestCode 2 = intent send from profile camera fragment
+            if (requestCode == 2 ) {
+
+                Log.d("Host", "Image was from profile camera =  " + Integer.toString(requestCode));
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
+
+
+            //requestCode 3 = intent send from level confirm Dialog fragment
+            else if(requestCode == 3){
+                Log.d("Host", "Image was from level Dialog =  " + Integer.toString(requestCode));
+                TaskListFragment level = (TaskListFragment) fragmentManager
+                        .findFragmentByTag("levels");
+                // Log.d("Current Fragment", level.getClass().getSimpleName());
+                level.printMessage();
+                level.addPoints();
+
+            }
+
+        }
+
+        //result code 0 = image was not taken
+        else{
+            Log.d("Host", "No Image  Taken =  " + Integer.toString(resultCode));
+
+        }
+
+    }
+
     public void hideUnderlineViews() {
         View linView = this.findViewById(R.id.linear_layout_underline);
 
@@ -287,4 +326,5 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         }
     }
+
 }

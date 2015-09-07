@@ -23,7 +23,8 @@ import java.util.ArrayList;
 /**
  * Created by yaya on 5/5/15.
  *
- * This is an abstract class that specifies the image procesing for the gallery grid view.
+ * This is an abstract class that specifies the image processing for the gallery grid view.
+ * The image adapter sets a custom adapter so all images are displayed
  * We inherit from BaseAdapter
  */
 public class ImageAdapter extends BaseAdapter {
@@ -47,7 +48,10 @@ public class ImageAdapter extends BaseAdapter {
 
     }
 
+    //When the image adapter is created an arraylis of bitmaps and arraylis of file;paths is send.
+    //This allows us to see what image was selected.
     public ImageAdapter(Context c, ArrayList<Bitmap> bitmaps, ArrayList<String> filePaths) {
+        //Initializing the variables
         mContext = c;
         bitmap_images = bitmaps;
         images_file_path = filePaths;
@@ -79,15 +83,11 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item added by the Adapter
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public View getView(int position, View convertView, ViewGroup parent) {
+
         //when this is called a new image is passed in
         ImageView imageView;
 
-        Log.i("Tag", "fail");
-//        myBitmap = BitmapFactory.decodeFile(images_file_path.get(0));
-
-
-        //myImage.setImageBitmap(myBitmap);
-
+        //if the convertView wasn't created it will then create it
         if (convertView == null) {
             Display display = ((AppCompatActivity)mContext).getWindowManager().getDefaultDisplay();
             Point size = new Point();
@@ -122,21 +122,5 @@ public class ImageAdapter extends BaseAdapter {
 
         return imageView;
     }
-
-    // references to our images in an array an integer
-    /*public Integer[] mThumbIds = {
-            R.drawable.recycle, R.drawable.about_icon,
-            R.drawable.acti_icon, R.drawable.bullseye,
-            R.drawable.camera, R.drawable.eco_car,
-            R.drawable.eco_cleaning, R.drawable.eco_stuff,
-            R.drawable.eco_fuel, R.drawable.face_icon,
-            R.drawable.family_logo, R.drawable.globe,
-            R.drawable.done, R.drawable.eco_fuel,
-            R.drawable.recycle, R.drawable.mearth,
-            R.drawable.individual_logo, R.drawable.pale,
-    };*/
-    // references to our images in an array
-    //public Bitmap[] mThumbIds = {
-    //myBitmap, myBitmap};
 
 }

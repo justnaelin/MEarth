@@ -1,10 +1,12 @@
 package com.bytely.mearth;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,4 +135,27 @@ public class LevelsFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //  super.onActivityResult(requestCode, resultCode, data);
+       /* Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        fragment.onActivityResult(requestCode, resultCode, data);*/
+        ;
+        //result code -1 = image taken send from the Confirm Dialog Fragment
+        if (resultCode ==  -1){
+            Log.d("Level Fragment", "Image was taken =  " + Integer.toString(resultCode));
+
+        }
+
+        //result code 0 = image not taken  send from the Confirm Dialog Fragment
+        else{
+            Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
+
+        }
+        Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
+
+
+    }
+
 }

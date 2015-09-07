@@ -9,6 +9,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,11 +138,12 @@ public class ProfileFragment extends Fragment {
 
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 
-        startActivityForResult(intent, 0);
+       getActivity().startActivityForResult(intent, 2);
     }
-    @Override
+
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("Profile-Camera", "Inside profile");
 
     }
 

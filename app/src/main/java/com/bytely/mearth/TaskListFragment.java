@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class TaskListFragment extends Fragment {
     private int fragmentId;
     public static final int REQUEST_POINTS = 0;
     private TextView mUserPoints;
+    TaskModel task;
 
 
     public TaskListFragment() {
@@ -90,9 +92,7 @@ public class TaskListFragment extends Fragment {
 
         Bundle args = new Bundle();
         args.putInt("fragment_id", fragmentId);
-
         taskListFragment.setArguments(args);
-
         return taskListFragment;
     }
 
@@ -103,5 +103,28 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        Log.d("TaskList", "Inside onActivityResult");
+    }
+
+    public void printMessage() {
+        Log.d("TaskListFragment", "Inside TaskListFragment");
+    }
+
+    public void addTask(TaskModel taskModel) {
+        Log.d("TaskListsFragment", "Inside the add'task Method");
+
+        task = taskModel;
+
+        return;
+    }
+
+    public void addPoints() {
+        Log.d("TaskLisFragment", "Inside addPoints method");
+        Log.d("TaskListFragment", "Points" + task.getTaskPoints());
+        DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
+        mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        Log.d("TaskLisFragment", "Inside addPoints method finish  adding points");
+
+
     }
 }

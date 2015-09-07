@@ -63,26 +63,6 @@ public class GalleryFragment extends Fragment {
 
 
 
-     /*  Bitmap myBitmap = BitmapFactory.decodeFile(images_file_path.get(0));
-
-        ImageView myImage = (ImageView) view.findViewById(R.id.imageView_gallery);
-
-        ImageAdapter imageAdapter = new ImageAdapter(getActivity());
-
-        ArrayList<Bitmap> bitmap_images = new ArrayList<Bitmap>(imageAdapter.getItems());
-
-          myImage.setImageBitmap(imageAdapter.getItem(0)); */
-
-        /*
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-
-        ImageViewRecyclerAdapter imageAdapter = new ImageViewRecyclerAdapter(getActivity(),
-                Arrays.asList(listFile));
-
-        recyclerView.setAdapter(imageAdapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false));
-        */
-
         //find the gridview by id
         GridView gridview = (GridView) view.findViewById(R.id.gridview);
         //setAdaptersets method sets a custom adapter of images
@@ -106,7 +86,7 @@ public class GalleryFragment extends Fragment {
         return view;
     }
 
-
+    //sets the path for all the images in the image_file_path array
     public void setGalleryImages(){
 
         File file = new File(android.os.Environment.getExternalStorageDirectory(),"mearth");
