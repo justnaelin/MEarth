@@ -21,7 +21,7 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
     private int mPointsToAdd;
 
     private static TaskModel sTaskClicked;
-
+    
 
     public ConfirmPointsDialogFragment() {
         // Required empty public constructor
