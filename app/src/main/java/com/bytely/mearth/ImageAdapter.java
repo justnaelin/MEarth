@@ -1,8 +1,15 @@
 package com.bytely.mearth;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -40,18 +47,24 @@ public class ImageAdapter extends BaseAdapter {
 
     }
 
+    public ImageAdapter(Context c, ArrayList<Bitmap> bitmaps, ArrayList<String> filePaths) {
+        mContext = c;
+        bitmap_images = bitmaps;
+        images_file_path = filePaths;
+    }
+
     @Override
     public int getCount() {
         //number of thumbnails
         //return mThumbIds.length;
-        return bitmap_images.size();
+        return images_file_path.size();
     }
 
     @Override
-    public Bitmap getItem(int position) {
+    public String getItem(int position) {
         //returns the actual object at the specific position in the adapter
         // return mThumbIds[position];
-        return  bitmap_images.get(position);
+        return  images_file_path.get(position);
     }
 
     public ArrayList<Bitmap> getItems(){
@@ -63,9 +76,8 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
-
-
     // create a new ImageView for each item added by the Adapter
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public View getView(int position, View convertView, ViewGroup parent) {
         //when this is called a new image is passed in
         ImageView imageView;
@@ -77,13 +89,21 @@ public class ImageAdapter extends BaseAdapter {
         //myImage.setImageBitmap(myBitmap);
 
         if (convertView == null) {
+            Display display = ((AppCompatActivity)mContext).getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x / 3;
+            int height = width;
+            Resources r = Resources.getSystem();
+            float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                    60, r.getDisplayMetrics());
             // if it's not recycled, initialize some attributes
             //instantiate and configure with specific properties
             imageView = new ImageView(mContext);
             //this also crops and makes sure the dimensions are appropriate for the view
-            imageView.setLayoutParams(new GridView.LayoutParams(250, 250));//the size of each icon
+            imageView.setLayoutParams(new GridView.LayoutParams(width, height));//the size of each icon
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);//crops toward the center if necessary
-            imageView.setPadding(4, 4, 4, 4);//space between them
+            imageView.setPadding(1, 1, 1, 1);//space between them
         }
         else {
             //once created we recycle the imageView
@@ -102,6 +122,7 @@ public class ImageAdapter extends BaseAdapter {
 
         return imageView;
     }
+
     // references to our images in an array an integer
     /*public Integer[] mThumbIds = {
             R.drawable.recycle, R.drawable.about_icon,

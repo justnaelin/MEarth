@@ -12,7 +12,7 @@ public class TaskModel {
     private int mTaskID;
     private int mTaskCounter;
 
-    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskID, int taskCounter) {
+    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int taskID) {
         this.mTaskName = taskName;
         this.mTaskDescription = taskDescription;
         this.mTaskIcon = taskIcon;
