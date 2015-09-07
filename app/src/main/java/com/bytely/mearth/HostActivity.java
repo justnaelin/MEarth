@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.parse.Parse;
@@ -43,22 +44,27 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host);
 
+        hideUnderlineViews();
+
         getWindow().setBackgroundDrawable(null);
 
         if(savedInstanceState == null) {
             Log.d("onCreate", "New activity instance");
         }
 
-        Fragment dashFragment = fragmentManager.findFragmentByTag("dash_fragment");
+        DashFragment dashFragment = null;
 
-        if(dashFragment == null) {
+        if(savedInstanceState == null) {
+            showUnderlineView(0);
             dashFragment = new DashFragment();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
             fragmentTransaction.commit();
         }
 
+
         Thread thread = new Thread(new Runnable() {
+
             @Override
             public void run() {
                 android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
@@ -105,7 +111,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         });
 
         thread.start();
-
         Log.d("Activity", "After Thread");
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
@@ -117,6 +122,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment aboutFragment = fragmentManager.findFragmentByTag("about_fragment");
 
                 if(aboutFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(3);
                     aboutFragment = new AboutFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, aboutFragment);
@@ -134,6 +141,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment profileFragment = fragmentManager.findFragmentByTag("profile_fragment");
 
                 if (profileFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(2);
                     profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.fragment_container, profileFragment);
@@ -153,9 +162,11 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 Fragment levelsFragment = fragmentManager.findFragmentByTag("levels_fragment");
 
                 if(levelsFragment == null && savedInstanceState == null) {
+                    hideUnderlineViews();
+                    showUnderlineView(1);
                     levelsFragment = new LevelsFragment();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, levelsFragment);
+                    fragmentTransaction.replace(R.id.fragment_container, levelsFragment, "levels");
                     fragmentTransaction.addToBackStack("levels_fragment");
                     Log.d("Fragment Transaction", "Added to backstack");
                     fragmentTransaction.commit();
@@ -168,6 +179,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         mDashButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideUnderlineViews();
+                showUnderlineView(0);
                 //Toast.makeText(getApplicationContext(), "Dash Clicked", Toast.LENGTH_SHORT).show();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
@@ -188,6 +201,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         testObject.saveInBackground();
 
     }
+
+
 
     @Override
     public void onSaveInstanceState(Bundle savedState) {
@@ -214,7 +229,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelTwoFragment == null) {
             levelTwoFragment = TaskListFragment.getInstance(2);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
             fragmentTransaction.addToBackStack("level_two");
             fragmentTransaction.commit();
         }
@@ -227,7 +242,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         if(levelThreeFragment == null) {
             levelThreeFragment = TaskListFragment.getInstance(3);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment);
+            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
             fragmentTransaction.addToBackStack("level_three");
             fragmentTransaction.commit();
         }
@@ -274,8 +289,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             else if(requestCode == 3){
                 Log.d("Host", "Image was from level Dialog =  " + Integer.toString(requestCode));
                 TaskListFragment level = (TaskListFragment) fragmentManager
-                        .findFragmentByTag("level_one");
-                Log.d("Current Fragment", level.getClass().getSimpleName());
+                        .findFragmentByTag("levels");
+                // Log.d("Current Fragment", level.getClass().getSimpleName());
                 level.printMessage();
                 level.addPoints();
 
@@ -289,6 +304,28 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         }
 
+    }
+
+    public void hideUnderlineViews() {
+        View linView = this.findViewById(R.id.linear_layout_underline);
+
+        for(int i = 0; i < ((ViewGroup)linView).getChildCount(); i++) {
+            View childView = ((ViewGroup)linView).getChildAt(i);
+            childView.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void showUnderlineView(int position) {
+        View linView = this.findViewById(R.id.linear_layout_underline);
+
+        for(int i = 0; i < ((ViewGroup)linView).getChildCount(); i++) {
+            if(i == position) {
+                View childView = ((ViewGroup)linView).getChildAt(i);
+                childView.setVisibility(View.VISIBLE);
+            }
+
+        }
     }
 
 }

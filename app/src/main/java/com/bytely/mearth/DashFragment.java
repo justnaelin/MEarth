@@ -39,6 +39,7 @@ public class DashFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Log.d("Dash", "onCreate");
         setRetainInstance(true);
+
     }
 
     @Override
@@ -47,6 +48,8 @@ public class DashFragment extends Fragment {
         // Inflate the layout for this fragment
         Log.d("Dash", "onCreateView");
         View view = inflater.inflate(R.layout.fragment_dash, container, false);
+        comm.hideUnderlineViews();
+        comm.showUnderlineView(0);
         /*
         mTaskList = DashboardTasks.getInstance(getActivity()).getTaskList();
 

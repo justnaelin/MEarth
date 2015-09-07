@@ -49,7 +49,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         mPointsToAdd = getArguments().getInt(POINTS_ADDED_KEY);
     }
 
-
+//this creates the confirm picture dialog
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -57,7 +57,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.fragment_confirm_picture_dialog, null);
 
-        //gets the directory file path
+        //gets the directory file path to save the images
         directory = new File(Environment.getExternalStorageDirectory()+"/mearth");
         File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
 
@@ -69,6 +69,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         builder.setTitle("Confirm task, upload a picture");
         builder.setPositiveButton("Upload", new DialogInterface.OnClickListener() {
 
+            //if the confirm task button is selected it launches the camera view
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -138,16 +139,13 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 
 
-        // Starts the camera intent
+        // Starts the camera intent wit a request code number
         getActivity().startActivityForResult(intent, 3);
 
 
     }
 
-       /* DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
-        DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
-        sTaskClicked.incrementTaskCounter();
-        sendResult(Activity.RESULT_OK);*/
+
 
     //Receive the intent Result
     @Override

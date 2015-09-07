@@ -111,12 +111,19 @@ public class TaskListFragment extends Fragment {
     }
 
     public void addTask(TaskModel taskModel) {
+        Log.d("TaskListsFragment", "Inside the add'task Method");
+
         task = taskModel;
+
+        return;
     }
 
     public void addPoints() {
+        Log.d("TaskLisFragment", "Inside addPoints method");
+        Log.d("TaskListFragment", "Points" + task.getTaskPoints());
         DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        Log.d("TaskLisFragment", "Inside addPoints method finish  adding points");
 
 
     }

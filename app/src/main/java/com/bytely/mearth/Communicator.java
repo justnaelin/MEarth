@@ -9,4 +9,6 @@ public interface Communicator {
     void runLevelThree();
     TaskModel[] getTaskArray(int fragmentId);
     void updateActionBar();
+    void hideUnderlineViews();
+    void showUnderlineView(int position);
 }

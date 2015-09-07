@@ -46,6 +46,7 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         comm = (Communicator) getActivity();
+
         directory = new File(Environment.getExternalStorageDirectory()+"/mearth"); //the string to a path
         File file = new File(Environment.getExternalStorageDirectory()+"/mearth");
 
@@ -59,7 +60,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_profile, container, false);
-
+        comm.hideUnderlineViews();
+        comm.showUnderlineView(2);
 
         final FragmentManager fragmentManager = getChildFragmentManager();
         final Fragment achieveFragment = new AchieveFragment();
@@ -96,7 +98,11 @@ public class ProfileFragment extends Fragment {
         mGoalsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Fragment goalsFragment = new GalleryFragment();
+                GalleryFragment goalsFragment;
+                goalsFragment = (GalleryFragment) fragmentManager.findFragmentByTag("profile_goals_fragment");
+                if(goalsFragment == null) {
+                    goalsFragment = new GalleryFragment();
+                }
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.profile_fragment_container, goalsFragment);
                 fragmentTransaction.addToBackStack("profile_goals_fragment");
