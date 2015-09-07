@@ -1,7 +1,6 @@
 package com.bytely.mearth;
 
 import android.graphics.Bitmap;
-import java.util.UUID;
 
 
 public class TaskModel {
@@ -10,19 +9,30 @@ public class TaskModel {
     private Bitmap mTaskIcon;
     private int mTaskPoints;
     private boolean mIsCompleted;
+<<<<<<< HEAD
     private  int mTaskLevelNum;
     private UUID mTaskID;
     private int mTaskCounter;
 
     public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum) {
+=======
+    private int mTaskID;
+    private int mTaskCounter;
+
+    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int taskID) {
+>>>>>>> 02889c89017868a4f47b0b8e3f337d489981db33
         this.mTaskName = taskName;
         this.mTaskDescription = taskDescription;
         this.mTaskIcon = taskIcon;
         this.mTaskPoints = taskPoints;
         this.mIsCompleted = false;
         this.mTaskCounter = taskCounter;
+<<<<<<< HEAD
         this.mTaskLevelNum = levelNum;
         mTaskID = UUID.randomUUID();
+=======
+        this.mTaskID = taskID;
+>>>>>>> 02889c89017868a4f47b0b8e3f337d489981db33
     }
 
     public String getTaskName() {
@@ -51,7 +61,7 @@ public class TaskModel {
         return mIsCompleted;
     }
 
-    public UUID getTaskID() {
+    public int getTaskID() {
         return mTaskID;
     }
 

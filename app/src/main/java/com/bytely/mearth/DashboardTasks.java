@@ -1,6 +1,8 @@
 package com.bytely.mearth;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,13 +11,17 @@ import java.util.ArrayList;
 /**
  * Created by juice on 4/7/15.
  */
-public class DashboardTasks {
+public class DashboardTasks extends Activity {
+    public static final String POINTS_FILENAME = "total_points";
+    public static final String PREFS_KEY = "POINTS_VALUE";
     private static DashboardTasks sDashboardTasks;
     private static Context sContext;
     private static ArrayList<TaskModel> sTaskList;
     private static int sTotalPoints; // User's total points
     private int mBadgeFlag = 0; // Controls badge toasts
     private int mLevelFlag = 0; // Controls level toasts
+
+
     private DashboardTasks(Context context) {
         sContext = context;
         sTaskList = new ArrayList<>();
@@ -56,6 +62,16 @@ public class DashboardTasks {
     // Adds points to user's overall total points
     public void addPoints(int pointsToBeAdded) {
         sTotalPoints += pointsToBeAdded;
+
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+        settings = sContext.getSharedPreferences(POINTS_FILENAME, Context.MODE_PRIVATE); //1
+        editor = settings.edit(); //2
+
+        editor.putInt(PREFS_KEY, sTotalPoints); //3
+        editor.commit(); //4
+
+
         Log.d("DashboardTasks", "Added points to user-total");
 
     }
@@ -81,7 +97,14 @@ public class DashboardTasks {
         }
     }
 
-    public int getPoints() {return sTotalPoints;}
+    public int getPoints() {
+        SharedPreferences settings;
+        int pointsValue;
+        settings = sContext.getSharedPreferences(POINTS_FILENAME, Context.MODE_PRIVATE); //1
+        pointsValue = settings.getInt(PREFS_KEY, 0); //2
+        sTotalPoints = pointsValue;
+        return sTotalPoints;
+    }
 
     public void setTaskList(ArrayList<TaskModel> taskList) {
         this.sTaskList = taskList;
