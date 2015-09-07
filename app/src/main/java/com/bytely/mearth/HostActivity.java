@@ -81,29 +81,29 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        // [Nameidk ask Hugo and Naein,,button, points, number of times completed, level]
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1),
+                        // [Nameidk ask Hugo and Naelin,,buttonName, points, number of times completed, level,id]
+                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
+                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
+                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
+                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1, 4),
+                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1, 5),
                 };
 
                 mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 2),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 2),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 2),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2),
-                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 2),
+                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 2, 6),
+                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 2, 7),
+                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 2, 8),
+                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2, 9),
+                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 2, 10),
                 };
 
                 mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 3),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 3),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 3),
-                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 3),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 3),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3),
+                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 3, 11),
+                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 3, 12),
+                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 3, 13),
+                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 3, 14),
+                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 3, 15),
+                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3, 16),
 
                 };
                 Log.d("Thread", "Done");
@@ -203,52 +203,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
 
-<<<<<<< HEAD
-=======
-                mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
-                mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
-                mWaterBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.eco_cleaning);
-                mWaterBottleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.water_drop);
-                mWalkBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.walk);
-                mPaleBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.pale);
-                mPreserveBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.preserve);
-                mSolarBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.solar);
-                mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
-
-                mLevelOneArray = new TaskModel[]{
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1),
-                        new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 2),
-                        new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 3),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 4),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 5),
-                };
-
-                mLevelTwoArray = new TaskModel[]{
-                        new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 6),
-                        new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 7),
-                        new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 8),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 9),
-                        new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 10),
-                };
-
-                mLevelThreeArray = new TaskModel[]{
-                        new TaskModel("Get School to Adopt Green Policy", 2, mWaterBitmap, 10000, 0, 11),
-                        new TaskModel("Invite Someone to a MEarth Event", 2, mRecyclingBitmap, 5000, 0, 12),
-                        new TaskModel("Plant Trees", 2, mWildernessBitmap, 8000, 0, 13),
-                        new TaskModel("Tell Someone to Install MEarth App", 2, mSolarBitmap, 2000, 0, 14),
-                        new TaskModel("Organize a Beach Cleanup", 2, mWalkBitmap, 7000, 0, 15),
-                        new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 16),
-
-                };
-
-                Log.d("Thread", "Done");
-            }
-        });
-
-        thread.start();
-    }
->>>>>>> 02889c89017868a4f47b0b8e3f337d489981db33
-
     @Override
     public void onSaveInstanceState(Bundle savedState) {
 
@@ -260,11 +214,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelOneFragment == null) {
             levelOneFragment = TaskListFragment.getInstance(1);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
-            fragmentTransaction.addToBackStack("level_one");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
+        fragmentTransaction.addToBackStack("level_one");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -273,11 +228,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelTwoFragment == null) {
             levelTwoFragment = TaskListFragment.getInstance(2);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
-            fragmentTransaction.addToBackStack("level_two");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
+        fragmentTransaction.addToBackStack("level_two");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -286,11 +242,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelThreeFragment == null) {
             levelThreeFragment = TaskListFragment.getInstance(3);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
-            fragmentTransaction.addToBackStack("level_three");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
+        fragmentTransaction.addToBackStack("level_three");
+        fragmentTransaction.commit();
     }
 
     @Override

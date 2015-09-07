@@ -1,7 +1,9 @@
 package com.bytely.mearth;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,10 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
     private LayoutInflater mLayoutInflater;
     private List<TaskModel> mTaskList = Collections.emptyList();
     private Context mContext;
+    private static Context sContext;
+    //retrive task id
+    public static final String TASK_FILENAME = "task_completed";
+    public static final String PREFS_KEY = "POINTS_VALUE";
 
     public CurrentTaskAdapter(Context context, List<TaskModel> taskModelList) {
         mContext = context.getApplicationContext();
@@ -63,6 +69,21 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
             mAdd.setVisibility(View.GONE);
             mTaskCounter.setVisibility(View.VISIBLE);
         }
+
+    }
+
+    // Adds points to user's overall total points
+    public void addTasks(int taskId) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+        settings = sContext.getSharedPreferences(TASK_FILENAME, Context.MODE_PRIVATE); //1
+        editor = settings.edit(); //2
+
+        editor.putInt(PREFS_KEY, taskId); //3
+        editor.commit(); //4
+
+
+        Log.d("DashboardTasks", "Added points to user-total");
 
     }
 }
