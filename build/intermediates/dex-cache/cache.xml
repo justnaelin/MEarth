@@ -16,13 +16,6 @@
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-8a2ee5d1c06a784ae58bf36e77964cf67f0eedac.jar" />
     </item>
     <item
-        jar="/home/juice/AndroidStudioProjects/MEarth/app/libs/picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-91177853db65e20d89ac462f5b477b8047b8cd6d.jar" />
-    </item>
-    <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/libs/Parse-1.9.1.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -44,6 +37,13 @@
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-d4be7d42f3ddb661c3ee0fc38df508602dc7340e.jar" />
     </item>
     <item
+        jar="/home/juice/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-f874d8a7809d2daf97bb86f365098aabdd5418ce.jar" />
+    </item>
+    <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -56,6 +56,13 @@
         revision="21.1.2"
         sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
         <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-d6888e2523d85d76a6643c8ba1bc5abb7310b7ab.jar" />
+    </item>
+    <item
+        jar="/home/juice/AndroidStudioProjects/MEarth/app/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="78b8f6e37921559ed21c1fae1f30f9f713494db8">
+        <dex dex="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-385ef830bbbeefb2e3f3ae951fa26a3ac7acf197.jar" />
     </item>
     <item
         jar="/home/juice/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"

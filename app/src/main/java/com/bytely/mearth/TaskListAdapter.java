@@ -3,6 +3,7 @@ package com.bytely.mearth;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
     private Context context;
     private LayoutInflater mLayoutInflater;
     private List<TaskModel> mActivityList = Collections.emptyList();
+    private int levelNum;
 
     private Communicator communicator;
 
@@ -67,14 +69,20 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         holder.mTaskIcon.setImageBitmap(current.getTaskIcon());
         holder.mTaskPointValue.setText(Integer.toString(current.getTaskPoints()));
         holder.mTaskCounter.setText(Integer.toString(current.getTaskCounter()));
+       // holder.mTaskLevel.setText(Integer.toString(current.getTaskLevelNum()));
+        levelNum = (current.getTaskLevelNum());
 
     }
-
     /**
      * Returns the total number of items in our data set {@link #mActivityList}
      *
      * @return The size of our data set {@link #mActivityList}
      */
+
+    public int getLevelNum() {
+        return levelNum;
+    }
+
     @Override
     public int getItemCount() {
         return mActivityList.size();
@@ -86,6 +94,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
      * method @see #onCreateViewHolder(ViewGroup parent, int viewType)
      */
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
+        private TextView mTaskLevel;
         private TextView mTaskName;
         private ImageView mTaskIcon;
         private TextView mTaskPointValue; // Point value associated with each activity
@@ -93,6 +102,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         private TaskModel mTask;
         private RelativeLayout mRelativeLayout;
         private TextView mTaskCounter; // Keeps track of how many times they've completed a task
+
+
 
         public MyViewHolder(View view) {
             super(view);
@@ -109,16 +120,29 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
         @Override
         public void onClick(View v) {
+
+            Log.i("ListAdapter", "The level number = " + Integer.toString(levelNum));
+
             android.support.v4.app.FragmentManager fragmentManager =
                     ((AppCompatActivity) context).getSupportFragmentManager();
-            TaskListFragment targetFragment =
-                    (TaskListFragment) fragmentManager.findFragmentById(R.id.fragment_container);
+            TaskListFragment targetFragment = (TaskListFragment) fragmentManager.findFragmentById(R.id.fragment_container);
 
-            ConfirmPointsDialogFragment confirmPointsDialogFragment =
-                    ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
-            confirmPointsDialogFragment.setTargetFragment(targetFragment,
-                            TaskListFragment.REQUEST_POINTS);
-            confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
+            if(levelNum == 1){
+                ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+
+                confirmPointsDialogFragment.setTargetFragment(targetFragment,TaskListFragment.REQUEST_POINTS);
+                confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
+            }
+
+            else{
+                targetFragment.addTask(mTask);
+                ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+                confirmPictureDialogFragment.setTargetFragment(targetFragment, TaskListFragment.REQUEST_POINTS);
+
+                confirmPictureDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
+
+            }
+
             //DashboardTasks.getInstance(context).badgeNotification();
             //DashboardTasks.getInstance(context).levelNotification();
         }

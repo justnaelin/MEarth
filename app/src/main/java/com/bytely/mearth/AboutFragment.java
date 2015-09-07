@@ -1,5 +1,4 @@
 package com.bytely.mearth;
-// FYI to get profile picture, see video @ 12:30
 
 import android.content.Intent;
 import android.net.Uri;
@@ -44,10 +43,11 @@ public class AboutFragment extends Fragment {
 
     private TextView mTextDetails;
     private CallbackManager mCallbackManager;
-
     private AccessTokenTracker mTokenTracker;
     private ProfileTracker mProfileTracker;
+
     private FacebookCallback<LoginResult> mCallback = new FacebookCallback<LoginResult>() {
+
 
         @Override
         public void onSuccess(LoginResult loginResult) {
@@ -79,7 +79,7 @@ public class AboutFragment extends Fragment {
         comm = (Communicator) getActivity();
 
         /*
-        //  -- FACEBOOK LOGIN  --
+        //  ----- FACEBOOK LOGIN  ----
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
         mCallbackManager = CallbackManager.Factory.create();
         // Will handel user name change.
@@ -109,17 +109,16 @@ public class AboutFragment extends Fragment {
 
     }
 
-
+    //This method is called when the AboutFragment is create to have the fragment instantiate its
+    //  user interface view.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about, container, false);
-       //Share Dialog
-       // ShareDialog dialog = new ShareDialog(getActivity());
 
         // -- Social Media Buttons --
-        // Facebook Button
+        // Facebook Button, This launches MEarth's facebook page
         comm.hideUnderlineViews();
         comm.showUnderlineView(3);
         mFbButton = (ImageButton) view.findViewById(R.id.fbButton);
@@ -127,6 +126,8 @@ public class AboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String url = "https://www.facebook.com/MEarthCarmel";
+
+                //We create an intent to start a new task (launching a url)
                 Intent i = new Intent();
                 i.setAction(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
@@ -134,12 +135,14 @@ public class AboutFragment extends Fragment {
 
             }
         });
-        // Youtube Button
+        // Youtube Button, This launches MEarth's youtube channel
         mYoutubeButton = (ImageButton) view.findViewById(R.id.youtubeButton);
         mYoutubeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "https://www.youtube.com/watch?v=VrCffTcfwoo";
+
+                //We create an intent to start a new task (launching a url)
                 Intent i = new Intent();
                 i.setAction(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
@@ -147,12 +150,14 @@ public class AboutFragment extends Fragment {
 
             }
         });
-        // Instagram Button
+        // Instagram Button, this launhes MEarth's Instagram page
         mInstagramButton = (ImageButton) view.findViewById(R.id.instagramButton);
         mInstagramButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String url = "https://instagram.com/mearthcarmel";
+
+                //We create an intent to start a new task (launching a url)
                 Intent i = new Intent();
                 i.setAction(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
@@ -162,41 +167,6 @@ public class AboutFragment extends Fragment {
         });
 
 
-        /*
-        mShareButton = (ShareButton) view.findViewById(R.id.share_button);
-        // mShareButton.setShareContent(content);
-        mShareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Share Image to Facebook
-                Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.lightbulb);
-                SharePhoto photo = new SharePhoto.Builder()
-                        .setBitmap(image)
-                        .build();
-                SharePhotoContent content = new SharePhotoContent.Builder()
-                        .addPhoto(photo)
-                        .build();
-                ShareDialog.show(getActivity(), content);
-
-
-            }
-
-
-        });
-        */
-        /*
-        // Use this version when working
-        ShareButton shareButton = (ShareButton)view.findViewById(R.id.share_button);
-
-        // Share Image to Facebook
-        Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.lightbulb);
-        SharePhoto photo = new SharePhoto.Builder()
-                .setBitmap(image)
-                .build();
-        SharePhotoContent content = new SharePhotoContent.Builder()
-                .addPhoto(photo)
-                .build();
-        shareButton.setShareContent(content);*/
 
        return view;
     }
@@ -212,12 +182,6 @@ public class AboutFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       // Temp Comment
-       //  LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
-       //  loginButton.setReadPermissions("users_friends");//only ask persion if needed
-       //  loginButton.setFragment(this);
-       // loginButton.registerCallback(mCallbackManager, mCallback);
-
 
     }
 
@@ -225,24 +189,22 @@ public class AboutFragment extends Fragment {
     public void onResume()
     {
         super.onResume();
-       // Temp Comment
-       // Profile profile=Profile.getCurrentProfile();
-       // displayWelcomeMessage(profile);
+
     }
 
     @Override
     public void onStop(){
         super.onStop();
-        // Temp Comment
-       //  mTokenTracker.stopTracking();
-       //  mProfileTracker.startTracking();
+
 
     }
+
+
+    //Whenn an intent is launch it starts the OnActivity Result
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-       // Temp Comment
-       // mCallbackManager.onActivityResult(requestCode, resultCode, data );
+
     }
 
 }

@@ -1,6 +1,5 @@
 package com.bytely.mearth;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -8,14 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by yaya on 6/14/15.
  */
 public class ConfirmPointsDialogFragment extends DialogFragment {
+
     private static final String POINTS_ADDED_KEY = "points_to_be_added";
 
     private int mPointsToAdd;
@@ -47,13 +46,11 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
                 DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
                 sTaskClicked.incrementTaskCounter();
                 sendResult(Activity.RESULT_OK);
-
-                // Check if badge is earned
-
 
             }
         });
@@ -74,6 +71,7 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         return dialog;
     }
 
+
     public static ConfirmPointsDialogFragment getInstance(int pointsToAdd, TaskModel task) {
         sTaskClicked = task;
 
@@ -88,12 +86,15 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
     }
 
     public void sendResult(int resultCode) {
+
         if(getTargetFragment() == null) {
             return;
         }
         Intent intent = new Intent();
         getTargetFragment().onActivityResult(TaskListFragment.REQUEST_POINTS,
-                        resultCode, intent);
+                resultCode, intent);
     }
+
+
 
 }
