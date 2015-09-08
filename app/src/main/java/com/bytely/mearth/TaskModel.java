@@ -16,6 +16,7 @@ public class TaskModel {
     private int mTaskCounter;
 
 
+
     public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum, int taskID) {
 
         this.mTaskName = taskName;

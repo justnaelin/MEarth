@@ -1,7 +1,9 @@
 package com.bytely.mearth;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +45,7 @@ public class TaskListFragment extends Fragment {
     TaskModel task;
 
 
+
     public TaskListFragment() {
         // Required empty public constructor
     }
@@ -61,6 +64,8 @@ public class TaskListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
 
         fragmentId = getArguments().getInt("fragment_id");
+
+        Log.d("TaskList fragmentid", String.valueOf(fragmentId));
         mTaskList = comm.getTaskArray(fragmentId);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.task_list);
@@ -119,7 +124,7 @@ public class TaskListFragment extends Fragment {
     }
 
     public void addPoints() {
-        Log.d("TaskLisFragment", "Inside addPoints method");
+
         Log.d("TaskListFragment", "Points" + task.getTaskPoints());
         DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
@@ -127,4 +132,7 @@ public class TaskListFragment extends Fragment {
 
 
     }
+
+
+
 }
