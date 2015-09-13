@@ -104,7 +104,7 @@ public class ProfileFragment extends Fragment {
                     goalsFragment = new GalleryFragment();
                 }
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.profile_fragment_container, goalsFragment);
+                fragmentTransaction.replace(R.id.profile_fragment_container, goalsFragment, "profile_goals_fragment");
                 fragmentTransaction.addToBackStack("profile_goals_fragment");
                 fragmentTransaction.commit();
             }

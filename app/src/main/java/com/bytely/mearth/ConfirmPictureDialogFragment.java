@@ -143,10 +143,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
 
         Uri imageFileUri = Uri.fromFile(imageFile);
 
-
-
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
-
 
         // Starts the camera intent wit a request code number
         getActivity().startActivityForResult(intent, 3);

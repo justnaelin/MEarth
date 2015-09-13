@@ -34,6 +34,8 @@ public class GalleryFragment extends Fragment {
 
     File[] listFile;
 
+    Communicator hostCommunicator;
+
     public GalleryFragment() {
         // Required empty public constructor
     }
@@ -41,6 +43,8 @@ public class GalleryFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
+        hostCommunicator = (Communicator) activity;
     }
 
     @Override
@@ -50,16 +54,18 @@ public class GalleryFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
-        bitmap_images = new ArrayList<Bitmap>();
+        // ** ORIGINAL ** bitmap_images = new ArrayList<Bitmap>();
 
         //Toast toast = Toast.makeText(getActivity(), "image", Toast.LENGTH_SHORT);
         //toast.show();
 
+        bitmap_images = hostCommunicator.getGalleryBitmaps();
+
         //Grid view images
         int iconSize = getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-        setGalleryImages();
-        setBitmap_images();
-        Log.d("Gallery", "Array size: " + bitmap_images.size());
+        // setGalleryImages();
+        // setBitmap_images();
+        //Log.d("Gallery", "Array size: " + bitmap_images.size());
 
 
 
@@ -67,7 +73,7 @@ public class GalleryFragment extends Fragment {
         GridView gridview = (GridView) view.findViewById(R.id.gridview);
         //setAdaptersets method sets a custom adapter of images
 
-        gridview.setAdapter(new ImageAdapter(getActivity(), bitmap_images, images_file_path));
+        gridview.setAdapter(new ImageAdapter(getActivity(), bitmap_images));
 
         //if one image is clicked the setOnItemClickListener is called
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,7 +106,6 @@ public class GalleryFragment extends Fragment {
                 images_file_path.add(listFile[i].getAbsolutePath());
             }
         }
-
     }
 
     public void setBitmap_images(){

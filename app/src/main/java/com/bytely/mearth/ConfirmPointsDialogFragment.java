@@ -32,7 +32,6 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
 
 
-
     public ConfirmPointsDialogFragment() {
         // Required empty public constructor
     }
