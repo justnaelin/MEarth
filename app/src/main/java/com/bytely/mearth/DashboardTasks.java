@@ -71,9 +71,7 @@ public class DashboardTasks extends Activity {
         editor.putInt(PREFS_KEY, sTotalPoints); //3
         editor.commit(); //4
 
-
         Log.d("DashboardTasks", "Added points to user-total");
-
     }
 
     public void levelNotification() {

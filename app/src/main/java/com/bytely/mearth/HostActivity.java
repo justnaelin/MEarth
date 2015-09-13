@@ -60,8 +60,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
             fragmentTransaction.commit();
-        }
 
+        }
 
         Thread thread = new Thread(new Runnable() {
 

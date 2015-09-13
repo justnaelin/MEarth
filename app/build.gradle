@@ -40,6 +40,9 @@ dependencies {
     compile 'com.android.support:cardview-v7:22.1.1'
     compile 'com.android.support:support-v4:22.1.1'
     compile 'com.android.support:recyclerview-v7:22.1.1'
+    // For Youtube API
+    compile 'com.google.apis:google-api-services-youtube:v3-rev120-1.19.0'
+
 
     // Image downloading and caching library for android
     compile 'com.squareup.picasso:picasso:2.5.2'

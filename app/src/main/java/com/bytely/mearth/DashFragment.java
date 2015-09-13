@@ -7,18 +7,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 /**
  * A simple {@link Fragment} subclass.
+ * <p/>
+ * public class YoutubeFragment extends Fragment implements
+ * YouTubePlayer.OnInitializedListener
  */
 public class DashFragment extends Fragment {
     private Communicator comm;
+    private WebView mWebView;
 
 
     public DashFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -45,8 +51,28 @@ public class DashFragment extends Fragment {
         comm.showUnderlineView(0);
 
 
+        mWebView = (WebView) view.findViewById(R.id.webView);
+
+        String url = "http://mearthcarmel.org/special-community-events/";
+        if(mWebView != null){
+            mWebView.loadUrl(url);
+            mWebView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                    view.loadUrl(url);
+                    return true;
+                }
+            });
+        }
         return view;
+
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
 
     @Override
     public void onResume() {
@@ -69,6 +95,7 @@ public class DashFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.d("Dash", "onDetach");
+
     }
 
     @Override
@@ -94,4 +121,6 @@ public class DashFragment extends Fragment {
         super.onDestroyView();
         Log.d("Dash", "onDestroyView");
     }
+
+
 }

@@ -4,7 +4,8 @@
     android:id="@+id/profile_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bytely.mearth.ProfileActivity" >
+    tools:context="com.bytely.mearth.ProfileActivity"
+    android:background="#FFFFFF">
 
 
 
@@ -45,11 +46,11 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="138dp"
+        android:layout_height="140dp"
         android:id="@+id/cover_photo"
         android:src="@drawable/mearthpano"
-        android:layout_alignRight="@+id/user_points"
-        android:layout_alignEnd="@+id/user_points" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
