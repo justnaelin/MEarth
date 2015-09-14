@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.bytely.mearth.AchieveFragment">
+    tools:context="com.bytely.mearth.AchieveFragment"
+    android:background="#FFFFFF">
 
 
     <RelativeLayout
