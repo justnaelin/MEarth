@@ -3,10 +3,13 @@ package com.bytely.mearth;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -21,6 +24,13 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
     private static TaskModel sTaskClicked;
 
+    //retrieve task id
+    public static final String TASK_ID_KEY = "task_completed_id";
+    private static final String TASKS_FILENAME = "completed_tasks";
+    public int mTaskId;
+    private static Context sContext;
+
+
 
     public ConfirmPointsDialogFragment() {
         // Required empty public constructor
@@ -31,6 +41,8 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         super.onAttach(activity);
 
         mPointsToAdd = getArguments().getInt(POINTS_ADDED_KEY);
+        mTaskId = getArguments().getInt(TASK_ID_KEY);
+        Log.i("Confirm pic task ID: ", String.valueOf(mTaskId));
     }
 
 
@@ -48,7 +60,7 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
 
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
-                DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
+                DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked, mTaskId);
                 sTaskClicked.incrementTaskCounter();
                 sendResult(Activity.RESULT_OK);
 
@@ -71,14 +83,29 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         return dialog;
     }
 
+   /* // Adds the tasks ID to sharedPreference so we can retrive it later
+    public void addTasks(int taskId) {
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+        settings = sContext.getSharedPreferences(TASKS_FILENAME, Context.MODE_PRIVATE);
+        editor = settings.edit();
 
-    public static ConfirmPointsDialogFragment getInstance(int pointsToAdd, TaskModel task) {
+        editor.putInt(PREFS_KEY, taskId);
+        editor.commit();
+
+
+        Log.d("CurrentFragment", "Adds the tasks to the shared preference");
+
+    }*/
+
+    public static ConfirmPointsDialogFragment getInstance(int pointsToAdd, TaskModel task, int taskId) {
         sTaskClicked = task;
 
         ConfirmPointsDialogFragment pointsDialogFragment = new ConfirmPointsDialogFragment();
         Bundle args = new Bundle();
 
         args.putInt(POINTS_ADDED_KEY, pointsToAdd);
+        args.putInt(TASK_ID_KEY, taskId);
 
         pointsDialogFragment.setArguments(args);
 

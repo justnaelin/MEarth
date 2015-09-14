@@ -15,11 +15,17 @@ public class DashboardTasks extends Activity {
     public static final String POINTS_FILENAME = "total_points";
     public static final String PREFS_KEY = "POINTS_VALUE";
     private static DashboardTasks sDashboardTasks;
-    private static Context sContext;
     private static ArrayList<TaskModel> sTaskList;
     private static int sTotalPoints; // User's total points
     private int mBadgeFlag = 0; // Controls badge toasts
     private int mLevelFlag = 0; // Controls level toasts
+
+    //retrieve task id
+    private static final String TASKS_FILENAME = "completed_tasks";
+    public static final String TASK_ID_KEY = "task_completed_id";
+    public int mTaskId;
+    private static Context sContext;
+    private static Activity sActivity;
 
 
     private DashboardTasks(Context context) {
@@ -29,24 +35,59 @@ public class DashboardTasks extends Activity {
     }
 
     public static DashboardTasks getInstance(Context context) {
+
         if(sDashboardTasks == null) {
             sDashboardTasks = new DashboardTasks(context.getApplicationContext());
         }
         return sDashboardTasks;
     }
 
+    public static DashboardTasks getInstance(Activity activity) {
+
+        if(sDashboardTasks == null) {
+            sDashboardTasks = new DashboardTasks(activity.getApplicationContext());
+            sActivity = activity;
+        }
+        return sDashboardTasks;
+    }
+
+
     public ArrayList<TaskModel> getTaskList() {
         return sTaskList;
     }
+    // Saves the tasks in a sharedPreference file to retrieve them later
+    public void addTaskToSharedPreferences(int taskId) {
 
-    public void addTask(TaskModel task) {
+        //add the tasks to the SharedPreference file
+        PreferenceTasksUtility.addTaskId(sActivity, String.valueOf(taskId));
+
+    }
+
+    //retrieves the array of taskId's
+    public  int[] retrieveTaskIds(){
+
+        //retrive tasks
+        int[] intArray = PreferenceTasksUtility.getTaskList(sActivity);
+        for(int i = 0; i < intArray.length; i++){
+            Log.d("DashboardTasks", "TaskNum" + intArray[i]);
+
+        }
+        return intArray;
+
+    }
+    public void addTask(TaskModel task, int mTaskId) {
         if(sTaskList.size() == 0) {
+            Log.d("DashboardTasks", "before addTask");
             sTaskList.add(task);
+            Log.d("DashboardTasks", "after addTask");
+            addTaskToSharedPreferences(mTaskId);
+            Log.d("DashboardTasks", "after sharedPrefe");
         } else {
             if(sTaskList.contains(task)) {
                 return;
             } else {
                 sTaskList.add(task);
+                addTaskToSharedPreferences(mTaskId);
             }
         }
     }
@@ -73,6 +114,7 @@ public class DashboardTasks extends Activity {
 
         Log.d("DashboardTasks", "Added points to user-total");
     }
+
 
     public void levelNotification() {
         int duration = Toast.LENGTH_SHORT;
