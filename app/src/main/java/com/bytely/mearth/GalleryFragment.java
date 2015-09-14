@@ -11,7 +11,6 @@ import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -88,6 +87,7 @@ public class GalleryFragment extends Fragment {
 
             }
         });
+        container.removeAllViews();
 
         return view;
     }

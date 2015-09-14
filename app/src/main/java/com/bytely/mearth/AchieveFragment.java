@@ -88,7 +88,7 @@ public class AchieveFragment extends Fragment {
             badge_nine.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.new_award9));
             //toast.show();
         }
-
+        container.removeAllViews();
         return view;
     }
 

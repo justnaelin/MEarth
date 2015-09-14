@@ -1,13 +1,10 @@
 package com.bytely.mearth;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +52,7 @@ public class CurrentFragment extends Fragment {
             mTextView.setText(R.string.current_fragment_no_tasks);
 
         }
+        container.removeAllViews();
 
 
         return view;
