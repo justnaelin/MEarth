@@ -53,29 +53,12 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
 
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
+                DashboardTasks.getInstance(getActivity()).levelNotification();
+                DashboardTasks.getInstance(getActivity()).badgeNotification();
                 DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked);
-
                 sTaskClicked.incrementTaskCounter();
-                sendResult(Activity.RESULT_OK);
 
-                if(userPoints >= 25000)
-                    mBadgeToast.makeText(getActivity(),"25000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 18000)
-                    mBadgeToast.makeText(getActivity(),"18000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 15000)
-                    mBadgeToast.makeText(getActivity(),"15000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 12000)
-                    mBadgeToast.makeText(getActivity(),"12000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 8000)
-                    mBadgeToast.makeText(getActivity(),"8000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 6000)
-                    mBadgeToast.makeText(getActivity(),"6000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 4000)
-                    mBadgeToast.makeText(getActivity(),"4000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 2000)
-                    mBadgeToast.makeText(getActivity(),"2000", Toast.LENGTH_SHORT).show();
-                else if(userPoints >= 1000)
-                    mBadgeToast.makeText(getActivity(),"1000", Toast.LENGTH_SHORT).show();
+                sendResult(Activity.RESULT_OK);
 
 
             }
@@ -120,7 +103,5 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         getTargetFragment().onActivityResult(TaskListFragment.REQUEST_POINTS,
                 resultCode, intent);
     }
-
-
 
 }

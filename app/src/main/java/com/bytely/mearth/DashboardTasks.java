@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class DashboardTasks extends Activity {
     public static final String POINTS_FILENAME = "total_points";
     public static final String PREFS_KEY = "POINTS_VALUE";
+    public static final String B_FLAG_KEY = "BADGE_FLAG_VALUE";
+    public static final String L_FLAG_KEY = "LEVEL_FLAG_VALUE";
     private static DashboardTasks sDashboardTasks;
     private static Context sContext;
     private static ArrayList<TaskModel> sTaskList;
@@ -80,6 +82,12 @@ public class DashboardTasks extends Activity {
         int duration = Toast.LENGTH_SHORT;
         CharSequence text = "";
 
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = sContext.getSharedPreferences("level_flag", Context.MODE_PRIVATE);
+        mLevelFlag = settings.getInt(L_FLAG_KEY, 0);
+
         if(sTotalPoints >= 1100 && mLevelFlag == 0)
         {
             text = "You have unlocked Level Two!";
@@ -87,14 +95,76 @@ public class DashboardTasks extends Activity {
             toast.show();
             mLevelFlag++;
         }
-        if(sTotalPoints >= 4400)
+        if(sTotalPoints >= 4100)
         {
             text = "You have unlocked Level Three!";
             Toast toast = Toast.makeText(sContext.getApplicationContext(), text, duration);
             mLevelFlag++;
-            if(mLevelFlag == 3)
+            if(mLevelFlag == 2)
                 toast.show();
+            mLevelFlag++;
         }
+        editor = settings.edit();
+
+        editor.putInt(L_FLAG_KEY, mLevelFlag);
+        editor.commit();
+    }
+
+    public void badgeNotification() {
+        int duration = Toast.LENGTH_SHORT;
+        CharSequence text = "You have earned a badge";
+        SharedPreferences settings;
+        SharedPreferences.Editor editor;
+
+        settings = sContext.getSharedPreferences("badge_flag", Context.MODE_PRIVATE);
+        mBadgeFlag = settings.getInt(B_FLAG_KEY, 0);
+
+        Toast mBadgeToast = Toast.makeText(sContext.getApplicationContext(), text, duration);
+
+        int userPoints = getPoints();
+
+        if(userPoints >= 25000 && mBadgeFlag == 8) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 18000 && mBadgeFlag == 7) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 15000 && mBadgeFlag == 6) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 12000 && mBadgeFlag == 5) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 8000 && mBadgeFlag == 4) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 6000 && mBadgeFlag == 3) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 4000 && mBadgeFlag == 2) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 2000 && mBadgeFlag == 1) {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+        else if(userPoints >= 1000 && mBadgeFlag == 0)
+        {
+            mBadgeToast.show();
+            mBadgeFlag++;
+        }
+
+        editor = settings.edit();
+
+        editor.putInt(B_FLAG_KEY, mBadgeFlag);
+        editor.commit();
     }
 
     public int getPoints() {

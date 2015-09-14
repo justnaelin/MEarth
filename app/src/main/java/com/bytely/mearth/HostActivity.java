@@ -3,6 +3,7 @@
 package com.bytely.mearth;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,10 +14,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseObject;
 
+import java.util.ArrayList;
 
 public class HostActivity extends AppCompatActivity implements Communicator {
 
@@ -37,8 +40,17 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     private TaskModel[] mLevelOneArray;
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;
+    private static HostActivity sHostActivty;
+    Toast mBadgeToast;
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
 
+   /*
+    public static HostActivity getInstance(Context context){
+        if(sHostActivty == null){
+            sHostActivty = new HostActivity(context.getApplicationContext());
+        }
+        return sHostActivty;
+    }*/
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,19 +93,20 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 mWildernessBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.wilderness);
 
                 mLevelOneArray = new TaskModel[]{
-                        // [Nameidk ask Hugo and Naelin,button, points, number of times completed, level]
-                        new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
+
+                        // [Nameidk ask Hugo and Naelin,buttonName, points, number of times completed, level,id]
+                        new TaskModel("Recycle 10 recyclables.", 2, mRecyclingBitmap, 200, 0, 1, 1),
                         new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
                         new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1, 4),
-                        new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1, 5),
+                        new TaskModel("Refill and Reuse Water Bottle", 2, mWaterBottleBitmap, 300, 0, 1, 4),
+                        new TaskModel("Walk or Ride a Bike for 3 Miles", 2, mWalkBitmap, 400, 0, 1, 5),
                 };
 
                 mLevelTwoArray = new TaskModel[]{
                         new TaskModel("Start a Food Garden", 2, mPaleBitmap, 600, 0, 2, 6),
                         new TaskModel("Grow Native Plants", 2, mPreserveBitmap, 800, 0, 2, 7),
                         new TaskModel("Use Eco-Friendly Cleaning Supplies", 2, mPreserveBitmap, 500, 0, 2, 8),
-                        new TaskModel("Switch to Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2, 9),
+                        new TaskModel("Buy/Install Fluorescent Light Bulbs", 2, mLightBitmap, 600, 0, 2, 9),
                         new TaskModel("Go Shopping at Farmers Market", 2, mSolarBitmap, 700, 0, 2, 10),
                 };
 
@@ -203,7 +216,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
 
-
     @Override
     public void onSaveInstanceState(Bundle savedState) {
 
@@ -215,11 +227,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelOneFragment == null) {
             levelOneFragment = TaskListFragment.getInstance(1);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
-            fragmentTransaction.addToBackStack("level_one");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelOneFragment, "level_one");
+        fragmentTransaction.addToBackStack("level_one");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -228,11 +241,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelTwoFragment == null) {
             levelTwoFragment = TaskListFragment.getInstance(2);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
-            fragmentTransaction.addToBackStack("level_two");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelTwoFragment, "levels");
+        fragmentTransaction.addToBackStack("level_two");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -241,11 +255,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         if(levelThreeFragment == null) {
             levelThreeFragment = TaskListFragment.getInstance(3);
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
-            fragmentTransaction.addToBackStack("level_three");
-            fragmentTransaction.commit();
+
         }
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, levelThreeFragment, "levels");
+        fragmentTransaction.addToBackStack("level_three");
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -327,5 +342,4 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         }
     }
-
 }

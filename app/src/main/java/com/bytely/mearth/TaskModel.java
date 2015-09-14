@@ -16,8 +16,8 @@ public class TaskModel
     private int mTaskID;
     private int mTaskCounter;
 
-    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum, int taskID)
-    {
+    public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum, int taskID) {
+
         this.mTaskName = taskName;
         this.mTaskDescription = taskDescription;
         this.mTaskIcon = taskIcon;
@@ -26,6 +26,7 @@ public class TaskModel
         this.mTaskCounter = taskCounter;
         this.mTaskLevelNum = levelNum;
         this.mTaskID = taskID;
+
     }
 
     public String getTaskName() {

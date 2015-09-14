@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< HEAD
         jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -17,6 +18,9 @@
     </item>
     <item
         jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
+=======
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
+>>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
         jumboMode="false"
         revision="21.1.2"
         sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
@@ -51,6 +55,7 @@
         <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-39db33387bfc60be0a969ed1d42052af9121c1bb.jar" />
     </item>
     <item
+<<<<<<< HEAD
         jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -59,6 +64,9 @@
     </item>
     <item
         jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
+=======
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
+>>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
         jumboMode="false"
         revision="21.1.2"
         sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
@@ -69,7 +77,32 @@
         jumboMode="false"
         revision="21.1.2"
         sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+<<<<<<< HEAD
         <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-52bc16dba702063bd57462c54bec4a37fe96a3da.jar" />
+=======
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-782e879861f9cf8a7276bd91b1dc3b14d9f8198e.jar" />
+    </item>
+    <item
+        jar="/home/yaya/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-0d63affba6b366741edcdf09da305d4da764d8ff.jar" />
+    </item>
+    <item
+        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="22886d910315028a2b34b1ba068c265534ade87a">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-de10bcd0586893867f58bf926d82ecd12e7b15ea.jar" />
+    </item>
+    <item
+        jar="/home/yaya/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.1-d94e24d2e24aa4a5c59b2fd2b411110feb13e7ea.jar" />
+>>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
     </item>
 
 </items>
