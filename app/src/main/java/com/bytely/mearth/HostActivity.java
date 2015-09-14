@@ -4,11 +4,13 @@ package com.bytely.mearth;
 
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.res.Resources;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,6 +25,7 @@ import android.widget.ImageButton;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class HostActivity extends AppCompatActivity implements Communicator {
@@ -46,6 +49,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     private TaskModel[] mLevelThreeArray;
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     private ArrayList<Bitmap> galleryBitmaps;
+    private HashMap<Integer, TaskModel> taskModelHashMap;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -55,6 +59,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         hideUnderlineViews();
 
         getWindow().setBackgroundDrawable(null);
+
+        taskModelHashMap = new HashMap<>();
 
         if(savedInstanceState == null) {
             Log.d("onCreate", "New activity instance");
@@ -73,6 +79,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         loadTaskObjects();
         loadBitmapsIntoMemory();
+
+        DashboardTasks.getInstance(this);
 
 
         Log.d("Activity", "After Thread");
@@ -168,12 +176,16 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
     public void loadTaskObjects() {
+
+        /*
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
-                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);*/
                 Log.d("Thread", "Background");
+
+                int[] taskModelIds;
 
                 mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
                 mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
@@ -211,11 +223,33 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                         new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3, 16),
 
                 };
-                Log.d("Thread", "Done");
+
+                for(int i = 0; i < mLevelOneArray.length; i++) {
+                    taskModelHashMap.put(Integer.valueOf(mLevelOneArray[i].getTaskID()), mLevelOneArray[i]);
+                }
+
+                for(int i = 0; i < mLevelTwoArray.length; i++) {
+
+                    taskModelHashMap.put(Integer.valueOf(mLevelTwoArray[i].getTaskID()), mLevelTwoArray[i]);
+                }
+
+                for(int i = 0; i < mLevelThreeArray.length; i++) {
+                    taskModelHashMap.put(Integer.valueOf(mLevelThreeArray[i].getTaskID()), mLevelThreeArray[i]);
+                }
+
+                taskModelIds = PreferenceTasksUtility.getTaskList(this);
+
+                if(taskModelIds != null) {
+                    for(int i = 0; i < taskModelIds.length; i++) {
+                        DashboardTasks.getInstance(this).addTask(taskModelHashMap.get(Integer.valueOf(taskModelIds[i])));
+                    }
+                }
+        /*
             }
         });
 
-        thread.start();
+        thread.start(); */
+
     }
 
     @Override
@@ -409,8 +443,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         Resources r = Resources.getSystem();
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 60, r.getDisplayMetrics());
-
-        Log.d("Pixels", "Pixels: " + px);
 
         return decodeSampledBitmap(bitmapFilePath, width, height);
     }

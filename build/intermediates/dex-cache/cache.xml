@@ -58,11 +58,11 @@
         <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-52ce8e88ecdd38254ec4be46faed26c9396fc301.jar" />
     </item>
     <item
-        jar="/home/yaya/AndroidStudioProjects/MEarth/app/libs/picasso-2.5.2.jar"
+        jar="/home/yaya/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-b0c145d9a151d9ca6f69214436805330ff21dd02.jar" />
+        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-0d63affba6b366741edcdf09da305d4da764d8ff.jar" />
     </item>
     <item
         jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"

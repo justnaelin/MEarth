@@ -123,11 +123,13 @@ public class TaskListFragment extends Fragment {
         return;
     }
 
+    //adds task points for level two and three
     public void addPoints() {
 
         Log.d("TaskListFragment", "Points" + task.getTaskPoints());
         DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        DashboardTasks.getInstance(getActivity()).addTask(task, task.getTaskID());
         Log.d("TaskLisFragment", "Inside addPoints method finish  adding points");
 
 

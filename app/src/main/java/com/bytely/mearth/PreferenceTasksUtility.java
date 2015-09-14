@@ -61,14 +61,17 @@ public abstract class PreferenceTasksUtility {
     }
 
     private static int[] convertToArray(String str){
-        String[] arr = str.split(",");
-        int[] intArray = new int[arr.length];
+        if(str != null) {
+            String[] arr = str.split(",");
+            int[] intArray = new int[arr.length];
 
-        for(int i = 0; i < arr.length; i++){
-            intArray[i] = Integer.parseInt(arr[i]);
+            for (int i = 0; i < arr.length; i++) {
+                intArray[i] = Integer.parseInt(arr[i]);
 
+            }
+            return intArray;
+        } else {
+            return null;
         }
-        return intArray;
-
     }
 }

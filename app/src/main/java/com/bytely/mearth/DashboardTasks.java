@@ -76,6 +76,8 @@ public class DashboardTasks extends Activity {
 
     }
     public void addTask(TaskModel task, int mTaskId) {
+        task.incrementTaskCounter();
+        addTaskToSharedPreferences(mTaskId);
         if(sTaskList.size() == 0) {
             Log.d("DashboardTasks", "before addTask");
             sTaskList.add(task);
@@ -87,8 +89,26 @@ public class DashboardTasks extends Activity {
                 return;
             } else {
                 sTaskList.add(task);
-                addTaskToSharedPreferences(mTaskId);
+
             }
+
+
+        }
+
+    }
+
+    public void addTask(TaskModel task) {
+        task.incrementTaskCounter();
+        if(sTaskList.size() == 0) {
+            sTaskList.add(task);
+        } else {
+            if(sTaskList.contains(task)){
+                return;
+            } else {
+
+                sTaskList.add(task);
+            }
+
         }
     }
 
@@ -150,6 +170,10 @@ public class DashboardTasks extends Activity {
 
     public void setTaskList(ArrayList<TaskModel> taskList) {
         this.sTaskList = taskList;
+    }
+
+    public Activity getsActivity() {
+        return sActivity;
     }
 
 }

@@ -23,7 +23,6 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
     private Context mContext;
     private static Context sContext;
 
-
     public CurrentTaskAdapter(Context context, List<TaskModel> taskModelList) {
         mContext = context.getApplicationContext();
         mLayoutInflater = LayoutInflater.from(context);
