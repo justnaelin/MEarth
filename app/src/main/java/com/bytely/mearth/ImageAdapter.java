@@ -61,14 +61,14 @@ public class ImageAdapter extends BaseAdapter {
     public int getCount() {
         //number of thumbnails
         //return mThumbIds.length;
-        return images_file_path.size();
+        return bitmap_images.size();
     }
 
     @Override
-    public String getItem(int position) {
+    public Bitmap getItem(int position) {
         //returns the actual object at the specific position in the adapter
         // return mThumbIds[position];
-        return  images_file_path.get(position);
+        return  bitmap_images.get(position);
     }
 
     public ArrayList<Bitmap> getItems(){

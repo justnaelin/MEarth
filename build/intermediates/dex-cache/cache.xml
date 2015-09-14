@@ -2,107 +2,67 @@
 <items version="2" >
 
     <item
-<<<<<<< HEAD
-        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/libs/YouTubeAndroidPlayerApi.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-b73760cd283b5493b7ec74555898d1287cec82f6.jar" />
+        sha1="78b8f6e37921559ed21c1fae1f30f9f713494db8">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-dd29e90cae2959e6dce56d21be7d9fdcc403f91f.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/libs/Parse-1.9.1.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client/1.19.0/cdca49ad0977c040f603478aa2e16b2775c8fec6/google-http-client-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="1b065010f3c9d441ede9078aca8eabcd1c81e647">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/Parse-1.9.1-0b25088f6fd1bdbbddf10f22b5f20313af04b75e.jar" />
+        sha1="cdca49ad0977c040f603478aa2e16b2775c8fec6">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/google-http-client-1.19.0-00c45c574e6bfcdf496119e38c6d398a83c3b63b.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
-=======
-        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/libs/internal_impl-22.1.1.jar"
->>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/1.19.0/6a21277d9bebe267b7ddee028b241eebc756c040/google-api-client-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-abd05e0d120f3d8e87ee48d590489734645c4436.jar" />
+        sha1="6a21277d9bebe267b7ddee028b241eebc756c040">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/google-api-client-1.19.0-3ccdb940e65790ac6a00c786a912dfeac4acd4f9.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.1/classes.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.3/f6c3aed1cdfa21b5c1737c915186ea93a95a58bd/jackson-core-2.1.3.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="3b0fb927b680e244106145d6ecc59e4ae21c7e5d">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-c9dc26ddc0ebe20956cfbd619eb11364bb8d8914.jar" />
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/jackson-core-2.1.3-2cbd964a4587dedd3c1846d7766ed4088f2c0e25.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-4ee0d57c79d2cbca772ab253d0d8cf5c9dfc53f4.jar" />
+        sha1="40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/jsr305-1.3.9-44603420a9d6f6b1f698758b9dc4d27cd5eb6efc.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.1.1/classes.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.oauth-client/google-oauth-client/1.19.0/d473a8962e14a707a3716637e4898bb2dd9643f2/google-oauth-client-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-f36eb087354bfab1d03658ab708a92852ee59a89.jar" />
+        sha1="d473a8962e14a707a3716637e4898bb2dd9643f2">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/google-oauth-client-1.19.0-ff250c1b6c6be4d55e549e12e55155b275213ad7.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.apis/google-api-services-youtube/v3-rev120-1.19.0/9befa937f06683ea4b038fc8667ec41f4480677f/google-api-services-youtube-v3-rev120-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="22886d910315028a2b34b1ba068c265534ade87a">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-39db33387bfc60be0a969ed1d42052af9121c1bb.jar" />
+        sha1="9befa937f06683ea4b038fc8667ec41f4480677f">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/google-api-services-youtube-v3-rev120-1.19.0-8222dc24f732235d3ebc04b0381c70c56166b2fa.jar" />
     </item>
     <item
-<<<<<<< HEAD
-        jar="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/classes.jar"
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.guava/guava-jdk5/13.0/381ae6c8add7c98e9bcddb1e0b898400cd6fc3f7/guava-jdk5-13.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-de315837e89034081e3ecaae59183c3b0b1f7eae.jar" />
+        sha1="381ae6c8add7c98e9bcddb1e0b898400cd6fc3f7">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/guava-jdk5-13.0-52ad819bc0ffa7c1ce1d7f97fd910b3bcc5a6d8c.jar" />
     </item>
     <item
-        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
-=======
-        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/classes.jar"
->>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
+        jar="/Users/stephennegron/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-jackson2/1.19.0/81dbf9795d387d5e80e55346582d5f2fb81a42eb/google-http-client-jackson2-1.19.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.1-dda7085348463aabf1f354c0c77c46977a0217bb.jar" />
-    </item>
-    <item
-        jar="/Users/stephennegron/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
-<<<<<<< HEAD
-        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-52bc16dba702063bd57462c54bec4a37fe96a3da.jar" />
-=======
-        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-782e879861f9cf8a7276bd91b1dc3b14d9f8198e.jar" />
-    </item>
-    <item
-        jar="/home/yaya/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-0d63affba6b366741edcdf09da305d4da764d8ff.jar" />
-    </item>
-    <item
-        jar="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="22886d910315028a2b34b1ba068c265534ade87a">
-        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/classes-de10bcd0586893867f58bf926d82ecd12e7b15ea.jar" />
-    </item>
-    <item
-        jar="/home/yaya/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.1/44780c2cf98f6a3cf4e77f1234d644758b329201/bolts-android-1.2.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="44780c2cf98f6a3cf4e77f1234d644758b329201">
-        <dex dex="/home/yaya/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.1-d94e24d2e24aa4a5c59b2fd2b411110feb13e7ea.jar" />
->>>>>>> 4d8f0bde6541926948a5e1f047a74f80d1058fa3
+        sha1="81dbf9795d387d5e80e55346582d5f2fb81a42eb">
+        <dex dex="/Users/stephennegron/AndroidStudioProjects/MEarth/app/build/intermediates/pre-dexed/debug/google-http-client-jackson2-1.19.0-e1e44c53a372af9549d52cd230378308c8c37cdd.jar" />
     </item>
 
 </items>

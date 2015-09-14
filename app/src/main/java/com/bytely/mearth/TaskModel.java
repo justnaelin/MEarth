@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 import java.util.UUID;
 
+import bolts.Task;
+
 
 public class TaskModel
 {
@@ -66,6 +68,7 @@ public class TaskModel
     public void setTaskName(String name) {
         this.mTaskName = name;
     }
+
 
 
 }

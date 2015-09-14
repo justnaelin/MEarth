@@ -4,9 +4,12 @@
     android:id="@+id/profile_relative_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bytely.mearth.ProfileActivity" >
+    tools:context="com.bytely.mearth.ProfileActivity"
+    android:background="#FFFFFF">
 
 
+
+    <!--User Profile Stuff
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +42,15 @@
         android:layout_alignParentStart="true"
         android:paddingTop="20dp"
         android:paddingLeft="20dp" />
+        -->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/cover_photo"
+        android:src="@drawable/mearthpano"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,9 +58,11 @@
         android:id="@+id/user_points"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:textColor="#FFFFFF"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
 
     <LinearLayout
         android:layout_height="40dp"
@@ -59,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/bio_text"
+        android:layout_below="@+id/cover_photo"
         android:background="@color/primaryColor">
 
         <ImageButton

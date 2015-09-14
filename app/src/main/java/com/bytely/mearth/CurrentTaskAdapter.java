@@ -22,9 +22,6 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
     private List<TaskModel> mTaskList = Collections.emptyList();
     private Context mContext;
     private static Context sContext;
-    //retrive task id
-    public static final String TASK_FILENAME = "task_completed";
-    public static final String PREFS_KEY = "POINTS_VALUE";
 
     public CurrentTaskAdapter(Context context, List<TaskModel> taskModelList) {
         mContext = context.getApplicationContext();
@@ -59,6 +56,7 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
         private ImageView mTaskIcon;
         private TextView mAdd;
         private TextView mTaskCounter;
+        private int taskId;
 
         public CurrentTaskViewHolder(View itemView) {
             super(itemView);
@@ -72,18 +70,4 @@ public class CurrentTaskAdapter extends RecyclerView.Adapter<CurrentTaskAdapter.
 
     }
 
-    // Adds points to user's overall total points
-    public void addTasks(int taskId) {
-        SharedPreferences settings;
-        SharedPreferences.Editor editor;
-        settings = sContext.getSharedPreferences(TASK_FILENAME, Context.MODE_PRIVATE); //1
-        editor = settings.edit(); //2
-
-        editor.putInt(PREFS_KEY, taskId); //3
-        editor.commit(); //4
-
-
-        Log.d("DashboardTasks", "Added points to user-total");
-
-    }
 }

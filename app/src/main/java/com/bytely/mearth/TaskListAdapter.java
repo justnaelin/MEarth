@@ -34,6 +34,16 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         //this.mBitmapData = mBitmapData;
     }
 
+    /**
+     * This method is called when RecyclerView needs a new {@link MyViewHolder} of the given type to represent an item.
+     * This method creates a View object by inflating our custom view that is defined in
+     * layout/custom_task_list.xml using the {@link #mLayoutInflater} member. The view object that is created
+     * is passed in to the constructor of {@link MyViewHolder} when creating a MyViewHolder object.
+     *
+     * @param parent The ViewGroup into which the new View will be added after it is bound to an adapter position.
+     * @param viewType The view type of the new View.
+     * @return A MyViewHolder object that contains the inflated widgets in layout/list_image.xml
+     */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mLayoutInflater.inflate(R.layout.custom_task_list, parent, false);
@@ -42,6 +52,14 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         return holder;
     }
 
+    /**
+     * Called by RecyclerView to display the data at the specified position. We obtain the object
+     * that contains the data to be displayed by accessing the element in {@link #mActivityList} at
+     * index position.
+     *
+     * @param holder The {@link MyViewHolder} which should be updated to represent the contents of the item at the given position in the data set.
+     * @param position The position of the item within the adapter's data set.
+     */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         TaskModel current = mActivityList.get(position);
@@ -55,6 +73,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         levelNum = (current.getTaskLevelNum());
 
     }
+    /**
+     * Returns the total number of items in our data set {@link #mActivityList}
+     *
+     * @return The size of our data set {@link #mActivityList}
+     */
 
     public int getLevelNum() {
         return levelNum;
@@ -65,6 +88,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         return mActivityList.size();
     }
 
+    /**
+     * This class describes an item view and creates a Java reference to the widgets of
+     * our custom view. An object of this class is created by the RecyclerView's onCreateViewHolder
+     * method @see #onCreateViewHolder(ViewGroup parent, int viewType)
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, ViewHolderCommunicator {
         private TextView mTaskLevel;
         private TextView mTaskName;
@@ -93,14 +121,16 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         @Override
         public void onClick(View v) {
 
-            Log.i("ListAdapter", "The level number = " + Integer.toString(levelNum));
+
 
             android.support.v4.app.FragmentManager fragmentManager =
                     ((AppCompatActivity) context).getSupportFragmentManager();
             TaskListFragment targetFragment = (TaskListFragment) fragmentManager.findFragmentById(R.id.fragment_container);
 
             if(levelNum == 1){
-                ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+                //sending the taskPoints to the confirmPointsDialogFragment
+
+                ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask, mTask.getTaskID());
 
                 confirmPointsDialogFragment.setTargetFragment(targetFragment,TaskListFragment.REQUEST_POINTS);
                 confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
@@ -108,7 +138,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
             else{
                 targetFragment.addTask(mTask);
-                ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+
+                ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask, mTask.getTaskID());
                 confirmPictureDialogFragment.setTargetFragment(targetFragment, TaskListFragment.REQUEST_POINTS);
 
                 confirmPictureDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
