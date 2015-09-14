@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF">
 
     <ImageView android:id="@+id/full_image_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFFF"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+        <!--
+                <ImageButton
+                    android:id="@+id/facebook_share_photo"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src= "@drawable/facebook_share_icon"
+                    android:background="@android:color/transparent"/>
 
-</LinearLayout>
+                <ImageButton
+                    android:id="@+id/insta_share_photo"
+                    android:layout_width="30dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:src= "@drawable/insta_share_icon"
+                    android:background="@android:color/transparent"/>
+        -->
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:src="@drawable/delete_button"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+    </LinearLayout>
+
+</RelativeLayout>

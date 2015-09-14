@@ -16,4 +16,5 @@ public interface Communicator {
     void hideUnderlineViews();
     void showUnderlineView(int position);
     ArrayList<Bitmap> getGalleryBitmaps();
+    ArrayList<String> getPhotoPaths();
 }

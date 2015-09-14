@@ -92,11 +92,11 @@ public class LevelsFragment extends Fragment {
         mLevelThreeImage = (ImageView) view.findViewById(R.id.level_three_image);
         mLevelThreeTitle = (TextView) view.findViewById(R.id.level_three_title);
 
-        Bitmap circleIconOne = FormatIcon.getRoundedShape(getActivity(), R.drawable.individual_logo);
+        Bitmap circleIconOne = FormatIcon.getRoundedShape(getActivity(), R.drawable.levelone_individual_icon);
 
-        Bitmap circleIconTwo = FormatIcon.getRoundedShape(getActivity(), R.drawable.family_logo);
+        Bitmap circleIconTwo = FormatIcon.getRoundedShape(getActivity(), R.drawable.leveltwo_family_icon_2);
 
-        Bitmap circleIconThree = FormatIcon.getRoundedShape(getActivity(), R.drawable.community_logo);
+        Bitmap circleIconThree = FormatIcon.getRoundedShape(getActivity(), R.drawable.levelthree_community_icon_);
 
         mLevelOneImage.setImageBitmap(circleIconOne);
         mLevelOneTitle.setText(R.string.level_one);

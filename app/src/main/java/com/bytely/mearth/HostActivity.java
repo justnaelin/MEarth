@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +47,9 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+    // To be sent to Gallery Fragment (in Grid View)
     private ArrayList<Bitmap> galleryBitmaps;
+    private ArrayList<String> mPhotoPaths;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -70,6 +74,9 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
         fragmentTransaction.commit();
+
+        galleryBitmaps = new ArrayList<>();
+        mPhotoPaths = new ArrayList<>();
 
         loadTaskObjects();
         loadBitmapsIntoMemory();
@@ -297,6 +304,17 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             if (requestCode == 2 ) {
 
                 Log.d("Host", "Image was from profile camera =  " + Integer.toString(requestCode));
+                //String imageFilePath = Environment.getExternalStorageDirectory() + "/mearth/IMG" + System.currentTimeMillis() + ".png";
+
+                //File imageFile = new File(imageFilePath);
+                //String filePath = imageFile.getAbsolutePath();
+                String filePath = ProfileFragment.imageFilePath;
+
+                Log.d("Host", "Size before: " + galleryBitmaps.size());
+                galleryBitmaps.add(loadBitmap(filePath));
+                Log.d("Host", "Size after: " + galleryBitmaps.size());
+                mPhotoPaths.add(filePath);
+
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
@@ -355,8 +373,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             public void run() {
                 android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
 
-
-
                 setGalleryImages(images_file_path);
                 setBitmap_images(images_file_path, bitmap_images);
             }
@@ -365,7 +381,11 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         thread.start();
 
         galleryBitmaps = bitmap_images;
+        mPhotoPaths = images_file_path;
     }
+
+    @Override
+    public ArrayList<String> getPhotoPaths() {return mPhotoPaths;}
 
     @Override
     public ArrayList<Bitmap> getGalleryBitmaps() {

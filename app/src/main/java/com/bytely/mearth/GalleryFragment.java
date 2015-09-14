@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,9 +20,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 
 /**
@@ -29,10 +33,14 @@ import java.util.ArrayList;
  */
 
 public class GalleryFragment extends Fragment {
-    ArrayList<String> images_file_path = new ArrayList<String>();
+    public static ArrayList<String> images_file_path = new ArrayList<String>();
     public static ArrayList<Bitmap> bitmap_images;
 
+    Intent intent;
+    GridView gridview;
     File[] listFile;
+
+    ImageAdapter adapter;
 
     Communicator hostCommunicator;
 
@@ -40,6 +48,17 @@ public class GalleryFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        images_file_path = hostCommunicator.getPhotoPaths();
+        bitmap_images = hostCommunicator.getGalleryBitmaps();
+        Log.d("GalleryFragment", "onResume()");
+
+
+
+
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -50,8 +69,8 @@ public class GalleryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
+        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_gallery, container, false);
 
         // ** ORIGINAL ** bitmap_images = new ArrayList<Bitmap>();
@@ -59,21 +78,51 @@ public class GalleryFragment extends Fragment {
         //Toast toast = Toast.makeText(getActivity(), "image", Toast.LENGTH_SHORT);
         //toast.show();
 
+        images_file_path = hostCommunicator.getPhotoPaths();
         bitmap_images = hostCommunicator.getGalleryBitmaps();
+       // bitmap_images = new ArrayList<Bitmap>();
+
 
         //Grid view images
         int iconSize = getResources().getDimensionPixelSize(android.R.dimen.app_icon_size);
-        // setGalleryImages();
-        // setBitmap_images();
+         //setGalleryImages();
+         //setBitmap_images();
         //Log.d("Gallery", "Array size: " + bitmap_images.size());
 
-
-
         //find the gridview by id
-        GridView gridview = (GridView) view.findViewById(R.id.gridview);
+        gridview = (GridView) view.findViewById(R.id.gridview);
         //setAdaptersets method sets a custom adapter of images
 
-        gridview.setAdapter(new ImageAdapter(getActivity(), bitmap_images));
+        final Handler handler = new Handler() {
+            @Override
+            public void close() {
+
+            }
+
+            @Override
+            public void flush() {
+
+            }
+
+            @Override
+            public void publish(LogRecord record) {
+
+            }
+        };
+        Toast toast = null;
+        toast.makeText(getActivity(), "Loading Images. . .", Toast.LENGTH_SHORT).show();
+        gridview.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 3s
+
+                adapter = new ImageAdapter(getActivity(), bitmap_images);
+
+
+                gridview.setAdapter(adapter);
+            }
+        }, 3000);
+
 
         //if one image is clicked the setOnItemClickListener is called
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,19 +130,24 @@ public class GalleryFragment extends Fragment {
                                     int position, long id) {            // calling the ImageAdapter class
 
                 // Sending image id to FullScreenActivity
-                Intent intent = new Intent(getActivity(), FullImageGalleryActivity.class);
+                intent = new Intent(getActivity(), FullImageGalleryActivity.class);
                 // passing array index to display that image
                 intent.putExtra("id", position);
-                getActivity().startActivity(intent);
+                Log.e(" Grid View(oC):Position", " " + position);
+               // Log.e(" File Path(oC) ", " " + images_file_path.get(position));
 
+                // Passing file path
+               intent.putExtra("path", images_file_path.get(position));
+               // Log.e(" File Path (oC) ", " " + images_file_path.get(position));
+                getActivity().startActivity(intent);
             }
         });
 
         return view;
     }
 
-    //sets the path for all the images in the image_file_path array
     public void setGalleryImages(){
+        File[] listFile;
 
         File file = new File(android.os.Environment.getExternalStorageDirectory(),"mearth");
 
@@ -116,8 +170,10 @@ public class GalleryFragment extends Fragment {
             bitmap_images.add(loadBitmap(images_file_path.get(i)));
 
         }
-
     }
+
+
+
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public Bitmap loadBitmap(String bitmapFilePath) {
@@ -173,6 +229,20 @@ public class GalleryFragment extends Fragment {
         }
 
         return inSampleSize;
+    }
+
+    public void updateAdapter() {
+        images_file_path = hostCommunicator.getPhotoPaths();
+        bitmap_images = hostCommunicator.getGalleryBitmaps();
+        adapter.notifyDataSetChanged();
+        gridview.setAdapter(adapter);
+        Log.d("updateAdapter", "Updated");
+
+        /*
+        if(gridview != null) {
+            gridview.setAdapter(new ImageAdapter(getActivity(), bitmap_images));
+            gridview.invalidateViews();
+        } */
     }
 
 }

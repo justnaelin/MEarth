@@ -33,7 +33,7 @@ public class ProfileFragment extends Fragment {
     String mCurrentPhotoPath;
     private File directory = null;
 
-    public String imageFilePath;
+    public static String imageFilePath;
     public File imageFile;
 
     ImageView mImageView;
@@ -135,14 +135,15 @@ public class ProfileFragment extends Fragment {
 
         Uri imageFileUri = Uri.fromFile(imageFile);
 
-
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 
-       getActivity().startActivityForResult(intent, 2);
+        getActivity().startActivityForResult(intent, 2);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-
+        FragmentManager fm = getChildFragmentManager();
+        GalleryFragment galleryFragment = (GalleryFragment) fm.findFragmentByTag("profile_goals_fragment");
+        galleryFragment.updateAdapter();
         Log.d("Profile-Camera", "Inside profile");
 
     }
