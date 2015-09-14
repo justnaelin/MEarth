@@ -159,19 +159,9 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         //  super.onActivityResult(requestCode, resultCode, data);
        /* Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         fragment.onActivityResult(requestCode, resultCode, data);*/
-        ;
+
         //result code -1 = image taken send from the Confirm Dialog Fragment
-        if (resultCode ==  -1){
-            Log.d("Confirm Pictures", "Image was taken =  " + Integer.toString(resultCode));
-
-        }
-
         //result code 0 = image not taken  send from the Confirm Dialog Fragment
-        else{
-            Log.d("Confirm Pictures", "No Image  Taken =  " + Integer.toString(resultCode));
-
-        }
-        Log.d("Confirm Pictures", "No Image  Taken =  " + Integer.toString(resultCode));
 
     }
 

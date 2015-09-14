@@ -42,7 +42,6 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
         mPointsToAdd = getArguments().getInt(POINTS_ADDED_KEY);
         mTaskId = getArguments().getInt(TASK_ID_KEY);
-        Log.i("Confirm pic task ID: ", String.valueOf(mTaskId));
     }
 
 

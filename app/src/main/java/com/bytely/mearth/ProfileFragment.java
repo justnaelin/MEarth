@@ -143,7 +143,6 @@ public class ProfileFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
 
-        Log.d("Profile-Camera", "Inside profile");
 
     }
 

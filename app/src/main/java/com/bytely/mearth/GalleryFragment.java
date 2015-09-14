@@ -131,8 +131,6 @@ public class GalleryFragment extends Fragment {
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 60, r.getDisplayMetrics());
 
-        Log.d("Pixels", "Pixels: " + px);
-
         return decodeSampledBitmap(bitmapFilePath, width, height);
     }
 

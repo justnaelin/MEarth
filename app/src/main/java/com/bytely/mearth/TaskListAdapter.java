@@ -121,7 +121,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         @Override
         public void onClick(View v) {
 
-            Log.i("ListAdapter", "The level number = " + Integer.toString(levelNum));
+
 
             android.support.v4.app.FragmentManager fragmentManager =
                     ((AppCompatActivity) context).getSupportFragmentManager();
@@ -138,7 +138,6 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
             else{
                 targetFragment.addTask(mTask);
-                Log.i("The task ID: ", String.valueOf(mTask.getTaskID()));
 
                 ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask, mTask.getTaskID());
                 confirmPictureDialogFragment.setTargetFragment(targetFragment, TaskListFragment.REQUEST_POINTS);

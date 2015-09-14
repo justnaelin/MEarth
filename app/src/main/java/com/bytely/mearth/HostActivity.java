@@ -63,7 +63,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         taskModelHashMap = new HashMap<>();
 
         if(savedInstanceState == null) {
-            Log.d("onCreate", "New activity instance");
+
         }
 
         DashFragment dashFragment = null;
@@ -83,7 +83,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         DashboardTasks.getInstance(this);
 
 
-        Log.d("Activity", "After Thread");
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
@@ -95,14 +94,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
                 if(aboutFragment == null) {
                     aboutFragment = new AboutFragment();
-                    Log.d("Fragment", "Inside if");
                 }
                 hideUnderlineViews();
                 showUnderlineView(3);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, aboutFragment, "about_fragment");
                 fragmentTransaction.addToBackStack("about_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -117,7 +114,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 if (profileFragment == null) {
                     profileFragment = new ProfileFragment();
 
-                    Log.d("Fragment", "Inside if");
                 }
                 hideUnderlineViews();
                 showUnderlineView(2);
@@ -125,7 +121,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, profileFragment, "profile_fragment");
                 fragmentTransaction.addToBackStack("profile_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
 
@@ -143,7 +138,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 if(levelsFragment == null) {
                     levelsFragment = new LevelsFragment();
 
-                    Log.d("Fragment", "Inside if");
 
                 }
 
@@ -151,7 +145,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 showUnderlineView(1);
                 fragmentTransaction.replace(R.id.fragment_container, levelsFragment, "levels_fragment");
                 fragmentTransaction.addToBackStack("levels_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -168,7 +161,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -176,14 +168,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
     public void loadTaskObjects() {
-
-        /*
-        Thread thread = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);*/
-                Log.d("Thread", "Background");
 
                 int[] taskModelIds;
 
@@ -325,12 +309,10 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         //result code -1 = image was taken
         if (resultCode ==  -1){
 
-            Log.d("Host", "Image was taken =  " + Integer.toString(resultCode));
 
             //requestCode 2 = intent send from profile camera fragment
             if (requestCode == 2 ) {
 
-                Log.d("Host", "Image was from profile camera =  " + Integer.toString(requestCode));
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
                 fragment.onActivityResult(requestCode, resultCode, data);
             }
@@ -338,11 +320,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
             //requestCode 3 = intent send from level confirm Dialog fragment
             else if(requestCode == 3){
-                Log.d("Host", "Image was from level Dialog =  " + Integer.toString(requestCode));
                 TaskListFragment level = (TaskListFragment) fragmentManager
                         .findFragmentByTag("levels");
-                // Log.d("Current Fragment", level.getClass().getSimpleName());
-                level.printMessage();
                 level.addPoints();
 
             }
@@ -350,10 +329,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         }
 
         //result code 0 = image was not taken
-        else{
-            Log.d("Host", "No Image  Taken =  " + Integer.toString(resultCode));
-
-        }
 
     }
 

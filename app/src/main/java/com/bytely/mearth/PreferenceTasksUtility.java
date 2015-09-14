@@ -16,7 +16,6 @@ public abstract class PreferenceTasksUtility {
 
        String existingTasksIdList = getStringFromPreferences(activity,null,TASK_ID_KEY);
 
-        Log.d("PreferTaskUtility id", " " +  existingTasksIdList);
 
         // Append new task item to existing list
         if(existingTasksIdList != null){
@@ -24,7 +23,7 @@ public abstract class PreferenceTasksUtility {
         }
         else{
             existingTasksIdList = taskid;
-            Log.d("PreferTaskUtility id", "else stament");
+
 
         }
         // Save in Shared Preferences
@@ -43,12 +42,10 @@ public abstract class PreferenceTasksUtility {
     //send taskId to Preferences
     private static boolean putStringPreferences(Activity activity,String nick,String key){
 
-        Log.d("PreferTaskUtility id", "putStringPre");
         SharedPreferences sharedPreferences = activity.getPreferences(Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, nick);
         editor.commit();
-        Log.d("PutTasks in method", nick);
         return true;
     }
 

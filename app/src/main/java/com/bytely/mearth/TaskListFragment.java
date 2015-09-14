@@ -65,7 +65,7 @@ public class TaskListFragment extends Fragment {
 
         fragmentId = getArguments().getInt("fragment_id");
 
-        Log.d("TaskList fragmentid", String.valueOf(fragmentId));
+
         mTaskList = comm.getTaskArray(fragmentId);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.task_list);
@@ -108,15 +108,12 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
-        Log.d("TaskList", "Inside onActivityResult");
+
     }
 
-    public void printMessage() {
-        Log.d("TaskListFragment", "Inside TaskListFragment");
-    }
+
 
     public void addTask(TaskModel taskModel) {
-        Log.d("TaskListsFragment", "Inside the add'task Method");
 
         task = taskModel;
 
@@ -126,11 +123,9 @@ public class TaskListFragment extends Fragment {
     //adds task points for level two and three
     public void addPoints() {
 
-        Log.d("TaskListFragment", "Points" + task.getTaskPoints());
         DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
         DashboardTasks.getInstance(getActivity()).addTask(task, task.getTaskID());
-        Log.d("TaskLisFragment", "Inside addPoints method finish  adding points");
 
 
     }

@@ -68,10 +68,6 @@ public class DashboardTasks extends Activity {
 
         //retrive tasks
         int[] intArray = PreferenceTasksUtility.getTaskList(sActivity);
-        for(int i = 0; i < intArray.length; i++){
-            Log.d("DashboardTasks", "TaskNum" + intArray[i]);
-
-        }
         return intArray;
 
     }
@@ -79,11 +75,8 @@ public class DashboardTasks extends Activity {
         task.incrementTaskCounter();
         addTaskToSharedPreferences(mTaskId);
         if(sTaskList.size() == 0) {
-            Log.d("DashboardTasks", "before addTask");
             sTaskList.add(task);
-            Log.d("DashboardTasks", "after addTask");
             addTaskToSharedPreferences(mTaskId);
-            Log.d("DashboardTasks", "after sharedPrefe");
         } else {
             if(sTaskList.contains(task)) {
                 return;
@@ -132,7 +125,6 @@ public class DashboardTasks extends Activity {
         editor.putInt(PREFS_KEY, sTotalPoints); //3
         editor.commit(); //4
 
-        Log.d("DashboardTasks", "Added points to user-total");
     }
 
 
