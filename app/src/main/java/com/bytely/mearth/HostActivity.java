@@ -2,31 +2,27 @@
 
 package com.bytely.mearth;
 
-
 import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.res.Resources;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 
 public class HostActivity extends AppCompatActivity implements Communicator {
 
@@ -47,10 +43,19 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     private TaskModel[] mLevelOneArray;
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;
+    private static HostActivity sHostActivty;
+    Toast mBadgeToast;
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     private ArrayList<Bitmap> galleryBitmaps;
     private HashMap<Integer, TaskModel> taskModelHashMap;
 
+   /*
+    public static HostActivity getInstance(Context context){
+        if(sHostActivty == null){
+            sHostActivty = new HostActivity(context.getApplicationContext());
+        }
+        return sHostActivty;
+    }*/
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +84,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         loadTaskObjects();
         loadBitmapsIntoMemory();
-
         DashboardTasks.getInstance(this);
+
 
 
 
@@ -186,7 +191,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                         new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
                         new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
                         new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1, 4),
+                        new TaskModel("Switch to Reusable Water Bottle", 2, mWaterBottleBitmap, 300, 0, 1, 4),
                         new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1, 5),
                 };
 

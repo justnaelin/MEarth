@@ -6,12 +6,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * Created by yaya on 6/14/15.
@@ -24,12 +23,14 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
 
     private static TaskModel sTaskClicked;
 
+    int userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
+
+    Toast mBadgeToast;
     //retrieve task id
     public static final String TASK_ID_KEY = "task_completed_id";
     private static final String TASKS_FILENAME = "completed_tasks";
     public int mTaskId;
     private static Context sContext;
-
 
 
     public ConfirmPointsDialogFragment() {
@@ -59,8 +60,11 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
 
                 DashboardTasks.getInstance(getActivity()).addPoints(mPointsToAdd);
+                DashboardTasks.getInstance(getActivity()).levelNotification();
+                DashboardTasks.getInstance(getActivity()).badgeNotification();
                 DashboardTasks.getInstance(getActivity()).addTask(sTaskClicked, mTaskId);
                 sendResult(Activity.RESULT_OK);
+
 
             }
         });
@@ -119,7 +123,5 @@ public class ConfirmPointsDialogFragment extends DialogFragment {
         getTargetFragment().onActivityResult(TaskListFragment.REQUEST_POINTS,
                 resultCode, intent);
     }
-
-
 
 }
