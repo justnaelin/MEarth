@@ -143,17 +143,8 @@ public class LevelsFragment extends Fragment {
         fragment.onActivityResult(requestCode, resultCode, data);*/
         ;
         //result code -1 = image taken send from the Confirm Dialog Fragment
-        if (resultCode ==  -1){
-            Log.d("Level Fragment", "Image was taken =  " + Integer.toString(resultCode));
-
-        }
 
         //result code 0 = image not taken  send from the Confirm Dialog Fragment
-        else{
-            Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
-
-        }
-        Log.d("Level Fragment", "No Image  Taken =  " + Integer.toString(resultCode));
 
 
     }

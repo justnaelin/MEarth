@@ -1,7 +1,9 @@
 package com.bytely.mearth;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -43,6 +45,7 @@ public class TaskListFragment extends Fragment {
     TaskModel task;
 
 
+
     public TaskListFragment() {
         // Required empty public constructor
     }
@@ -61,6 +64,8 @@ public class TaskListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_task_list, container, false);
 
         fragmentId = getArguments().getInt("fragment_id");
+
+
         mTaskList = comm.getTaskArray(fragmentId);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.task_list);
@@ -103,28 +108,31 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
-        Log.d("TaskList", "Inside onActivityResult");
+
     }
 
-    public void printMessage() {
-        Log.d("TaskListFragment", "Inside TaskListFragment");
-    }
+
 
     public void addTask(TaskModel taskModel) {
-        Log.d("TaskListsFragment", "Inside the add'task Method");
 
         task = taskModel;
 
         return;
     }
 
+    //adds task points for level two and three
     public void addPoints() {
-        Log.d("TaskLisFragment", "Inside addPoints method");
-        Log.d("TaskListFragment", "Points" + task.getTaskPoints());
+
         DashboardTasks.getInstance(getActivity()).addPoints(task.getTaskPoints());
         mUserPoints.setText(Integer.toString((DashboardTasks.getInstance(getActivity()).getPoints())));
+        DashboardTasks.getInstance(getActivity()).levelNotification();
+        DashboardTasks.getInstance(getActivity()).badgeNotification();
         Log.d("TaskLisFragment", "Inside addPoints method finish  adding points");
+        DashboardTasks.getInstance(getActivity()).addTask(task, task.getTaskID());
 
 
     }
+
+
+
 }

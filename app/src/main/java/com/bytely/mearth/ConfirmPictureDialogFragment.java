@@ -4,6 +4,7 @@ package com.bytely.mearth;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -34,8 +35,13 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
     public String imageFilePath;
     public File imageFile;
 
-
     public static final int BASE_RESULT_RCODE = 111;
+
+    //retrieve task id
+    public static final String TASK_ID_KEY = "task_completed_id";
+    private static final String TASKS_FILENAME = "completed_tasks";
+    public int mTaskId;
+    private static Context sContext;
 
 
     public ConfirmPictureDialogFragment() {
@@ -47,6 +53,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         super.onAttach(activity);
 
         mPointsToAdd = getArguments().getInt(POINTS_ADDED_KEY);
+        mTaskId = getArguments().getInt(TASK_ID_KEY);
     }
 
 //this creates the confirm picture dialog
@@ -77,6 +84,7 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
 
 
 
+
             }
         });
 
@@ -97,14 +105,16 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
     }
 
 
-    public static ConfirmPictureDialogFragment getInstance(int pointsToAdd, TaskModel task) {
+    public static ConfirmPictureDialogFragment getInstance(int pointsToAdd, TaskModel task, int taskId) {
         sTaskClicked = task;
 
         ConfirmPictureDialogFragment pointsDialogFragment = new ConfirmPictureDialogFragment();
         Bundle args = new Bundle();
 
-        args.putInt(POINTS_ADDED_KEY, pointsToAdd);
+        //send the points to be added as arguments to
 
+        args.putInt(POINTS_ADDED_KEY, pointsToAdd);
+        args.putInt(TASK_ID_KEY, taskId);
         pointsDialogFragment.setArguments(args);
 
         return pointsDialogFragment;
@@ -150,19 +160,9 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
         //  super.onActivityResult(requestCode, resultCode, data);
        /* Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         fragment.onActivityResult(requestCode, resultCode, data);*/
-        ;
+
         //result code -1 = image taken send from the Confirm Dialog Fragment
-        if (resultCode ==  -1){
-            Log.d("Confirm Pictures", "Image was taken =  " + Integer.toString(resultCode));
-
-        }
-
         //result code 0 = image not taken  send from the Confirm Dialog Fragment
-        else{
-            Log.d("Confirm Pictures", "No Image  Taken =  " + Integer.toString(resultCode));
-
-        }
-        Log.d("Confirm Pictures", "No Image  Taken =  " + Integer.toString(resultCode));
 
     }
 

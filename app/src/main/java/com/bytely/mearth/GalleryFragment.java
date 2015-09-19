@@ -142,6 +142,7 @@ public class GalleryFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+        container.removeAllViews();
 
         return view;
     }
@@ -186,8 +187,6 @@ public class GalleryFragment extends Fragment {
         Resources r = Resources.getSystem();
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 60, r.getDisplayMetrics());
-
-        Log.d("Pixels", "Pixels: " + px);
 
         return decodeSampledBitmap(bitmapFilePath, width, height);
     }

@@ -121,14 +121,16 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
         @Override
         public void onClick(View v) {
 
-            Log.i("ListAdapter", "The level number = " + Integer.toString(levelNum));
+
 
             android.support.v4.app.FragmentManager fragmentManager =
                     ((AppCompatActivity) context).getSupportFragmentManager();
             TaskListFragment targetFragment = (TaskListFragment) fragmentManager.findFragmentById(R.id.fragment_container);
 
             if(levelNum == 1){
-                ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+                //sending the taskPoints to the confirmPointsDialogFragment
+
+                ConfirmPointsDialogFragment confirmPointsDialogFragment = ConfirmPointsDialogFragment.getInstance(mTask.getTaskPoints(), mTask, mTask.getTaskID());
 
                 confirmPointsDialogFragment.setTargetFragment(targetFragment,TaskListFragment.REQUEST_POINTS);
                 confirmPointsDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");
@@ -136,7 +138,8 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.MyView
 
             else{
                 targetFragment.addTask(mTask);
-                ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask);
+
+                ConfirmPictureDialogFragment confirmPictureDialogFragment = ConfirmPictureDialogFragment.getInstance(mTask.getTaskPoints(), mTask, mTask.getTaskID());
                 confirmPictureDialogFragment.setTargetFragment(targetFragment, TaskListFragment.REQUEST_POINTS);
 
                 confirmPictureDialogFragment.show(((AppCompatActivity) context).getSupportFragmentManager(), "add_points_dialog");

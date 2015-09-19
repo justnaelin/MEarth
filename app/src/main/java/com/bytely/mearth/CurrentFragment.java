@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class CurrentFragment extends Fragment {
-    private static final String TASKS_FILENAME = "completed_tasks";
+
     private ArrayList<TaskModel> mTaskList;
     private CurrentTaskAdapter mCurrentTaskAdapter;
     private RecyclerView mRecyclerView;
@@ -50,11 +50,15 @@ public class CurrentFragment extends Fragment {
             mTextView.setVisibility(View.GONE);
         } else {
             mTextView.setText(R.string.current_fragment_no_tasks);
+
         }
+        container.removeAllViews();
 
 
         return view;
     }
+
+
 
 
 }

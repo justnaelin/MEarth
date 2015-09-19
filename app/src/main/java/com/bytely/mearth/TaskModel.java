@@ -4,8 +4,11 @@ import android.graphics.Bitmap;
 
 import java.util.UUID;
 
+import bolts.Task;
 
-public class TaskModel {
+
+public class TaskModel
+{
     private String mTaskName;
     private int mTaskDescription;
     private Bitmap mTaskIcon;
@@ -14,8 +17,6 @@ public class TaskModel {
     private  int mTaskLevelNum;
     private int mTaskID;
     private int mTaskCounter;
-
-
 
     public TaskModel(String taskName, int taskDescription, Bitmap taskIcon, int taskPoints, int taskCounter, int levelNum, int taskID) {
 
@@ -67,6 +68,7 @@ public class TaskModel {
     public void setTaskName(String name) {
         this.mTaskName = name;
     }
+
 
 
 }

@@ -38,20 +38,21 @@ public class AchieveFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_achieve, container, false);
+
         CharSequence text = "You have earned a badge!";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(getActivity(), text, duration);
-        //mTextView = (TextView) view.findViewById(R.id.nobadge_textview);
+        mTextView = (TextView) view.findViewById(R.id.nobadge_textview);
 
 
         int userPoints;
         userPoints = DashboardTasks.getInstance(getActivity()).getPoints();
         if(userPoints < 1000) {
-           // mTextView.setText(R.string.achieve_fragment_no_badges);
+           mTextView.setText(R.string.achieve_fragment_no_badges);
         }
         if(userPoints > 1000)
-           // mTextView.setVisibility(View.GONE);
+            mTextView.setVisibility(View.GONE);
 
         // Badge One
         if(userPoints >= 1000)
@@ -69,6 +70,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Two
         if(userPoints >= 2000)
         {
@@ -84,6 +86,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Three
         if(userPoints >= 4000)
         {
@@ -127,6 +130,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Six
         if(userPoints >= 12000)
         {
@@ -141,6 +145,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Seven
         if(userPoints >= 15000)
         {
@@ -155,6 +160,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Eight
         if(userPoints >= 18000)
         {
@@ -169,6 +175,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
+
         // Badge Nine
         if(userPoints >= 25000)
         {
@@ -183,7 +190,7 @@ public class AchieveFragment extends Fragment {
                 }
             });
         }
-
+        container.removeAllViews();
         return view;
     }
 

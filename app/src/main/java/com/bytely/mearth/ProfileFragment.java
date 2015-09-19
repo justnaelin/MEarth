@@ -141,10 +141,12 @@ public class ProfileFragment extends Fragment {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data){
+
         FragmentManager fm = getChildFragmentManager();
         GalleryFragment galleryFragment = (GalleryFragment) fm.findFragmentByTag("profile_goals_fragment");
         galleryFragment.updateAdapter();
         Log.d("Profile-Camera", "Inside profile");
+
 
     }
 

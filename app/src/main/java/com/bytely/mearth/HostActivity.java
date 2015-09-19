@@ -2,10 +2,9 @@
 
 package com.bytely.mearth;
 
-
 import android.annotation.TargetApi;
-import android.content.res.Resources;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Point;
@@ -22,10 +21,11 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 public class HostActivity extends AppCompatActivity implements Communicator {
 
@@ -46,11 +46,24 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     private TaskModel[] mLevelOneArray;
     private TaskModel[] mLevelTwoArray;
     private TaskModel[] mLevelThreeArray;
+    private static HostActivity sHostActivty;
+    Toast mBadgeToast;
     private final android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
     // To be sent to Gallery Fragment (in Grid View)
     private ArrayList<Bitmap> galleryBitmaps;
+
     private ArrayList<String> mPhotoPaths;
 
+    private HashMap<Integer, TaskModel> taskModelHashMap;
+
+
+   /*
+    public static HostActivity getInstance(Context context){
+        if(sHostActivty == null){
+            sHostActivty = new HostActivity(context.getApplicationContext());
+        }
+        return sHostActivty;
+    }*/
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +73,10 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         getWindow().setBackgroundDrawable(null);
 
+        taskModelHashMap = new HashMap<>();
+
         if(savedInstanceState == null) {
-            Log.d("onCreate", "New activity instance");
+
         }
 
         DashFragment dashFragment = null;
@@ -80,9 +95,10 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
         loadTaskObjects();
         loadBitmapsIntoMemory();
+        DashboardTasks.getInstance(this);
 
 
-        Log.d("Activity", "After Thread");
+
 
         mAboutButton = (ImageButton) findViewById(R.id.about_button);
         mAboutButton.setOnClickListener(new View.OnClickListener(){
@@ -94,14 +110,12 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
                 if(aboutFragment == null) {
                     aboutFragment = new AboutFragment();
-                    Log.d("Fragment", "Inside if");
                 }
                 hideUnderlineViews();
                 showUnderlineView(3);
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, aboutFragment, "about_fragment");
                 fragmentTransaction.addToBackStack("about_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -116,7 +130,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 if (profileFragment == null) {
                     profileFragment = new ProfileFragment();
 
-                    Log.d("Fragment", "Inside if");
                 }
                 hideUnderlineViews();
                 showUnderlineView(2);
@@ -124,7 +137,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, profileFragment, "profile_fragment");
                 fragmentTransaction.addToBackStack("profile_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
 
@@ -142,7 +154,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 if(levelsFragment == null) {
                     levelsFragment = new LevelsFragment();
 
-                    Log.d("Fragment", "Inside if");
 
                 }
 
@@ -150,7 +161,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 showUnderlineView(1);
                 fragmentTransaction.replace(R.id.fragment_container, levelsFragment, "levels_fragment");
                 fragmentTransaction.addToBackStack("levels_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -167,7 +177,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, finalDashFragment);
                 fragmentTransaction.addToBackStack("dash_fragment");
-                Log.d("Fragment Transaction", "Added to backstack");
                 fragmentTransaction.commit();
 
             }
@@ -175,12 +184,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
     }
 
     public void loadTaskObjects() {
-        Thread thread = new Thread(new Runnable() {
 
-            @Override
-            public void run() {
-                android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
-                Log.d("Thread", "Background");
+                int[] taskModelIds;
 
                 mRecyclingBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.recycle);
                 mLightBitmap = FormatIcon.getRoundedShape(getApplicationContext(), R.drawable.lightbulb);
@@ -197,7 +202,7 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                         new TaskModel("Recycle Items", 2, mRecyclingBitmap, 200, 0, 1, 1),
                         new TaskModel("Turn Off Room Lights", 2, mLightBitmap, 100, 0, 1, 2),
                         new TaskModel("Turn Off Running Water", 2, mWaterBitmap, 100, 0, 1, 3),
-                        new TaskModel("Don't Use Single-Use Bottles", 2, mWaterBottleBitmap, 300, 0, 1, 4),
+                        new TaskModel("Switch to Reusable Water Bottle", 2, mWaterBottleBitmap, 300, 0, 1, 4),
                         new TaskModel("Walk or Ride a Bike", 2, mWalkBitmap, 400, 0, 1, 5),
                 };
 
@@ -218,11 +223,33 @@ public class HostActivity extends AppCompatActivity implements Communicator {
                         new TaskModel("Start a Recycling Club", 2, mRecyclingBitmap, 6000, 0, 3, 16),
 
                 };
-                Log.d("Thread", "Done");
+
+                for(int i = 0; i < mLevelOneArray.length; i++) {
+                    taskModelHashMap.put(Integer.valueOf(mLevelOneArray[i].getTaskID()), mLevelOneArray[i]);
+                }
+
+                for(int i = 0; i < mLevelTwoArray.length; i++) {
+
+                    taskModelHashMap.put(Integer.valueOf(mLevelTwoArray[i].getTaskID()), mLevelTwoArray[i]);
+                }
+
+                for(int i = 0; i < mLevelThreeArray.length; i++) {
+                    taskModelHashMap.put(Integer.valueOf(mLevelThreeArray[i].getTaskID()), mLevelThreeArray[i]);
+                }
+
+                taskModelIds = PreferenceTasksUtility.getTaskList(this);
+
+                if(taskModelIds != null) {
+                    for(int i = 0; i < taskModelIds.length; i++) {
+                        DashboardTasks.getInstance(this).addTask(taskModelHashMap.get(Integer.valueOf(taskModelIds[i])));
+                    }
+                }
+        /*
             }
         });
 
-        thread.start();
+        thread.start(); */
+
     }
 
     @Override
@@ -298,10 +325,10 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         //result code -1 = image was taken
         if (resultCode ==  -1){
 
-            Log.d("Host", "Image was taken =  " + Integer.toString(resultCode));
 
             //requestCode 2 = intent send from profile camera fragment
             if (requestCode == 2 ) {
+
 
                 Log.d("Host", "Image was from profile camera =  " + Integer.toString(requestCode));
                 //String imageFilePath = Environment.getExternalStorageDirectory() + "/mearth/IMG" + System.currentTimeMillis() + ".png";
@@ -322,11 +349,8 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
             //requestCode 3 = intent send from level confirm Dialog fragment
             else if(requestCode == 3){
-                Log.d("Host", "Image was from level Dialog =  " + Integer.toString(requestCode));
                 TaskListFragment level = (TaskListFragment) fragmentManager
                         .findFragmentByTag("levels");
-                // Log.d("Current Fragment", level.getClass().getSimpleName());
-                level.printMessage();
                 level.addPoints();
 
             }
@@ -334,10 +358,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         }
 
         //result code 0 = image was not taken
-        else{
-            Log.d("Host", "No Image  Taken =  " + Integer.toString(resultCode));
-
-        }
 
     }
 
@@ -429,8 +449,6 @@ public class HostActivity extends AppCompatActivity implements Communicator {
         Resources r = Resources.getSystem();
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                 60, r.getDisplayMetrics());
-
-        Log.d("Pixels", "Pixels: " + px);
 
         return decodeSampledBitmap(bitmapFilePath, width, height);
     }
