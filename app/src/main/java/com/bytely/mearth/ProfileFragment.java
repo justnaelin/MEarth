@@ -16,15 +16,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
     private Communicator comm;
-
 
     private ImageButton mAchieveButton;
     private ImageButton mCurrentButton;
@@ -97,14 +98,35 @@ public class ProfileFragment extends Fragment {
         mGoalsButton = (ImageButton) view.findViewById(R.id.goals_button);
         mGoalsButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
+            public void onClick(View v){/*
                 GalleryFragment goalsFragment;
                 goalsFragment = (GalleryFragment) fragmentManager.findFragmentByTag("profile_goals_fragment");
                 if(goalsFragment == null) {
                     goalsFragment = new GalleryFragment();
-                }
+                }*/
+
+                //*****************
+
+                 File[] listFile;
+
+                 File file = new File(android.os.Environment.getExternalStorageDirectory(),"mearth");
+
+                 if(file.isDirectory())
+                 {
+                     listFile = file.listFiles();
+                     Log.d("Toast Stuff", " " + listFile.length );
+                     if(listFile.length > 0) {
+                         Toast.makeText(getActivity(), "Loading Images. . .", Toast.LENGTH_SHORT).show();
+                     }
+                 }
+                //*****************
+
+                Log.d("gallery onClick", "clicked");
+                Fragment galleryFragment = new GalleryFragment();
+
+
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.profile_fragment_container, goalsFragment, "profile_goals_fragment");
+                fragmentTransaction.replace(R.id.profile_fragment_container, galleryFragment, "profile_goals_fragment");
                 fragmentTransaction.addToBackStack("profile_goals_fragment");
                 fragmentTransaction.commit();
             }
@@ -144,7 +166,8 @@ public class ProfileFragment extends Fragment {
 
         FragmentManager fm = getChildFragmentManager();
         GalleryFragment galleryFragment = (GalleryFragment) fm.findFragmentByTag("profile_goals_fragment");
-        galleryFragment.updateAdapter();
+        if(galleryFragment != null)
+            galleryFragment.updateAdapter();
         Log.d("Profile-Camera", "Inside profile");
 
 

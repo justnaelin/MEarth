@@ -13,12 +13,6 @@
     tools:context="com.bytely.mearth.AboutActivity"
     android:background="#FFFF">
 
-=======
-    tools:context="com.bytely.mearth.LevelsFragment"
-    android:background="#FFFFFF"
-    >
->>>>>>> 47bcd7b280160bcb23ec3b6780262a88b8b5acec
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,6 +52,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             card_view:cardElevation="0dp"
+
             >
 
             <LinearLayout
@@ -88,12 +83,12 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="100dp"
             android:id="@+id/unlock_leveltwo"
             android:text="Earn 1100 points to unlock Level Two!"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="#F7F7F7"
+            android:background="#FFFFFF"
             android:layout_below="@+id/level_one"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -121,6 +116,7 @@
             android:paddingRight="16dp"
             android:paddingTop="16dp"
             card_view:cardElevation="0dp"
+
             >
 
             <LinearLayout
@@ -155,12 +151,12 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="100dp"
             android:id="@+id/unlock_levelthree"
             android:text="Earn 4100 points to unlock Level Three!"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="#F7F7F7"
+            android:background="#ffffff"
             android:layout_below="@+id/level_two"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -177,7 +173,7 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/level_three"
             android:gravity="center"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="0dp"
             android:paddingLeft="16dp"

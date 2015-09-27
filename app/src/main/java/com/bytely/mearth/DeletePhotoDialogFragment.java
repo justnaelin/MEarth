@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -47,7 +48,6 @@ public class DeletePhotoDialogFragment extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-
                 // Gather's image to delete from Gallery Fragement
                 File file = new File(mFilePath);
                // boolean deleted =
@@ -57,6 +57,13 @@ public class DeletePhotoDialogFragment extends DialogFragment {
                 GalleryFragment.bitmap_images.remove(position);
                 GalleryFragment.images_file_path.remove(position);
                 Log.e(" DeleteDialog(oC) ", " " + position);
+                GridView grid = GalleryFragment.gridview;
+                grid.invalidateViews();
+
+                ImageAdapter adapter = ((ImageAdapter) grid.getAdapter());
+                adapter.notifyDataSetChanged();
+                grid.setAdapter(adapter);
+
                 getActivity().finish();
             }
         });

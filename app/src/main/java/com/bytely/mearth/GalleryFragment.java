@@ -37,7 +37,7 @@ public class GalleryFragment extends Fragment {
     public static ArrayList<Bitmap> bitmap_images;
 
     Intent intent;
-    GridView gridview;
+    public static GridView gridview;
     File[] listFile;
 
     ImageAdapter adapter;
@@ -109,8 +109,8 @@ public class GalleryFragment extends Fragment {
 
             }
         };
-        Toast toast = null;
-        toast.makeText(getActivity(), "Loading Images. . .", Toast.LENGTH_SHORT).show();
+
+        Log.d("CUSTOM", "galleryFragment");
         gridview.postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -32,8 +32,8 @@ public class ConfirmPictureDialogFragment extends DialogFragment {
 
     private File directory = null;
 
-    public String imageFilePath;
-    public File imageFile;
+    public static String imageFilePath;
+    public static File imageFile;
 
     public static final int BASE_RESULT_RCODE = 111;
 

@@ -86,9 +86,11 @@ public class HostActivity extends AppCompatActivity implements Communicator {
             dashFragment = new DashFragment();
         }
         showUnderlineView(0);
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
-        fragmentTransaction.commit();
+        if(fragmentManager != null) {
+            final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.fragment_container, dashFragment, "dash_fragment");
+            fragmentTransaction.commit();
+        }
 
         galleryBitmaps = new ArrayList<>();
         mPhotoPaths = new ArrayList<>();
@@ -349,6 +351,11 @@ public class HostActivity extends AppCompatActivity implements Communicator {
 
             //requestCode 3 = intent send from level confirm Dialog fragment
             else if(requestCode == 3){
+                String filePath = ConfirmPictureDialogFragment.imageFilePath;
+                Log.d("Host", "Size before: " + galleryBitmaps.size());
+                galleryBitmaps.add(loadBitmap(filePath));
+                Log.d("Host", "Size after: " + galleryBitmaps.size());
+                mPhotoPaths.add(filePath);
                 TaskListFragment level = (TaskListFragment) fragmentManager
                         .findFragmentByTag("levels");
                 level.addPoints();
